@@ -3,7 +3,7 @@ import { Mail, MessageSquare, Calendar, Shield } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { GlowOrb } from "@/components/ui/GlowOrb";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactFormFull } from "@/components/ContactFormFull";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -86,7 +86,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-[1.6fr_1fr] gap-12 lg:gap-16 items-start">
             {/* Form */}
             <FadeIn direction="right">
-              <ContactForm />
+              <ContactFormFull />
             </FadeIn>
 
             {/* Sidebar */}
@@ -132,9 +132,7 @@ export default function ContactPage() {
               {/* FAQ */}
               <FadeIn direction="left" delay={0.2}>
                 <div className="space-y-4">
-                  <h2
-                    className="text-white/70 text-sm font-semibold uppercase tracking-widest"
-                  >
+                  <h2 className="text-white/70 text-sm font-semibold uppercase tracking-widest">
                     Quick Answers
                   </h2>
                   <div className="space-y-4">
