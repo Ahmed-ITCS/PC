@@ -1,108 +1,121 @@
 import type { Metadata } from "next";
-import { Code2, Cloud, Shield, Layers, Workflow, BarChart3, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  Code2,
+  GitMerge,
+  Cloud,
+  Database,
+  ShieldCheck,
+  BarChart3,
+  ArrowRight,
+  Check,
+} from "lucide-react";
 import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { GlowOrb } from "@/components/ui/GlowOrb";
-import { CTA } from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Full-stack development, DevOps infrastructure, security audits, and technical consulting — everything you need to ship secure software without an in-house team.",
+    "Custom software development, DevOps & infrastructure, cloud solutions, data engineering, security & compliance, and monitoring & support — built security-first by PentaCipher.",
 };
 
 const services = [
   {
-    id: "fullstack",
+    id: "custom-software",
     icon: Code2,
-    title: "Full-Stack Development",
+    title: "Custom Software Development",
+    tagline: "Production-ready apps built for scale and security",
     description:
-      "We build production-ready web applications, APIs, and data pipelines — architected for scale, maintainability, and security from the ground up.",
-    bullets: [
-      "React, Next.js, Vue — modern frontend frameworks",
-      "Node.js, Python, Go, Rust backends",
-      "REST, GraphQL, and gRPC API design",
-      "PostgreSQL, MongoDB, Redis, Elasticsearch",
-      "Authentication, authorization, and RBAC",
-      "E2E testing, unit tests, integration suites",
+      "We design and build web applications, APIs, and data-driven platforms from the ground up — or step in to accelerate an existing codebase. Our engineers make deliberate architectural choices that prevent the technical debt most teams inherit.",
+    tags: ["React", "Next.js", "Node.js", "Python", "Go", "PostgreSQL", "GraphQL"],
+    features: [
+      "Full-stack web applications and SaaS platforms",
+      "REST, GraphQL, and gRPC API design and development",
+      "Authentication, RBAC, and multi-tenancy",
+      "End-to-end automated testing suites",
     ],
+    featured: false,
   },
   {
     id: "devops",
-    icon: Cloud,
-    title: "DevOps & Cloud Infrastructure",
+    icon: GitMerge,
+    title: "DevOps & Infrastructure",
+    tagline: "Pipelines, orchestration, and zero-downtime deployments",
     description:
-      "We design and operate cloud infrastructure that scales with your product — CI/CD, container orchestration, and zero-downtime deployments.",
-    bullets: [
-      "AWS, GCP, Azure architecture and migration",
-      "Kubernetes (EKS, GKE, AKS) and Helm charts",
-      "Terraform, Pulumi infrastructure-as-code",
-      "GitHub Actions, GitLab CI, CircleCI pipelines",
-      "Docker containerization and image hardening",
-      "Database backups, DR strategy, and failover",
+      "We automate everything from code commit to production — so your team spends time building features, not fighting deployments. Our DevOps engagements start with your biggest friction point and systematically eliminate it.",
+    tags: ["Kubernetes", "Terraform", "GitHub Actions", "Docker", "Helm", "ArgoCD"],
+    features: [
+      "CI/CD pipelines with automated security and quality gates",
+      "Kubernetes orchestration (EKS, GKE, AKS) with Helm charts",
+      "Infrastructure-as-code with Terraform and Pulumi",
+      "Blue-green and canary deployment strategies",
     ],
+    featured: false,
+  },
+  {
+    id: "cloud",
+    icon: Cloud,
+    title: "Cloud Solutions",
+    tagline: "Multi-cloud architecture designed for scale and cost efficiency",
+    description:
+      "Whether you're migrating from legacy infrastructure, optimising an existing cloud footprint, or building cloud-native from day one — we design solutions that scale with your business without surprising you with bills.",
+    tags: ["AWS", "GCP", "Azure", "Serverless", "CDN", "Cost Optimisation"],
+    features: [
+      "Cloud architecture design and migration planning",
+      "Multi-region, high-availability deployments",
+      "Serverless and edge compute implementations",
+      "FinOps and cloud cost optimisation reviews",
+    ],
+    featured: false,
+  },
+  {
+    id: "data",
+    icon: Database,
+    title: "Data Engineering",
+    tagline: "Pipelines, warehouses, and analytics infrastructure",
+    description:
+      "Good decisions require reliable data. We build ingestion pipelines, data warehouses, and analytics platforms that give your team a single source of truth — with the governance and lineage tracking that regulated industries require.",
+    tags: ["dbt", "Airflow", "Snowflake", "BigQuery", "Kafka", "Spark"],
+    features: [
+      "ELT/ETL data pipeline design and implementation",
+      "Data warehouse and lakehouse architecture",
+      "Real-time streaming data with Kafka / Kinesis",
+      "Data quality monitoring and lineage tracking",
+    ],
+    featured: false,
   },
   {
     id: "security",
-    icon: Shield,
-    title: "Security-First Architecture",
+    icon: ShieldCheck,
+    title: "Security & Compliance",
+    tagline: "Security built in — not bolted on",
     description:
-      "Security isn't a checkbox — it's the foundation. We build it in from day one and audit it continuously.",
-    bullets: [
-      "OWASP Top 10 vulnerability assessment",
-      "Static and dynamic application security testing (SAST/DAST)",
-      "Secrets management (Vault, AWS Secrets Manager)",
-      "Zero-trust network architecture design",
-      "SOC 2 Type II readiness preparation",
-      "Dependency audit and supply chain security",
+      "Security is not a sprint at the end of the project. We embed security engineers into the build process, conduct threat modelling before architecture is finalised, and deliver systems that pass audits because they were designed to.",
+    tags: ["OWASP", "SAST/DAST", "SOC 2", "Zero Trust", "Vault", "Pen Testing"],
+    features: [
+      "Threat modelling and attack surface analysis",
+      "OWASP Top 10 and SAST/DAST tooling integration",
+      "Secrets management with HashiCorp Vault / AWS Secrets Manager",
+      "SOC 2 Type II and ISO 27001 readiness preparation",
     ],
     featured: true,
   },
   {
-    id: "consulting",
-    icon: Layers,
-    title: "Technical Consulting",
-    description:
-      "Strategic technical guidance for CTOs, founders, and engineering leaders — make the right architectural decisions before they're expensive to change.",
-    bullets: [
-      "Architecture reviews and RFCs",
-      "Technology selection and vendor evaluation",
-      "Legacy system modernization roadmaps",
-      "Technical due diligence for M&A",
-      "Engineering team process and tooling audits",
-      "Fractional CTO services",
-    ],
-  },
-  {
-    id: "augmentation",
-    icon: Workflow,
-    title: "Team Augmentation",
-    description:
-      "Embed battle-tested engineers and DevOps specialists directly into your team — as few as one sprint, as long as you need.",
-    bullets: [
-      "Senior full-stack engineers (React + Node/Python)",
-      "DevOps and infrastructure specialists",
-      "Security engineers",
-      "Engineering managers and technical leads",
-      "Seamless integration with your existing workflow",
-      "Weekly progress reports and transparent billing",
-    ],
-  },
-  {
-    id: "observability",
+    id: "monitoring",
     icon: BarChart3,
-    title: "Observability & SRE",
+    title: "Monitoring & Support",
+    tagline: "Observability, SRE, and 24/7 incident response",
     description:
-      "You can't fix what you can't see. We instrument your systems so you always know what's happening — before your users do.",
-    bullets: [
-      "Distributed tracing with OpenTelemetry/Jaeger",
-      "Metrics, dashboards, and alerting (Datadog, Grafana)",
-      "Log aggregation and structured logging",
-      "SLO/SLA definition and error budget tracking",
-      "Chaos engineering and game days",
-      "Incident response runbooks and on-call setup",
+      "You can't improve what you can't measure. We instrument your systems end-to-end, define SLOs that align with business outcomes, and staff on-call coverage so incidents are resolved before they become customer crises.",
+    tags: ["Datadog", "OpenTelemetry", "Grafana", "PagerDuty", "SLOs", "Chaos Engineering"],
+    features: [
+      "Distributed tracing with OpenTelemetry / Jaeger",
+      "Custom dashboards, alerting, and error budget tracking",
+      "Incident response runbooks and game-day exercises",
+      "Retainer-based 24/7 on-call engineering support",
     ],
+    featured: false,
   },
 ];
 
@@ -110,7 +123,10 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden" aria-label="Services hero">
+      <section
+        className="relative pt-32 pb-20 overflow-hidden"
+        aria-label="Services hero"
+      >
         <div
           className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-100"
           aria-hidden="true"
@@ -131,23 +147,23 @@ export default function ServicesPage() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="text-white/50 text-lg max-w-2xl text-balance">
-              We cover every layer of the stack — from architecture through
-              deployment, security, and operations.
+              Six practice areas that cover every layer of the stack — from
+              architecture through deployment, security, and operations.
             </p>
           </FadeIn>
         </div>
       </section>
 
       {/* Services */}
-      <section className="py-16 md:py-20" aria-label="Service details">
-        <div className="container-max section-padding space-y-12">
+      <section className="py-12 md:py-16 pb-8" aria-label="Service details">
+        <div className="container-max section-padding space-y-8">
           {services.map((service, i) => {
             const Icon = service.icon;
             return (
               <FadeIn key={service.id} delay={i * 0.05}>
-                <div
+                <article
                   id={service.id}
-                  className={`relative rounded-2xl border p-8 md:p-10 transition-all duration-300 scroll-mt-24 ${
+                  className={`relative rounded-2xl border p-8 md:p-10 scroll-mt-24 transition-all duration-300 ${
                     service.featured
                       ? "border-[#00d4ff]/25 bg-gradient-to-br from-[#00d4ff]/5 to-[#0d1529]/80"
                       : "border-white/6 bg-[#0d1529]/50 hover:border-white/10"
@@ -158,50 +174,125 @@ export default function ServicesPage() {
                       <span className="tag">Core Differentiator</span>
                     </div>
                   )}
-                  <div className="grid md:grid-cols-[1fr_1.4fr] gap-8 items-start">
-                    <div className="space-y-4">
+
+                  <div className="grid md:grid-cols-[1fr_1.6fr] gap-8 items-start">
+                    {/* Left column */}
+                    <div className="space-y-5">
                       <div className="flex items-center gap-4">
                         <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/20">
                           <Icon className="w-6 h-6 text-[#00d4ff]" aria-hidden="true" />
                         </div>
-                        <h2
-                          className="text-xl md:text-2xl font-bold text-white"
-                          style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-                        >
-                          {service.title}
-                        </h2>
+                        <div>
+                          <h2
+                            className="text-xl md:text-2xl font-bold text-white leading-tight"
+                            style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                          >
+                            {service.title}
+                          </h2>
+                          <p className="text-[#00d4ff]/60 text-sm mt-0.5">{service.tagline}</p>
+                        </div>
                       </div>
+
                       <p className="text-white/50 text-base leading-relaxed">
                         {service.description}
                       </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {service.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2.5 py-1 rounded-md bg-white/4 border border-white/8 text-white/40 text-xs font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
                       <Link
                         href="/contact"
                         className="group inline-flex items-center gap-2 text-sm text-[#00d4ff] font-medium hover:text-[#00d4ff]/80 transition-colors"
+                        aria-label={`Discuss ${service.title} with PentaCipher`}
                       >
                         Discuss this service
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                        <ArrowRight
+                          className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
+                          aria-hidden="true"
+                        />
                       </Link>
                     </div>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5" role="list">
-                      {service.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2.5 text-sm text-white/60">
-                          <CheckCircle2
-                            className="w-4 h-4 text-[#00d4ff]/60 shrink-0 mt-0.5"
-                            aria-hidden="true"
-                          />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
+
+                    {/* Right column — feature bullets */}
+                    <div className="rounded-xl border border-white/5 bg-[#080e1e]/40 p-6">
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-4">
+                        What&apos;s included
+                      </p>
+                      <ul className="space-y-3" role="list">
+                        {service.features.map((feat) => (
+                          <li key={feat} className="flex items-start gap-3 text-sm text-white/60 leading-relaxed">
+                            <div
+                              className="flex items-center justify-center w-4 h-4 rounded-full bg-[#00d4ff]/15 border border-[#00d4ff]/25 shrink-0 mt-0.5"
+                              aria-hidden="true"
+                            >
+                              <Check className="w-2.5 h-2.5 text-[#00d4ff]" />
+                            </div>
+                            {feat}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                </article>
               </FadeIn>
             );
           })}
         </div>
       </section>
 
-      <CTA />
+      {/* Closing CTA band */}
+      <section className="py-16 md:py-20 border-t border-white/5" aria-label="Start your project">
+        <div className="container-max section-padding">
+          <FadeIn>
+            <div className="relative rounded-2xl border border-[#00d4ff]/15 bg-gradient-to-br from-[#0d1529] to-[#080e1e] overflow-hidden">
+              <div
+                className="absolute inset-0 bg-glow-cyan opacity-60"
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-30"
+                aria-hidden="true"
+              />
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 px-8 md:px-12 py-10 md:py-12">
+                <div className="text-center md:text-left space-y-2">
+                  <h2
+                    className="text-2xl md:text-3xl font-bold text-white"
+                    style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                  >
+                    Ready to get started?
+                  </h2>
+                  <p className="text-white/50">
+                    Free 30-minute scoping call. No commitment required.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.3)] hover:shadow-[0_0_36px_rgba(0,212,255,0.5)] whitespace-nowrap"
+                  >
+                    Start Your Project
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-white/10 text-white/70 hover:border-white/20 hover:text-white hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
+                  >
+                    Schedule Consultation
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
     </>
   );
 }
