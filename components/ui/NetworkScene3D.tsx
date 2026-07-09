@@ -1,8 +1,14 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, Component, ReactNode } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+
+class WebGLErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() { return this.state.failed ? null : this.props.children; }
+}
 
 const NODES: [number, number, number][] = [
   [0, 2.8, 0],
@@ -128,17 +134,19 @@ function NetworkGroup() {
 
 export function NetworkScene3D() {
   return (
-    <div className="absolute inset-0 w-full h-full" aria-hidden="true">
-      <Canvas
-        camera={{ position: [0, 0, 8], fov: 70 }}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: "transparent", width: "100%", height: "100%" }}
-      >
-        <ambientLight intensity={0.3} />
-        <pointLight position={[3, 3, 3]} intensity={1.2} color="#00d4ff" />
-        <pointLight position={[-3, -2, -3]} intensity={0.5} color="#7c3aed" />
-        <NetworkGroup />
-      </Canvas>
-    </div>
+    <WebGLErrorBoundary>
+      <div className="absolute inset-0 w-full h-full" aria-hidden="true">
+        <Canvas
+          camera={{ position: [0, 0, 8], fov: 70 }}
+          gl={{ antialias: true, alpha: true }}
+          style={{ background: "transparent", width: "100%", height: "100%" }}
+        >
+          <ambientLight intensity={0.3} />
+          <pointLight position={[3, 3, 3]} intensity={1.2} color="#00d4ff" />
+          <pointLight position={[-3, -2, -3]} intensity={0.5} color="#7c3aed" />
+          <NetworkGroup />
+        </Canvas>
+      </div>
+    </WebGLErrorBoundary>
   );
 }
