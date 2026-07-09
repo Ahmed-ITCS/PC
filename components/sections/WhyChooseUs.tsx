@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 const reasons = [
   {
@@ -98,7 +99,8 @@ export function WhyChooseUs() {
             const Icon = reason.icon;
             return (
               <FadeIn key={reason.title} delay={i * 0.07} direction="up">
-                <div className="group flex flex-col gap-4 rounded-xl border border-white/6 bg-[#0d1529]/50 p-6 h-full hover:border-[#00d4ff]/15 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-300">
+                <TiltCard className="h-full rounded-xl" intensity={10}>
+                <div className="group flex flex-col gap-4 rounded-xl border border-white/6 bg-[#0d1529]/50 p-6 h-full hover:border-[#00d4ff]/15 hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-300">
                   <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#00d4ff]/8 border border-[#00d4ff]/15 group-hover:bg-[#00d4ff]/12 transition-colors duration-200">
                     <Icon className="w-5 h-5 text-[#00d4ff]" aria-hidden="true" />
                   </div>
@@ -114,6 +116,7 @@ export function WhyChooseUs() {
                     </p>
                   </div>
                 </div>
+                </TiltCard>
               </FadeIn>
             );
           })}

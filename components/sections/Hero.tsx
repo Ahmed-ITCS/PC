@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Code2, Cloud, ShieldCheck } from "lucide-react";
 import { GlowOrb } from "@/components/ui/GlowOrb";
+import { NetworkScene3D } from "@/components/ui/NetworkScene3D";
 
 const capabilityPills = [
   { icon: Code2, label: "Custom Development" },
@@ -11,172 +12,32 @@ const capabilityPills = [
   { icon: ShieldCheck, label: "Enterprise Security" },
 ];
 
-function HeroVisual() {
-  const nodes = [
-    { cx: 230, cy: 95, delay: 0 },
-    { cx: 355, cy: 130, delay: 0.1 },
-    { cx: 390, cy: 255, delay: 0.2 },
-    { cx: 290, cy: 335, delay: 0.3 },
-    { cx: 155, cy: 320, delay: 0.4 },
-    { cx: 90, cy: 200, delay: 0.5 },
-    { cx: 240, cy: 210, delay: 0.6 },
-  ];
-  const connections = [
-    [6, 0], [6, 1], [6, 2], [6, 3], [6, 4], [6, 5],
-    [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0],
-  ] as const;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.92 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1.1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full max-w-[420px] mx-auto hidden lg:block"
-      aria-hidden="true"
-    >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#00d4ff]/4 to-transparent pointer-events-none" />
-      <svg
-        viewBox="0 0 480 430"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full"
-      >
-        <defs>
-          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#00d4ff" stopOpacity="0.05" />
-            <stop offset="50%" stopColor="#00d4ff" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#00d4ff" stopOpacity="0.05" />
-          </linearGradient>
-          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#00d4ff" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#00d4ff" stopOpacity="0" />
-          </radialGradient>
-          <filter id="blur4">
-            <feGaussianBlur stdDeviation="4" />
-          </filter>
-        </defs>
-
-        {/* Connection lines */}
-        {connections.map(([from, to], i) => (
-          <motion.line
-            key={i}
-            x1={nodes[from].cx}
-            y1={nodes[from].cy}
-            x2={nodes[to].cx}
-            y2={nodes[to].cy}
-            stroke="url(#lineGrad)"
-            strokeWidth="1"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0.12, 0.45, 0.12] }}
-            transition={{
-              duration: 2.8 + i * 0.25,
-              repeat: Infinity,
-              delay: i * 0.18,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-
-        {/* Outer node glows */}
-        {nodes.map((node, i) => (
-          <motion.circle
-            key={`glow-${i}`}
-            cx={node.cx}
-            cy={node.cy}
-            r={i === 6 ? 28 : 16}
-            fill="url(#nodeGlow)"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{
-              duration: 3 + i * 0.4,
-              repeat: Infinity,
-              delay: node.delay,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-
-        {/* Nodes */}
-        {nodes.map((node, i) => (
-          <motion.circle
-            key={`node-${i}`}
-            cx={node.cx}
-            cy={node.cy}
-            r={i === 6 ? 9 : 5}
-            fill={i === 6 ? "#00d4ff" : "rgba(0,212,255,0.55)"}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.45,
-              delay: 0.6 + node.delay,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          />
-        ))}
-
-        {/* Center node pulse ring */}
-        <motion.circle
-          cx={nodes[6].cx}
-          cy={nodes[6].cy}
-          r={18}
-          stroke="#00d4ff"
-          strokeWidth="1"
-          fill="none"
-          initial={{ opacity: 0 }}
-          animate={{ r: [18, 34, 18], opacity: [0.4, 0, 0.4] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "easeOut" }}
-        />
-
-        {/* Grid background dots */}
-        {Array.from({ length: 6 }).map((_, row) =>
-          Array.from({ length: 7 }).map((_, col) => (
-            <circle
-              key={`dot-${row}-${col}`}
-              cx={40 + col * 64}
-              cy={30 + row * 62}
-              r="1.2"
-              fill="rgba(0,212,255,0.12)"
-            />
-          ))
-        )}
-      </svg>
-
-      {/* Floating code tag */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute top-6 right-4 px-3 py-1.5 rounded-lg bg-[#0d1529]/90 border border-[#00d4ff]/20 backdrop-blur-sm text-xs font-mono text-[#00d4ff]/70"
-      >
-        {"<SecurityFirst />"}
-      </motion.div>
-
-      {/* Status badge */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.4, duration: 0.5 }}
-        className="absolute bottom-8 left-2 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0d1529]/90 border border-white/8 backdrop-blur-sm"
-      >
-        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-        <span className="text-xs text-white/50 font-medium">All systems operational</span>
-      </motion.div>
-    </motion.div>
-  );
-}
 
 export function Hero() {
+  const { scrollY } = useScroll();
+  const sceneY = useTransform(scrollY, [0, 600], [0, 180]);
+  const sceneOpacity = useTransform(scrollY, [0, 500], [1, 0]);
+
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16"
       aria-label="Hero"
     >
-      {/* Background */}
+      {/* 3D background — scrolls down and fades */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{ y: sceneY, opacity: sceneOpacity }}
+        aria-hidden="true"
+      >
+        <NetworkScene3D />
+      </motion.div>
+
+      {/* Background overlays on top of 3D */}
       <div
-        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-100"
+        className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-30"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-glow-cyan" aria-hidden="true" />
+      <div className="absolute inset-0 z-[1] bg-glow-cyan" aria-hidden="true" />
       <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.05} />
       <GlowOrb className="top-1/2 -left-40" size="lg" opacity={0.04} />
       <GlowOrb className="top-1/3 -right-40" size="md" opacity={0.03} />
@@ -193,9 +54,9 @@ export function Hero() {
       />
 
       <div className="relative z-10 container-max section-padding py-20 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left content */}
-          <div className="flex flex-col items-start gap-8">
+        <div className="flex justify-center">
+          {/* Centered content */}
+          <div className="flex flex-col items-center text-center gap-8 max-w-3xl">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -228,7 +89,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-white/55 text-lg md:text-xl leading-relaxed max-w-lg text-balance"
+              className="text-white/55 text-lg md:text-xl leading-relaxed max-w-xl text-balance"
             >
               We accelerate your digital transformation — delivering full-stack
               development, DevOps, and security-hardened systems without the
@@ -240,7 +101,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap gap-3 justify-center"
               role="list"
               aria-label="Core capabilities"
             >
@@ -264,7 +125,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              className="flex flex-col sm:flex-row items-center gap-4"
             >
               <Link
                 href="/contact"
@@ -284,9 +145,6 @@ export function Hero() {
               </Link>
             </motion.div>
           </div>
-
-          {/* Right visual */}
-          <HeroVisual />
         </div>
       </div>
 

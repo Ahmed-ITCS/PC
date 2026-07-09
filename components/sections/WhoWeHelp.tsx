@@ -3,6 +3,7 @@
 import { Building2, Rocket, Briefcase, Users } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 const segments = [
   {
@@ -88,6 +89,7 @@ export function WhoWeHelp() {
             const Icon = seg.icon;
             return (
               <FadeIn key={seg.title} delay={i * 0.1} direction="up">
+                <TiltCard className="h-full rounded-2xl">
                 <div className="flex flex-col gap-5 rounded-2xl border border-white/6 bg-[#0d1529]/50 p-7 h-full hover:border-white/10 transition-all duration-300">
                   <div className="flex items-center gap-4">
                     <div
@@ -115,6 +117,7 @@ export function WhoWeHelp() {
                     ))}
                   </ul>
                 </div>
+                </TiltCard>
               </FadeIn>
             );
           })}

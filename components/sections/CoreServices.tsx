@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Shield, Cloud, Layers, Check, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 const services = [
   {
@@ -86,8 +87,9 @@ export function CoreServices() {
             const Icon = svc.icon;
             return (
               <FadeIn key={svc.title} delay={i * 0.1} direction="up">
+                <TiltCard className="h-full rounded-2xl">
                 <div
-                  className={`relative flex flex-col gap-5 rounded-2xl border p-7 h-full transition-all duration-300 hover:-translate-y-1 ${
+                  className={`relative flex flex-col gap-5 rounded-2xl border p-7 h-full ${
                     svc.featured
                       ? "border-[#00d4ff]/25 bg-gradient-to-b from-[#00d4ff]/5 via-[#0d1529]/80 to-[#0d1529]/60 shadow-[0_0_0_1px_rgba(0,212,255,0.1),0_16px_48px_rgba(0,0,0,0.35)]"
                       : "border-white/6 bg-[#0d1529]/50 hover:border-[#00d4ff]/15 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.08),0_16px_48px_rgba(0,0,0,0.3)]"
@@ -154,6 +156,7 @@ export function CoreServices() {
                     />
                   )}
                 </div>
+                </TiltCard>
               </FadeIn>
             );
           })}
