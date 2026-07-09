@@ -7,13 +7,13 @@ import { z } from "zod";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 
 const schema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Enter a valid email address"),
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
+  email: z.string().email({ message: "Enter a valid email address" }),
   phone: z.string().optional(),
   company: z.string().optional(),
-  subject: z.string().min(1, "Subject is required"),
-  message: z.string().min(20, "Message must be at least 20 characters"),
+  subject: z.string().min(1, { message: "Subject is required" }),
+  message: z.string().min(20, { message: "Message must be at least 20 characters" }),
 });
 
 type FormValues = z.infer<typeof schema>;
