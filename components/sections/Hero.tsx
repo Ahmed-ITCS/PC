@@ -63,7 +63,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00d4ff]/20 bg-[#00d4ff]/8 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00d4ff]/30 bg-[#00d4ff]/10 backdrop-blur-md shadow-[0_0_20px_rgba(0,212,255,0.12)]">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#00d4ff]" aria-hidden="true" />
                 <span className="text-[#00d4ff] text-xs font-semibold tracking-widest uppercase">
                   Security-First Execution
@@ -76,7 +76,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.06] tracking-tight text-balance"
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold leading-[1.04] tracking-tight text-balance"
               style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
             >
               Your Partners in{" "}
@@ -129,7 +129,7 @@ export function Hero() {
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.3)] hover:shadow-[0_0_36px_rgba(0,212,255,0.5)]"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 transition-all duration-200 shadow-[0_0_32px_rgba(0,212,255,0.4)] hover:shadow-[0_0_48px_rgba(0,212,255,0.6)] hover:scale-[1.02]"
               >
                 Get Started
                 <ArrowRight

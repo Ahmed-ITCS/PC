@@ -38,7 +38,7 @@ export function Stats() {
           {stats.map((stat, i) => (
             <FadeIn key={stat.label} delay={i * 0.1} className="text-center space-y-1.5">
               <div
-                className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text"
+                className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold gradient-text"
                 style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                 aria-label={`${stat.special ?? (stat.value + (stat.suffix ?? ""))} — ${stat.label}`}
               >
@@ -48,10 +48,10 @@ export function Stats() {
                   <AnimatedCounter end={stat.value!} suffix={stat.suffix} />
                 )}
               </div>
-              <div className="text-white/80 font-semibold text-sm md:text-base">
+              <div className="text-white/90 font-bold text-sm md:text-base tracking-wide">
                 {stat.label}
               </div>
-              <div className="text-white/35 text-xs md:text-sm">{stat.description}</div>
+              <div className="text-white/40 text-xs md:text-sm">{stat.description}</div>
             </FadeIn>
           ))}
         </div>

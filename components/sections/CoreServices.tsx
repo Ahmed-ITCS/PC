@@ -103,14 +103,14 @@ export function CoreServices() {
                   </span>
 
                   {/* Icon */}
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#00d4ff]/8 border border-[#00d4ff]/20">
-                    <Icon className="w-6 h-6 text-[#00d4ff]" aria-hidden="true" />
+                  <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/25 shadow-[0_0_16px_rgba(0,212,255,0.1)]">
+                    <Icon className="w-7 h-7 text-[#00d4ff]" aria-hidden="true" />
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 space-y-3">
                     <h3
-                      className="text-white font-semibold text-xl leading-snug"
+                      className="text-white font-bold text-xl leading-snug"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {svc.title}

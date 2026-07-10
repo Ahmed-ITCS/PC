@@ -29,10 +29,12 @@ const socials = [
 export function Footer() {
   return (
     <footer
-      className="border-t border-white/5 bg-[#080e1e] mt-0"
+      className="relative border-t border-white/5 bg-[#080e1e] mt-0 overflow-hidden"
       role="contentinfo"
       aria-label="Site footer"
     >
+      {/* Subtle gradient top accent */}
+      <div className="absolute top-0 inset-x-0 h-px shimmer-border" aria-hidden="true" />
       <div className="container-max section-padding py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           {/* Brand col */}
@@ -64,7 +66,7 @@ export function Footer() {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/8 text-white/40 hover:text-[#00d4ff] hover:border-[#00d4ff]/30 hover:bg-[#00d4ff]/5 transition-all duration-200"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/8 text-white/40 hover:text-[#00d4ff] hover:border-[#00d4ff]/30 hover:bg-[#00d4ff]/5 hover:scale-110 transition-all duration-200"
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </a>
@@ -98,9 +100,9 @@ export function Footer() {
           <p className="text-white/30 text-xs">
             © {new Date().getFullYear()} PentaCipher. All rights reserved.
           </p>
-          <p className="text-white/30 text-xs flex items-center gap-1.5">
-            <Shield className="w-3 h-3 text-[#00d4ff]/50" aria-hidden="true" />
-            Security-first. Always.
+          <p className="text-white/30 text-xs flex items-center gap-1.5 italic">
+            <Shield className="w-3 h-3 text-[#00d4ff]/70" aria-hidden="true" />
+            <span className="text-[#00d4ff]/50">Security-first.</span> Always.
           </p>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { Inter, Syne, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { PageTransition } from "@/components/PageTransition";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -95,7 +96,7 @@ export default function RootLayout({
     >
       <body className="antialiased bg-[#04070f] text-[#e8edf5] font-[family-name:var(--font-inter)]">
         <Navbar />
-        <main>{children}</main>
+        <main><PageTransition>{children}</PageTransition></main>
         <Footer />
       </body>
     </html>

@@ -50,7 +50,7 @@ export function TrustBar() {
           {allLogos.map((name, i) => (
             <div
               key={i}
-              className="flex items-center px-5 py-2 rounded-lg border border-white/6 bg-white/3 text-white/25 text-sm font-semibold whitespace-nowrap tracking-wide"
+              className="flex items-center px-5 py-2 rounded-lg border border-white/10 bg-white/[0.04] backdrop-blur-sm text-white/35 text-sm font-semibold whitespace-nowrap tracking-wide hover:border-[#00d4ff]/15 hover:text-white/50 transition-colors duration-300"
               style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
             >
               {name}
