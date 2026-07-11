@@ -8,6 +8,8 @@ import { CaseStudies } from "@/components/sections/CaseStudies";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Stats } from "@/components/sections/Stats";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { ScrollCanvas } from "@/components/three/ScrollCanvas";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <>
+    <ScrollCanvas>
       <Hero />
       <TrustBar />
       <CoreServices />
@@ -27,6 +29,7 @@ export default function HomePage() {
       <WhyChooseUs />
       <Stats />
       <ContactSection />
-    </>
+      <Footer />
+    </ScrollCanvas>
   );
 }

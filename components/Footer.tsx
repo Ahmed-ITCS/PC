@@ -29,9 +29,10 @@ const socials = [
 export function Footer() {
   return (
     <footer
-      className="relative border-t border-white/5 bg-[#080e1e] mt-0 overflow-hidden"
+      className="relative border-t border-white/5 mt-0 overflow-hidden backdrop-blur-sm"
       role="contentinfo"
       aria-label="Site footer"
+      style={{ background: "rgba(8, 14, 30, 0.7)" }}
     >
       {/* Subtle gradient top accent */}
       <div className="absolute top-0 inset-x-0 h-px shimmer-border" aria-hidden="true" />

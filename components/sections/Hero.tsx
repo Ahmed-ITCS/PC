@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Code2, Cloud, ShieldCheck } from "lucide-react";
-import { GlowOrb } from "@/components/ui/GlowOrb";
-import { NetworkScene3D } from "@/components/ui/NetworkScene3D";
 
 const capabilityPills = [
   { icon: Code2, label: "Custom Development" },
@@ -12,50 +10,27 @@ const capabilityPills = [
   { icon: ShieldCheck, label: "Enterprise Security" },
 ];
 
-
 export function Hero() {
-  const { scrollY } = useScroll();
-  const sceneY = useTransform(scrollY, [0, 600], [0, 180]);
-  const sceneOpacity = useTransform(scrollY, [0, 500], [1, 0]);
-
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16"
       aria-label="Hero"
+      style={{ minHeight: "100vh" }}
     >
-      {/* 3D background — scrolls down and fades */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: sceneY, opacity: sceneOpacity }}
-        aria-hidden="true"
-      >
-        <NetworkScene3D />
-      </motion.div>
-
-      {/* Background overlays on top of 3D */}
+      {/* Background overlays — subtle, so 3D shows through */}
       <div
-        className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-30"
+        className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-20 pointer-events-none"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 z-[1] bg-glow-cyan" aria-hidden="true" />
-      <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.05} />
-      <GlowOrb className="top-1/2 -left-40" size="lg" opacity={0.04} />
-      <GlowOrb className="top-1/3 -right-40" size="md" opacity={0.03} />
-
-      {/* Noise overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.015]"
+      <div className="absolute inset-0 z-[1] opacity-30 pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "128px",
+          background: "radial-gradient(ellipse 60% 40% at 50% 40%, rgba(0,212,255,0.08) 0%, transparent 70%)"
         }}
         aria-hidden="true"
       />
 
       <div className="relative z-10 container-max section-padding py-20 lg:py-32">
         <div className="flex justify-center">
-          {/* Centered content */}
           <div className="flex flex-col items-center text-center gap-8 max-w-3xl">
             {/* Badge */}
             <motion.div
@@ -112,7 +87,7 @@ export function Hero() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.35 + i * 0.08, duration: 0.35 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0d1529]/80 border border-[#00d4ff]/15 backdrop-blur-sm text-sm text-white/70 font-medium"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0d1529]/60 border border-[#00d4ff]/15 backdrop-blur-sm text-sm text-white/70 font-medium"
                 >
                   <Icon className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
                   {label}

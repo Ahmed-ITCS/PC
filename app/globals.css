@@ -9,6 +9,7 @@
   --font-body: var(--font-inter), system-ui, sans-serif;
   --electric: #00d4ff;
   --electric-dim: #0099bb;
+  --electric-2: #7c3aed;
   --navy-900: #080e1e;
   --navy-800: #0d1529;
   --navy-700: #111c36;
@@ -55,6 +56,19 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #00d4ff40;
+}
+
+/* 3D Canvas container */
+.canvas-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Scroll container override for drei ScrollControls */
+[data-scroll] {
+  position: relative !important;
 }
 
 @keyframes marquee {
@@ -143,5 +157,22 @@ body {
   .tag {
     @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
       bg-electric/10 text-electric border border-electric/20;
+  }
+  .shader-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    contain: layout style;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .shimmer-border {
+    animation: none;
+  }
+  [data-scroll] {
+    scroll-behavior: auto;
   }
 }

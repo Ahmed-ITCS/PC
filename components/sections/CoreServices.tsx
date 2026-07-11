@@ -64,6 +64,7 @@ export function CoreServices() {
       id="core-services"
       className="relative py-24 md:py-32 overflow-hidden"
       aria-labelledby="core-services-heading"
+      style={{ background: "transparent" }}
     >
       <div className="container-max section-padding">
         <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
@@ -92,7 +93,7 @@ export function CoreServices() {
                   className={`relative flex flex-col gap-5 rounded-2xl border p-7 h-full ${
                     svc.featured
                       ? "border-[#00d4ff]/25 bg-gradient-to-b from-[#00d4ff]/5 via-[#0d1529]/80 to-[#0d1529]/60 shadow-[0_0_0_1px_rgba(0,212,255,0.1),0_16px_48px_rgba(0,0,0,0.35)]"
-                      : "border-white/6 bg-[#0d1529]/50 hover:border-[#00d4ff]/15 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.08),0_16px_48px_rgba(0,0,0,0.3)]"
+                      : "border-white/6 bg-[#0d1529]/30 hover:border-[#00d4ff]/15 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.08),0_16px_48px_rgba(0,0,0,0.3)]"
                   }`}
                 >
                   {/* Badge */}

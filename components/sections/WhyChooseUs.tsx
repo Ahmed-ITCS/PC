@@ -70,6 +70,7 @@ export function WhyChooseUs() {
     <section
       className="relative py-24 md:py-32 overflow-hidden"
       aria-labelledby="why-choose-us-heading"
+      style={{ background: "transparent" }}
     >
       <div
         className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-60"
@@ -100,7 +101,7 @@ export function WhyChooseUs() {
             return (
               <FadeIn key={reason.title} delay={i * 0.07} direction="up">
                 <TiltCard className="h-full rounded-xl" intensity={10}>
-                <div className="group flex flex-col gap-4 rounded-xl border border-white/6 bg-[#0d1529]/60 p-6 h-full hover:border-[#00d4ff]/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(0,212,255,0.06)] hover:-translate-y-0.5 transition-all duration-300">
+                <div className="group flex flex-col gap-4 rounded-xl border border-white/6 bg-[#0d1529]/30 p-6 h-full hover:border-[#00d4ff]/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(0,212,255,0.06)] hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm">
                   <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#00d4ff]/15 to-[#00d4ff]/5 border border-[#00d4ff]/20 group-hover:border-[#00d4ff]/35 group-hover:shadow-[0_0_16px_rgba(0,212,255,0.15)] transition-all duration-200">
                     <Icon className="w-5 h-5 text-[#00d4ff]" aria-hidden="true" />
                   </div>

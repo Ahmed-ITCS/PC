@@ -153,8 +153,9 @@ export function CaseStudies() {
 
   return (
     <section
-      className="relative py-24 md:py-32 bg-[#080e1e] overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden"
       aria-labelledby="case-studies-heading"
+      style={{ background: "transparent" }}
     >
       <div className="absolute inset-0 bg-glow-bottom opacity-50" aria-hidden="true" />
 
@@ -175,7 +176,7 @@ export function CaseStudies() {
           </p>
         </FadeIn>
 
-        <div className="rounded-2xl border border-white/6 bg-[#0d1529]/50 overflow-hidden">
+        <div className="rounded-2xl border border-white/6 bg-[#0d1529]/30 overflow-hidden backdrop-blur-sm">
           {/* Slide nav header */}
           <div className="flex items-center justify-between px-6 md:px-8 py-4 border-b border-white/5">
             <div className="flex items-center gap-3">

@@ -59,8 +59,9 @@ const segments = [
 export function WhoWeHelp() {
   return (
     <section
-      className="relative py-24 md:py-32 bg-[#080e1e] overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden"
       aria-labelledby="who-we-help-heading"
+      style={{ background: "transparent" }}
     >
       <div
         className="absolute inset-0 bg-glow-cyan opacity-40"
@@ -90,7 +91,7 @@ export function WhoWeHelp() {
             return (
               <FadeIn key={seg.title} delay={i * 0.1} direction="up">
                 <TiltCard className="h-full rounded-2xl">
-                <div className="flex flex-col gap-5 rounded-2xl border border-white/6 bg-[#0d1529]/60 p-7 h-full hover:border-[#00d4ff]/15 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-300">
+                <div className="flex flex-col gap-5 rounded-2xl border border-white/6 bg-[#0d1529]/30 p-7 h-full hover:border-[#00d4ff]/15 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-300 backdrop-blur-sm">
                   <div className="flex items-center gap-4">
                     <div
                       className={`flex items-center justify-center w-13 h-13 rounded-xl border ${seg.bg} ${seg.border} shadow-[0_0_14px_rgba(0,0,0,0.3)]`}

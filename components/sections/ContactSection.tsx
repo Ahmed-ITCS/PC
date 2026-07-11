@@ -108,6 +108,7 @@ export function ContactSection() {
       id="contact"
       className="relative py-24 md:py-32 overflow-hidden"
       aria-labelledby="contact-heading"
+      style={{ background: "transparent" }}
     >
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-50" aria-hidden="true" />
       <GlowOrb className="-top-40 left-1/4" size="lg" opacity={0.04} />
@@ -160,7 +161,7 @@ export function ContactSection() {
             ) : (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="space-y-5 rounded-2xl border border-white/10 bg-[#0d1529]/70 backdrop-blur-md p-8 md:p-10 shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
+                className="space-y-5 rounded-2xl border border-white/10 bg-[#0d1529]/50 backdrop-blur-md p-8 md:p-10 shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
                 aria-label="Contact form"
                 noValidate
               >

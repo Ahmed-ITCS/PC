@@ -16,7 +16,7 @@ const allLogos = [...logos, ...logos, ...logos, ...logos];
 export function TrustBar() {
   return (
     <section
-      className="relative py-14 border-y border-white/5 bg-[#080e1e]/60 overflow-hidden"
+      className="relative py-14 border-y border-white/5 overflow-hidden"
       aria-label="Trusted by companies"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-6">
@@ -29,14 +29,14 @@ export function TrustBar() {
         className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, #080e1e, transparent)",
+            "linear-gradient(to right, #04070f, transparent)",
         }}
         aria-hidden="true"
       />
       <div
         className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
         style={{
-          background: "linear-gradient(to left, #080e1e, transparent)",
+          background: "linear-gradient(to left, #04070f, transparent)",
         }}
         aria-hidden="true"
       />

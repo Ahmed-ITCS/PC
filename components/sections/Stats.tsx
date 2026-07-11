@@ -26,8 +26,9 @@ const stats = [
 export function Stats() {
   return (
     <section
-      className="relative py-20 md:py-24 bg-[#080e1e] border-y border-white/5 overflow-hidden"
+      className="relative py-20 md:py-24 border-y border-white/5 overflow-hidden"
       aria-label="Company statistics"
+      style={{ background: "transparent" }}
     >
       <div
         className="absolute inset-0 bg-glow-cyan opacity-60"

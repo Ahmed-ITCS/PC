@@ -25,6 +25,7 @@ const config: Config = {
         },
         electric: "#00d4ff",
         "electric-dim": "#0099bb",
+        "electric-2": "#7c3aed",
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
