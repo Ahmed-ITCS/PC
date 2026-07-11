@@ -6,6 +6,7 @@ import { Shield, Cloud, Layers, Check, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { TiltCard } from "@/components/ui/TiltCard";
+import { CardGem } from "@/components/3d/CardGem";
 
 const services = [
   {
@@ -70,7 +71,7 @@ export function CoreServices() {
           <SectionLabel>Core Services</SectionLabel>
           <h2
             id="core-services-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
+            className="text-display-lg font-bold text-balance max-w-3xl"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             Everything You Need to{" "}
@@ -89,12 +90,15 @@ export function CoreServices() {
               <FadeIn key={svc.title} delay={i * 0.1} direction="up">
                 <TiltCard className="h-full rounded-2xl">
                 <div
-                  className={`relative flex flex-col gap-5 rounded-2xl border p-7 h-full ${
+                  className={`group/card relative flex flex-col gap-5 rounded-2xl border p-7 h-full ${
                     svc.featured
                       ? "border-[#00d4ff]/25 bg-gradient-to-b from-[#00d4ff]/5 via-[#0d1529]/80 to-[#0d1529]/60 shadow-[0_0_0_1px_rgba(0,212,255,0.1),0_16px_48px_rgba(0,0,0,0.35)]"
                       : "border-white/6 bg-[#0d1529]/50 hover:border-[#00d4ff]/15 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.08),0_16px_48px_rgba(0,0,0,0.3)]"
                   }`}
                 >
+                  {/* 3D gem on hover */}
+                  <CardGem color={i === 1 ? "#7c3aed" : i === 2 ? "#34d399" : "#00d4ff"} />
+
                   {/* Badge */}
                   <span
                     className={`self-start px-3 py-1 rounded-full text-xs font-semibold border ${svc.badgeColor}`}

@@ -13,6 +13,9 @@ import {
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { TiltCard } from "@/components/ui/TiltCard";
+import { GridScene } from "@/components/3d/GridScene";
+import { SectionNumber } from "@/components/ui/SectionNumber";
+import { ClipReveal } from "@/components/ui/ClipReveal";
 
 const reasons = [
   {
@@ -78,11 +81,13 @@ export function WhyChooseUs() {
       <div className="absolute inset-0 bg-glow-cyan opacity-30" aria-hidden="true" />
 
       <div className="relative z-10 container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
+        <SectionNumber number="01" className="top-0 right-0 md:right-8" />
+        <GridScene />
+        <ClipReveal className="flex flex-col items-center text-center gap-5 mb-16">
           <SectionLabel>Why PentaCipher</SectionLabel>
           <h2
             id="why-choose-us-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
+            className="text-display-lg font-bold leading-tight text-balance max-w-3xl"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             Eight Reasons Clients{" "}
@@ -92,7 +97,7 @@ export function WhyChooseUs() {
             We&apos;ve earned long-term partnerships by combining technical
             depth with a working style that feels like an internal team.
           </p>
-        </FadeIn>
+        </ClipReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {reasons.map((reason, i) => {

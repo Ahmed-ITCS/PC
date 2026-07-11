@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/PageTransition";
+import { GlobalCanvas } from "@/components/3d/GlobalCanvas";
+import { Cursor } from "@/components/ui/Cursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -95,9 +97,13 @@ export default function RootLayout({
       className={`${inter.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
       <body className="antialiased bg-[#04070f] text-[#e8edf5] font-[family-name:var(--font-inter)]">
-        <Navbar />
-        <main><PageTransition>{children}</PageTransition></main>
-        <Footer />
+        <Cursor />
+        <GlobalCanvas />
+        <div className="relative z-10">
+          <Navbar />
+          <main><PageTransition>{children}</PageTransition></main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -1,8 +1,12 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionNumber } from "@/components/ui/SectionNumber";
+import { ClipReveal } from "@/components/ui/ClipReveal";
 import { Search, Pencil, Rocket, ShieldCheck } from "lucide-react";
+import { ProcessScene } from "@/components/3d/ProcessScene";
 
 const steps = [
   {
@@ -36,6 +40,8 @@ const steps = [
 ];
 
 export function Process() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       className="relative py-24 md:py-32 overflow-hidden"
@@ -49,11 +55,13 @@ export function Process() {
       />
 
       <div className="relative z-10 container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
+        <SectionNumber number="02" className="top-0 left-0 md:left-8" />
+        <ProcessScene />
+        <ClipReveal className="flex flex-col items-center text-center gap-5 mb-16">
           <SectionLabel>How We Work</SectionLabel>
           <h2
             id="process-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
+            className="text-display-lg font-bold text-balance max-w-3xl"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             A Process Built for{" "}
@@ -63,13 +71,17 @@ export function Process() {
             No surprises, no scope creep. Just a proven framework for shipping
             secure software on time.
           </p>
-        </FadeIn>
+        </ClipReveal>
 
         <div className="relative">
-          {/* Connector line */}
-          <div
-            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#00d4ff]/20 to-transparent"
+          {/* Animated connector line */}
+          <motion.div
+            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent"
             aria-hidden="true"
+            initial={shouldReduceMotion ? false : { scaleX: 0, transformOrigin: "left center" }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

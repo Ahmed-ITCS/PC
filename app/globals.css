@@ -57,9 +57,30 @@ body {
   background: #00d4ff40;
 }
 
+:root {
+  --marquee-duration: 40s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --marquee-duration: 120s;
+  }
+}
+
+/* Custom cursor — hide native when active */
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 @keyframes shimmer {
