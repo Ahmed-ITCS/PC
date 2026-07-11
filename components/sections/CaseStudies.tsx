@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ExternalLink, Clock } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { ExternalLink, Clock } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SectionNumber } from "@/components/ui/SectionNumber";
+import { ClipReveal } from "@/components/ui/ClipReveal";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
 type CaseStudy = {
@@ -90,10 +91,9 @@ function MockupFrame({
 }) {
   return (
     <div
-      className="relative rounded-xl overflow-hidden border border-white/8 aspect-video bg-[#080e1e]"
+      className="relative rounded-xl overflow-hidden border border-white/10 aspect-video bg-[#080e1e] shadow-[0_24px_64px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)]"
       aria-label={`${client} product mockup`}
     >
-      {/* Gradient mesh background */}
       <div
         className="absolute inset-0 opacity-25"
         style={{
@@ -101,8 +101,6 @@ function MockupFrame({
         }}
         aria-hidden="true"
       />
-
-      {/* Browser chrome */}
       <div className="absolute top-0 inset-x-0 h-8 bg-[#0d1529]/80 border-b border-white/5 flex items-center px-4 gap-2">
         <div className="flex gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
@@ -111,14 +109,9 @@ function MockupFrame({
         </div>
         <div className="flex-1 h-4 rounded bg-white/5 mx-4 max-w-40" />
       </div>
-
-      {/* Fake UI content */}
       <div className="absolute inset-0 top-8 flex items-center justify-center p-6">
         <div className="space-y-3 w-full max-w-xs">
-          <div
-            className="h-5 rounded-md w-2/3"
-            style={{ background: `${accentColor}25` }}
-          />
+          <div className="h-5 rounded-md w-2/3" style={{ background: `${accentColor}25` }} />
           <div className="h-3 rounded w-full bg-white/5" />
           <div className="h-3 rounded w-5/6 bg-white/5" />
           <div className="h-3 rounded w-4/6 bg-white/5" />
@@ -133,8 +126,6 @@ function MockupFrame({
           </div>
         </div>
       </div>
-
-      {/* "Real screenshots coming" overlay */}
       <div className="absolute bottom-3 right-3">
         <span className="text-[10px] text-white/20 font-mono">mockup — real screenshots coming</span>
       </div>
@@ -143,27 +134,24 @@ function MockupFrame({
 }
 
 export function CaseStudies() {
-  const [current, setCurrent] = useState(0);
-  const total = caseStudies.length;
-
-  const prev = () => setCurrent((c) => (c - 1 + total) % total);
-  const next = () => setCurrent((c) => (c + 1) % total);
-
-  const cs = caseStudies[current];
+  const [active, setActive] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
       className="relative py-24 md:py-32 bg-[#080e1e] overflow-hidden"
       aria-labelledby="case-studies-heading"
     >
+      <SectionNumber number="03" className="top-8 right-4 md:right-12" />
       <div className="absolute inset-0 bg-glow-bottom opacity-50" aria-hidden="true" />
 
       <div className="relative z-10 container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
+
+        <ClipReveal className="flex flex-col items-center text-center gap-5 mb-16">
           <SectionLabel>Case Studies</SectionLabel>
           <h2
             id="case-studies-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
+            className="text-display-lg font-bold leading-tight text-balance max-w-3xl"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             Real Projects,{" "}
@@ -173,155 +161,165 @@ export function CaseStudies() {
             A selection of recent engagements — each representing a distinct
             challenge, approach, and outcome.
           </p>
-        </FadeIn>
+        </ClipReveal>
 
-        <div className="rounded-2xl border border-white/6 bg-[#0d1529]/50 overflow-hidden">
-          {/* Slide nav header */}
-          <div className="flex items-center justify-between px-6 md:px-8 py-4 border-b border-white/5">
-            <div className="flex items-center gap-3">
-              {caseStudies.map((c, i) => (
+        {/* Portfolio list */}
+        <div className="space-y-0">
+          {caseStudies.map((cs, i) => {
+            const isActive = i === active;
+            return (
+              <div key={cs.client} className="border-t border-white/8 last:border-b">
+                {/* Collapsed row — clickable header */}
                 <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  aria-label={`View ${c.client} case study`}
-                  aria-current={i === current ? "true" : undefined}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
-                    i === current
-                      ? "bg-[#00d4ff]/15 text-[#00d4ff] border border-[#00d4ff]/30"
-                      : "text-white/40 hover:text-white/70 hover:bg-white/5"
-                  }`}
+                  onClick={() => setActive(i)}
+                  className="w-full flex items-center gap-6 py-6 md:py-8 group text-left"
+                  aria-expanded={isActive}
+                  aria-controls={`case-study-${i}`}
                 >
-                  {c.client}
+                  <span
+                    className="shrink-0 text-[#00d4ff]/30 font-bold font-mono text-sm md:text-base transition-colors duration-200 group-hover:text-[#00d4ff]/60"
+                    aria-hidden="true"
+                  >
+                    0{i + 1}
+                  </span>
+                  <h3
+                    className="flex-1 font-bold text-white/60 group-hover:text-white transition-colors duration-300"
+                    style={{
+                      fontFamily: "var(--font-syne), Syne, sans-serif",
+                      fontSize: isActive
+                        ? "clamp(2rem, 5vw, 4.5rem)"
+                        : "clamp(1.5rem, 3.5vw, 2.75rem)",
+                      lineHeight: "1.0",
+                      letterSpacing: "-0.025em",
+                      transition: "font-size 0.4s cubic-bezier(0.22,1,0.36,1), color 0.3s",
+                      color: isActive ? "white" : undefined,
+                    }}
+                  >
+                    {cs.client}
+                  </h3>
+                  <span className="shrink-0 text-white/25 text-sm font-medium hidden md:block">
+                    {cs.tagline}
+                  </span>
+                  <motion.span
+                    animate={{ rotate: isActive ? 45 : 0 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className="shrink-0 text-[#00d4ff]/40 text-2xl font-light leading-none"
+                    aria-hidden="true"
+                  >
+                    +
+                  </motion.span>
                 </button>
-              ))}
-            </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={prev}
-                aria-label="Previous case study"
-                className="p-1.5 rounded-lg border border-white/8 text-white/40 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-150"
-              >
-                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              </button>
-              <button
-                onClick={next}
-                aria-label="Next case study"
-                className="p-1.5 rounded-lg border border-white/8 text-white/40 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-150"
-              >
-                <ChevronRight className="w-4 h-4" aria-hidden="true" />
-              </button>
-            </div>
-          </div>
-
-          {/* Case study content */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="grid lg:grid-cols-2 gap-8 lg:gap-12 p-6 md:p-8 lg:p-10"
-            >
-              {/* Left */}
-              <div className="space-y-6">
-                {/* Client header */}
-                <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <h3
-                      className="text-2xl md:text-3xl font-bold text-white"
-                      style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                {/* Expanded content */}
+                <AnimatePresence initial={false}>
+                  {isActive && (
+                    <motion.div
+                      id={`case-study-${i}`}
+                      key="content"
+                      initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ overflow: "hidden" }}
                     >
-                      {cs.client}
-                    </h3>
-                    <div className="flex items-center gap-1.5 text-white/35 text-xs">
-                      <Clock className="w-3.5 h-3.5" aria-hidden="true" />
-                      {cs.timeline}
-                    </div>
-                  </div>
-                  <p className="text-[#00d4ff]/70 text-sm font-medium">{cs.tagline}</p>
-                </div>
+                      <div className="pb-12 grid lg:grid-cols-2 gap-8 lg:gap-16">
+                        {/* Left */}
+                        <div className="space-y-8">
+                          <div className="flex items-center gap-3 text-white/30 text-sm">
+                            <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                            {cs.timeline}
+                            <span className="mx-1">·</span>
+                            <span className="text-[#00d4ff]/60">{cs.tagline}</span>
+                          </div>
 
-                {/* Challenge / Solution */}
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-1.5">
-                      Challenge
-                    </p>
-                    <p className="text-white/60 text-sm leading-relaxed">{cs.challenge}</p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-1.5">
-                      Solution
-                    </p>
-                    <p className="text-white/60 text-sm leading-relaxed">{cs.solution}</p>
-                  </div>
-                </div>
+                          <div className="space-y-5">
+                            <div>
+                              <p className="text-[10px] font-semibold uppercase tracking-widest text-white/25 mb-2">
+                                Challenge
+                              </p>
+                              <p className="text-white/55 text-sm leading-relaxed">{cs.challenge}</p>
+                            </div>
+                            <div>
+                              <p className="text-[10px] font-semibold uppercase tracking-widest text-white/25 mb-2">
+                                Solution
+                              </p>
+                              <p className="text-white/55 text-sm leading-relaxed">{cs.solution}</p>
+                            </div>
+                          </div>
 
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-3">
-                  {cs.stats.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="rounded-xl border border-[#00d4ff]/12 bg-[#00d4ff]/4 p-3 text-center"
-                    >
-                      <div
-                        className="text-xl md:text-2xl font-bold gradient-text"
-                        style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-                        aria-label={`${stat.prefix ?? ""}${stat.value}${stat.suffix} ${stat.label}`}
-                      >
-                        {stat.prefix ? (
-                          stat.prefix
-                        ) : (
-                          <AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                        )}
+                          {/* Stats */}
+                          <div className="grid grid-cols-3 gap-4">
+                            {cs.stats.map((stat) => (
+                              <div
+                                key={stat.label}
+                                className="rounded-xl border border-white/8 bg-white/[0.03] p-4 text-center"
+                              >
+                                <div
+                                  className="text-2xl font-bold gradient-text"
+                                  style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                                  aria-label={`${stat.prefix ?? ""}${stat.value}${stat.suffix} ${stat.label}`}
+                                >
+                                  {stat.prefix ? (
+                                    stat.prefix
+                                  ) : (
+                                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                                  )}
+                                </div>
+                                <p className="text-white/35 text-[10px] mt-1 leading-tight">{stat.label}</p>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Stack */}
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-widest text-white/25 mb-2.5">
+                              Tech Stack
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                              {cs.stack.map((t) => (
+                                <span
+                                  key={t}
+                                  className="px-2.5 py-1 rounded-md bg-white/4 border border-white/8 text-white/45 text-xs font-medium"
+                                >
+                                  {t}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <a
+                            href="/contact"
+                            className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#00d4ff]/70 hover:text-[#00d4ff] transition-colors"
+                            aria-label={`Discuss a similar project to ${cs.client}`}
+                          >
+                            Discuss a Similar Project
+                            <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                          </a>
+                        </div>
+
+                        {/* Right — mockup with clip-path reveal */}
+                        <motion.div
+                          initial={shouldReduceMotion ? false : { clipPath: "inset(0 100% 0 0)", opacity: 0 }}
+                          animate={{ clipPath: "inset(0 0% 0 0)", opacity: 1 }}
+                          transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                          className="flex items-center"
+                        >
+                          <div className="w-full">
+                            <MockupFrame
+                              gradientFrom={cs.gradientFrom}
+                              gradientTo={cs.gradientTo}
+                              accentColor={cs.accentColor}
+                              client={cs.client}
+                            />
+                          </div>
+                        </motion.div>
                       </div>
-                      <p className="text-white/40 text-[10px] mt-1 leading-tight">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Tech stack */}
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2.5">
-                    Tech Stack
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {cs.stack.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2.5 py-1 rounded-md bg-white/4 border border-white/8 text-white/45 text-xs font-medium"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <a
-                  href="/contact"
-                  className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#00d4ff]/70 hover:text-[#00d4ff] transition-colors"
-                  aria-label={`Discuss a similar project to ${cs.client}`}
-                >
-                  Discuss a Similar Project
-                  <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
-                </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-
-              {/* Right — mockup */}
-              <div className="flex items-center justify-center">
-                <div className="w-full">
-                  <MockupFrame
-                    gradientFrom={cs.gradientFrom}
-                    gradientTo={cs.gradientTo}
-                    accentColor={cs.accentColor}
-                    client={cs.client}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import { Building2, Rocket, Briefcase, Users } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 const segments = [
   {
@@ -88,12 +89,14 @@ export function WhoWeHelp() {
             const Icon = seg.icon;
             return (
               <FadeIn key={seg.title} delay={i * 0.1} direction="up">
-                <div className="flex flex-col gap-5 rounded-2xl border border-white/6 bg-[#0d1529]/50 p-7 h-full hover:border-white/10 transition-all duration-300">
+                <TiltCard className="h-full rounded-2xl">
+                <div className="flex flex-col gap-5 rounded-2xl border border-white/6 bg-[#0d1529]/60 p-7 h-full hover:border-[#00d4ff]/15 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-300">
                   <div className="flex items-center gap-4">
                     <div
-                      className={`flex items-center justify-center w-11 h-11 rounded-xl border ${seg.bg} ${seg.border}`}
+                      className={`flex items-center justify-center w-13 h-13 rounded-xl border ${seg.bg} ${seg.border} shadow-[0_0_14px_rgba(0,0,0,0.3)]`}
+                      style={{ width: "3.25rem", height: "3.25rem" }}
                     >
-                      <Icon className={`w-5 h-5 ${seg.color}`} aria-hidden="true" />
+                      <Icon className={`w-6 h-6 ${seg.color}`} aria-hidden="true" />
                     </div>
                     <h3
                       className="text-white font-semibold text-lg"
@@ -115,6 +118,7 @@ export function WhoWeHelp() {
                     ))}
                   </ul>
                 </div>
+                </TiltCard>
               </FadeIn>
             );
           })}

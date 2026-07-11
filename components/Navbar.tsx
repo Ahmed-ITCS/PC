@@ -38,7 +38,7 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#04070f]/90 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_32px_rgba(0,0,0,0.4)]"
+            ? "bg-[#04070f]/95 backdrop-blur-2xl border-b border-white/8 shadow-[0_4px_48px_rgba(0,0,0,0.5)]"
             : "bg-transparent"
         }`}
       >
@@ -73,8 +73,8 @@ export function Navbar() {
                 href={link.href}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#00d4ff] ${
                   pathname === link.href
-                    ? "text-[#00d4ff] bg-[#00d4ff]/8"
-                    : "text-white/60 hover:text-white hover:bg-white/5"
+                    ? "text-[#00d4ff] border-b-2 border-[#00d4ff] rounded-none pb-[6px]"
+                    : "text-white/60 hover:text-white hover:bg-white/5 border-b-2 border-transparent pb-[6px]"
                 }`}
               >
                 {link.label}

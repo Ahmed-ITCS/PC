@@ -45,12 +45,19 @@ const config: Config = {
         "grid-lg": "80px 80px",
         "dot-sm": "24px 24px",
       },
+      fontSize: {
+        "display-2xl": ["clamp(4rem, 8vw, 7.5rem)", { lineHeight: "1.0", letterSpacing: "-0.03em" }],
+        "display-xl": ["clamp(3rem, 6vw, 5.5rem)", { lineHeight: "1.04", letterSpacing: "-0.025em" }],
+        "display-lg": ["clamp(2.25rem, 4vw, 3.75rem)", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
+      },
       animation: {
         "fade-in": "fadeIn 0.6s ease forwards",
         "slide-up": "slideUp 0.6s ease forwards",
         "glow-pulse": "glowPulse 3s ease-in-out infinite",
         "border-flow": "borderFlow 4s linear infinite",
         counter: "counter 2s ease-out forwards",
+        marquee: "marquee var(--marquee-duration, 40s) linear infinite",
+        "marquee-reverse": "marqueeReverse var(--marquee-duration, 40s) linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -68,6 +75,14 @@ const config: Config = {
         borderFlow: {
           "0%": { backgroundPosition: "0% 50%" },
           "100%": { backgroundPosition: "200% 50%" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        marqueeReverse: {
+          from: { transform: "translateX(-50%)" },
+          to: { transform: "translateX(0)" },
         },
       },
       boxShadow: {

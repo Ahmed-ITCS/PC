@@ -18,13 +18,13 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { GlowOrb } from "@/components/ui/GlowOrb";
 
 const schema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Enter a valid email address"),
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
+  email: z.string().email({ message: "Enter a valid email address" }),
   phone: z.string().optional(),
   company: z.string().optional(),
-  subject: z.string().min(1, "Subject is required"),
-  message: z.string().min(20, "Message must be at least 20 characters"),
+  subject: z.string().min(1, { message: "Subject is required" }),
+  message: z.string().min(20, { message: "Message must be at least 20 characters" }),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -160,7 +160,7 @@ export function ContactSection() {
             ) : (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="space-y-5 rounded-2xl border border-white/6 bg-[#0d1529]/60 p-8 md:p-10"
+                className="space-y-5 rounded-2xl border border-white/10 bg-[#0d1529]/70 backdrop-blur-md p-8 md:p-10 shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
                 aria-label="Contact form"
                 noValidate
               >
@@ -260,7 +260,7 @@ export function ContactSection() {
                   type="submit"
                   disabled={status === "loading"}
                   aria-busy={status === "loading"}
-                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.25)] hover:shadow-[0_0_36px_rgba(0,212,255,0.4)]"
+                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-bold text-sm bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 shadow-[0_0_32px_rgba(0,212,255,0.3)] hover:shadow-[0_0_48px_rgba(0,212,255,0.5)] hover:scale-[1.01]"
                 >
                   {status === "loading" ? (
                     <>
