@@ -1,8 +1,8 @@
 "use client";
 
-import { ReactNode, Suspense, useState, useEffect } from "react";
+import { ReactNode, Suspense, useState, useEffect, Component } from "react";
 import { Canvas } from "@react-three/fiber";
-import { ScrollControls, Scroll, AdaptiveDpr, AdaptiveEvents } from "@react-three/drei";
+import { AdaptiveDpr, AdaptiveEvents } from "@react-three/drei";
 import { CameraRig } from "./CameraRig";
 import { Effects } from "./Effects";
 import { GridFloor } from "./environment/GridFloor";
@@ -16,7 +16,6 @@ import { CaseStudiesScene } from "./scenes/CaseStudiesScene";
 import { WhyScene } from "./scenes/WhyScene";
 import { StatsScene } from "./scenes/StatsScene";
 import { ContactScene } from "./scenes/ContactScene";
-import { WebGLFallback } from "./WebGLFallback";
 import { useQuality, QualityTier } from "./hooks/useQuality";
 
 function Scene3D({ quality }: { quality: QualityTier }) {
@@ -28,7 +27,6 @@ function Scene3D({ quality }: { quality: QualityTier }) {
       <CameraRig />
       <SceneLighting />
 
-      {/* Persistent environment */}
       <GridFloor />
       <AmbientParticles
         count={quality === "low" ? 100 : quality === "medium" ? 300 : 600}
@@ -39,7 +37,6 @@ function Scene3D({ quality }: { quality: QualityTier }) {
         quality={quality}
       />
 
-      {/* Section scenes */}
       <HeroScene />
       <ServicesScene />
       <SegmentsScene />
@@ -54,17 +51,42 @@ function Scene3D({ quality }: { quality: QualityTier }) {
   );
 }
 
-function LoadingFallback() {
+function FallbackScene() {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#04070f]">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-2 border-[#00d4ff]/30 border-t-[#00d4ff] rounded-full animate-spin" />
-        <p className="text-[#00d4ff]/60 text-sm font-medium tracking-wide">
-          Loading 3D Experience...
-        </p>
-      </div>
+    <div className="absolute inset-0 bg-[#04070f]">
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(0,212,255,0.12) 0%, transparent 70%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-15"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
     </div>
   );
+}
+
+class CanvasErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error: Error) {
+    console.warn("3D Canvas error (falling back to 2D):", error.message);
+  }
+  render() {
+    return this.state.hasError ? this.props.fallback : this.props.children;
+  }
 }
 
 interface ScrollCanvasProps {
@@ -79,42 +101,37 @@ export function ScrollCanvas({ children }: ScrollCanvasProps) {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return <LoadingFallback />;
-  }
-
   return (
-    <WebGLFallback>
+    <>
+      {/* 3D Canvas — fixed behind everything, independent of HTML */}
       <div className="fixed inset-0 z-0">
-        <Canvas
-          camera={{ position: [0, 1.5, 7], fov: 55 }}
-          gl={{
-            antialias: qualityState.tier !== "low",
-            alpha: false,
-            powerPreference: qualityState.isMobile ? "low-power" : "high-performance",
-          }}
-          dpr={qualityState.dpr}
-          style={{ width: "100%", height: "100%" }}
-          performance={{ min: 0.5 }}
-        >
-          <AdaptiveDpr />
-          <AdaptiveEvents />
-          <Suspense fallback={null}>
-            <Scene3D quality={qualityState.tier} />
-          </Suspense>
-        </Canvas>
+        <CanvasErrorBoundary fallback={<FallbackScene />}>
+          {mounted && (
+            <Canvas
+              camera={{ position: [0, 1.5, 7], fov: 55 }}
+              gl={{
+                antialias: qualityState.tier !== "low",
+                alpha: false,
+                powerPreference: qualityState.isMobile ? "low-power" : "high-performance",
+              }}
+              dpr={qualityState.dpr}
+              style={{ width: "100%", height: "100%" }}
+              performance={{ min: 0.5 }}
+            >
+              <AdaptiveDpr />
+              <AdaptiveEvents />
+              <Suspense fallback={null}>
+                <Scene3D quality={qualityState.tier} />
+              </Suspense>
+            </Canvas>
+          )}
+        </CanvasErrorBoundary>
       </div>
 
-      {/* Scrollable HTML content */}
+      {/* HTML content — always renders, uses native scroll, drives CameraRig via window.scrollY */}
       <div className="relative z-10">
-        <Suspense fallback={<LoadingFallback />}>
-          <ScrollControls pages={9} damping={0.25} distance={1.2}>
-            <Scroll html>
-              {children}
-            </Scroll>
-          </ScrollControls>
-        </Suspense>
+        {children}
       </div>
-    </WebGLFallback>
+    </>
   );
 }
