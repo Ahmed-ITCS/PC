@@ -90,7 +90,7 @@ function MockupFrame({
 }) {
   return (
     <div
-      className="relative rounded-xl overflow-hidden border border-white/10 aspect-video bg-[#080e1e] shadow-[0_24px_64px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)]"
+      className="relative rounded-xl overflow-hidden border border-[#0F2A44]/8 aspect-video bg-[#E8F1F5] shadow-[0_4px_24px_rgba(15,42,68,0.08)]"
       aria-label={`${client} product mockup`}
     >
       {/* Gradient mesh background */}
@@ -103,13 +103,13 @@ function MockupFrame({
       />
 
       {/* Browser chrome */}
-      <div className="absolute top-0 inset-x-0 h-8 bg-[#0d1529]/80 border-b border-white/5 flex items-center px-4 gap-2">
+      <div className="absolute top-0 inset-x-0 h-8 bg-[#E8F1F5]/80 border-b border-[#0F2A44]/6 flex items-center px-4 gap-2">
         <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#0F2A44]/10" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#0F2A44]/10" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#0F2A44]/10" />
         </div>
-        <div className="flex-1 h-4 rounded bg-white/5 mx-4 max-w-40" />
+        <div className="flex-1 h-4 rounded bg-[#0F2A44]/5 mx-4 max-w-40" />
       </div>
 
       {/* Fake UI content */}
@@ -119,9 +119,9 @@ function MockupFrame({
             className="h-5 rounded-md w-2/3"
             style={{ background: `${accentColor}25` }}
           />
-          <div className="h-3 rounded w-full bg-white/5" />
-          <div className="h-3 rounded w-5/6 bg-white/5" />
-          <div className="h-3 rounded w-4/6 bg-white/5" />
+          <div className="h-3 rounded w-full bg-[#0F2A44]/5" />
+          <div className="h-3 rounded w-5/6 bg-[#0F2A44]/5" />
+          <div className="h-3 rounded w-4/6 bg-[#0F2A44]/5" />
           <div className="mt-4 grid grid-cols-3 gap-2">
             {[1, 2, 3].map((n) => (
               <div
@@ -136,7 +136,7 @@ function MockupFrame({
 
       {/* "Real screenshots coming" overlay */}
       <div className="absolute bottom-3 right-3">
-        <span className="text-[10px] text-white/20 font-mono">mockup — real screenshots coming</span>
+        <span className="text-[10px] text-[#8BA3B8] font-mono">mockup — real screenshots coming</span>
       </div>
     </div>
   );
@@ -170,15 +170,15 @@ export function CaseStudies() {
             Real Projects,{" "}
             <span className="gradient-text">Measurable Results</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl text-balance">
+          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
             A selection of recent engagements — each representing a distinct
             challenge, approach, and outcome.
           </p>
         </FadeIn>
 
-        <div className="rounded-2xl border border-white/6 bg-[#0d1529]/30 overflow-hidden backdrop-blur-sm">
+        <div className="rounded-2xl border border-[#0F2A44]/8 bg-white/70 overflow-hidden backdrop-blur-sm">
           {/* Slide nav header */}
-          <div className="flex items-center justify-between px-6 md:px-8 py-4 border-b border-white/5">
+          <div className="flex items-center justify-between px-6 md:px-8 py-4 border-b border-[#0F2A44]/6">
             <div className="flex items-center gap-3">
               {caseStudies.map((c, i) => (
                 <button
@@ -188,8 +188,8 @@ export function CaseStudies() {
                   aria-current={i === current ? "true" : undefined}
                   className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
                     i === current
-                      ? "bg-[#00d4ff]/15 text-[#00d4ff] border border-[#00d4ff]/30"
-                      : "text-white/40 hover:text-white/70 hover:bg-white/5"
+                      ? "bg-[#0891B2]/10 text-[#0891B2] border border-[#0891B2]/25"
+                      : "text-[#8BA3B8] hover:text-[#4A6580] hover:bg-[#F0F7FA]"
                   }`}
                 >
                   {c.client}
@@ -201,14 +201,14 @@ export function CaseStudies() {
               <button
                 onClick={prev}
                 aria-label="Previous case study"
-                className="p-1.5 rounded-lg border border-white/8 text-white/40 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-150"
+                className="p-1.5 rounded-lg border border-[#0F2A44]/8 text-[#8BA3B8] hover:text-[#0F2A44] hover:border-[#0F2A44]/20 hover:bg-[#F0F7FA] transition-all duration-150"
               >
                 <ChevronLeft className="w-4 h-4" aria-hidden="true" />
               </button>
               <button
                 onClick={next}
                 aria-label="Next case study"
-                className="p-1.5 rounded-lg border border-white/8 text-white/40 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-150"
+                className="p-1.5 rounded-lg border border-[#0F2A44]/8 text-[#8BA3B8] hover:text-[#0F2A44] hover:border-[#0F2A44]/20 hover:bg-[#F0F7FA] transition-all duration-150"
               >
                 <ChevronRight className="w-4 h-4" aria-hidden="true" />
               </button>
@@ -231,32 +231,32 @@ export function CaseStudies() {
                 <div>
                   <div className="flex items-center gap-3 mb-1">
                     <h3
-                      className="text-2xl md:text-3xl font-bold text-white"
+                      className="text-2xl md:text-3xl font-bold text-[#0F2A44]"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {cs.client}
                     </h3>
-                    <div className="flex items-center gap-1.5 text-white/35 text-xs">
+                    <div className="flex items-center gap-1.5 text-[#8BA3B8] text-xs">
                       <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                       {cs.timeline}
                     </div>
                   </div>
-                  <p className="text-[#00d4ff]/70 text-sm font-medium">{cs.tagline}</p>
+                  <p className="text-[#0891B2] text-sm font-medium">{cs.tagline}</p>
                 </div>
 
                 {/* Challenge / Solution */}
                 <div className="space-y-4">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-1.5">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#8BA3B8] mb-1.5">
                       Challenge
                     </p>
-                    <p className="text-white/60 text-sm leading-relaxed">{cs.challenge}</p>
+                    <p className="text-[#4A6580] text-sm leading-relaxed">{cs.challenge}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-1.5">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#8BA3B8] mb-1.5">
                       Solution
                     </p>
-                    <p className="text-white/60 text-sm leading-relaxed">{cs.solution}</p>
+                    <p className="text-[#4A6580] text-sm leading-relaxed">{cs.solution}</p>
                   </div>
                 </div>
 
@@ -265,7 +265,7 @@ export function CaseStudies() {
                   {cs.stats.map((stat) => (
                     <div
                       key={stat.label}
-                      className="rounded-xl border border-[#00d4ff]/12 bg-[#00d4ff]/4 p-3 text-center"
+                      className="rounded-xl border border-[#0891B2]/12 bg-[#0891B2]/5 p-3 text-center"
                     >
                       <div
                         className="text-xl md:text-2xl font-bold gradient-text"
@@ -278,21 +278,21 @@ export function CaseStudies() {
                           <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                         )}
                       </div>
-                      <p className="text-white/40 text-[10px] mt-1 leading-tight">{stat.label}</p>
+                      <p className="text-[#8BA3B8] text-[10px] mt-1 leading-tight">{stat.label}</p>
                     </div>
                   ))}
                 </div>
 
                 {/* Tech stack */}
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2.5">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-[#8BA3B8] mb-2.5">
                     Tech Stack
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {cs.stack.map((t) => (
                       <span
                         key={t}
-                        className="px-2.5 py-1 rounded-md bg-white/4 border border-white/8 text-white/45 text-xs font-medium"
+                        className="px-2.5 py-1 rounded-md bg-[#F0F7FA] border border-[#0F2A44]/8 text-[#4A6580] text-xs font-medium"
                       >
                         {t}
                       </span>
@@ -302,7 +302,7 @@ export function CaseStudies() {
 
                 <a
                   href="/contact"
-                  className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#00d4ff]/70 hover:text-[#00d4ff] transition-colors"
+                  className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#0891B2] hover:text-[#0E7490] transition-colors"
                   aria-label={`Discuss a similar project to ${cs.client}`}
                 >
                   Discuss a Similar Project

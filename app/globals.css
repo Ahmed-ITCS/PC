@@ -3,16 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: #04070f;
-  --foreground: #e8edf5;
+  --background: #F0F7FA;
+  --foreground: #0F2A44;
   --font-display: var(--font-syne), system-ui, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
-  --electric: #00d4ff;
-  --electric-dim: #0099bb;
-  --electric-2: #7c3aed;
-  --navy-900: #080e1e;
-  --navy-800: #0d1529;
-  --navy-700: #111c36;
+  --accent: #0891B2;
+  --accent-dim: #0E7490;
+  --accent-2: #6366F1;
+  --navy-50: #F0F7FA;
+  --navy-100: #E8F1F5;
+  --navy-200: #D1E3EC;
+  --navy-800: #1A365D;
+  --navy-900: #0F2A44;
 }
 
 * {
@@ -33,12 +35,12 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 212, 255, 0.25);
-  color: #e8edf5;
+  background: rgba(8, 145, 178, 0.15);
+  color: #0F2A44;
 }
 
 :focus-visible {
-  outline: 2px solid #00d4ff;
+  outline: 2px solid #0891B2;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -48,14 +50,14 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #04070f;
+  background: #F0F7FA;
 }
 ::-webkit-scrollbar-thumb {
-  background: #162244;
+  background: #C5D5E0;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00d4ff40;
+  background: #0891B260;
 }
 
 /* 3D Canvas container */
@@ -86,12 +88,27 @@ body {
   50% { transform: translateY(-8px); }
 }
 
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, 15px) scale(1.08); }
+  66% { transform: translate(20px, -10px) scale(0.92); }
+}
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(15px, -25px) scale(1.1); }
+}
+
 @layer utilities {
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-md border border-white/8;
+    @apply bg-white/60 backdrop-blur-md border border-[#0F2A44]/8;
   }
   .shimmer-border {
-    background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(8,145,178,0.2), transparent);
     background-size: 200% auto;
     animation: shimmer 3s linear infinite;
   }
@@ -104,29 +121,26 @@ body {
   .font-display {
     font-family: var(--font-display);
   }
-  .text-electric {
-    color: #00d4ff;
+  .text-accent {
+    color: #0891B2;
   }
-  .bg-electric {
-    background-color: #00d4ff;
+  .bg-accent {
+    background-color: #0891B2;
   }
-  .border-electric {
-    border-color: #00d4ff;
-  }
-  .glow-text {
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  .border-accent {
+    border-color: #0891B2;
   }
   .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0099bb 100%);
+    background: linear-gradient(135deg, #0F2A44 0%, #0891B2 50%, #0E7490 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .card-border {
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(15, 42, 68, 0.08);
   }
   .card-border-hover {
-    border: 1px solid rgba(0, 212, 255, 0.2);
+    border: 1px solid rgba(8, 145, 178, 0.25);
   }
   .section-padding {
     @apply px-6 md:px-12 lg:px-16 xl:px-24;
@@ -139,24 +153,25 @@ body {
 @layer components {
   .btn-primary {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm
-      bg-electric text-navy-900 hover:bg-opacity-90
-      transition-all duration-200 shadow-glow-sm hover:shadow-glow-md
-      focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900;
+      bg-accent text-white hover:bg-[#0E7490]
+      transition-all duration-200 shadow-sm hover:shadow-md
+      focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#F0F7FA];
   }
   .btn-secondary {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm
-      border border-white/10 text-white/80 hover:border-electric/40 hover:text-white
-      hover:bg-white/5 transition-all duration-200
-      focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900;
+      border border-[#0F2A44]/15 text-[#4A6580] hover:border-accent/40 hover:text-[#0F2A44]
+      hover:bg-[#0891B2]/5 transition-all duration-200
+      focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#F0F7FA];
   }
   .service-card {
-    @apply relative rounded-xl p-6 card-border bg-navy-800/60 backdrop-blur-sm
-      transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover hover:card-border-hover
+    @apply relative rounded-xl p-6 card-border bg-white/70 backdrop-blur-sm
+      transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:card-border-hover
       cursor-default;
   }
   .tag {
     @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-      bg-electric/10 text-electric border border-electric/20;
+      text-accent border border-accent/15;
+    background-color: rgba(8, 145, 178, 0.08);
   }
   .shader-container {
     position: relative;

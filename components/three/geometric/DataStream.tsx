@@ -18,9 +18,9 @@ export function DataStream({
   count = 150,
   position = [0, 0, 0],
   spread = [3, 10, 3],
-  color = "#00d4ff",
+  color = "#0891B2",
   speed = 1.0,
-  opacity = 0.5,
+  opacity = 0.37,
   size = 0.03,
 }: DataStreamProps) {
   const ref = useRef<THREE.Points>(null);
@@ -81,7 +81,7 @@ export function DataStream({
         opacity={opacity}
         sizeAttenuation
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   );

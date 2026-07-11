@@ -19,12 +19,12 @@ export function Hero() {
     >
       {/* Background overlays — subtle, so 3D shows through */}
       <div
-        className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-20 pointer-events-none"
+        className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-15 pointer-events-none"
         aria-hidden="true"
       />
       <div className="absolute inset-0 z-[1] opacity-30 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 60% 40% at 50% 40%, rgba(0,212,255,0.08) 0%, transparent 70%)"
+          background: "radial-gradient(ellipse 60% 40% at 50% 40%, rgba(8,145,178,0.05) 0%, transparent 70%)"
         }}
         aria-hidden="true"
       />
@@ -38,9 +38,9 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00d4ff]/30 bg-[#00d4ff]/10 backdrop-blur-md shadow-[0_0_20px_rgba(0,212,255,0.12)]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#00d4ff]" aria-hidden="true" />
-                <span className="text-[#00d4ff] text-xs font-semibold tracking-widest uppercase">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#0891B2]/30 bg-[#0891B2]/10 backdrop-blur-md">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#0891B2]" aria-hidden="true" />
+                <span className="text-[#0891B2] text-xs font-semibold tracking-widest uppercase">
                   Security-First Execution
                 </span>
               </div>
@@ -64,7 +64,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-white/55 text-lg md:text-xl leading-relaxed max-w-xl text-balance"
+              className="text-[#4A6580] text-lg md:text-xl leading-relaxed max-w-xl text-balance"
             >
               We accelerate your digital transformation — delivering full-stack
               development, DevOps, and security-hardened systems without the
@@ -87,9 +87,9 @@ export function Hero() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.35 + i * 0.08, duration: 0.35 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0d1529]/60 border border-[#00d4ff]/15 backdrop-blur-sm text-sm text-white/70 font-medium"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-[#0F2A44]/10 backdrop-blur-sm text-sm text-[#4A6580] font-medium shadow-sm"
                 >
-                  <Icon className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
+                  <Icon className="w-4 h-4 text-[#0891B2]" aria-hidden="true" />
                   {label}
                 </motion.div>
               ))}
@@ -104,7 +104,7 @@ export function Hero() {
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 transition-all duration-200 shadow-[0_0_32px_rgba(0,212,255,0.4)] hover:shadow-[0_0_48px_rgba(0,212,255,0.6)] hover:scale-[1.02]"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-[#0891B2] text-white hover:bg-[#0891B2]/90 transition-all duration-200 shadow-[0_4px_24px_rgba(8,145,178,0.25)] hover:shadow-[0_4px_32px_rgba(8,145,178,0.35)] hover:scale-[1.02]"
               >
                 Get Started
                 <ArrowRight
@@ -114,7 +114,7 @@ export function Hero() {
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-white/10 text-white/70 hover:border-white/20 hover:text-white hover:bg-white/5 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-[#0F2A44]/10 text-[#4A6580] hover:border-[#0F2A44]/15 hover:text-[#0F2A44] hover:bg-[#0F2A44]/4 transition-all duration-200"
               >
                 View Our Services
               </Link>
@@ -134,9 +134,9 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-white/15 flex items-start justify-center p-1"
+          className="w-5 h-8 rounded-full border border-[#0F2A44]/15 flex items-start justify-center p-1"
         >
-          <div className="w-1 h-1.5 rounded-full bg-[#00d4ff]/60" />
+          <div className="w-1 h-1.5 rounded-full bg-[#0891B2]/60" />
         </motion.div>
       </motion.div>
     </section>

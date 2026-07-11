@@ -9,9 +9,9 @@ const segments = [
   {
     icon: Building2,
     title: "Digital Agencies",
-    color: "text-[#00d4ff]",
-    bg: "bg-[#00d4ff]/8",
-    border: "border-[#00d4ff]/15",
+    color: "text-[#0891B2]",
+    bg: "bg-[#0891B2]/8",
+    border: "border-[#0891B2]/15",
     challenges: [
       "Clients demand technical deliverables you don't have in-house",
       "Tight margins make hiring full-time engineers impractical",
@@ -64,7 +64,7 @@ export function WhoWeHelp() {
       style={{ background: "transparent" }}
     >
       <div
-        className="absolute inset-0 bg-glow-cyan opacity-40"
+        className="absolute inset-0 bg-glow-cyan opacity-10"
         aria-hidden="true"
       />
 
@@ -79,7 +79,7 @@ export function WhoWeHelp() {
             Built for Teams That Need to{" "}
             <span className="gradient-text">Move Without Friction</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl text-balance">
+          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
             We work with four types of organisations — each with distinct
             challenges we&apos;ve solved dozens of times over.
           </p>
@@ -91,16 +91,16 @@ export function WhoWeHelp() {
             return (
               <FadeIn key={seg.title} delay={i * 0.1} direction="up">
                 <TiltCard className="h-full rounded-2xl">
-                <div className="flex flex-col gap-5 rounded-2xl border border-white/6 bg-[#0d1529]/30 p-7 h-full hover:border-[#00d4ff]/15 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-300 backdrop-blur-sm">
+                <div className="flex flex-col gap-5 rounded-2xl border border-[#0F2A44]/8 bg-white/70 p-7 h-full hover:border-[#0891B2]/15 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
                   <div className="flex items-center gap-4">
                     <div
-                      className={`flex items-center justify-center w-13 h-13 rounded-xl border ${seg.bg} ${seg.border} shadow-[0_0_14px_rgba(0,0,0,0.3)]`}
+                      className={`flex items-center justify-center w-13 h-13 rounded-xl border ${seg.bg} ${seg.border} shadow-sm`}
                       style={{ width: "3.25rem", height: "3.25rem" }}
                     >
                       <Icon className={`w-6 h-6 ${seg.color}`} aria-hidden="true" />
                     </div>
                     <h3
-                      className="text-white font-semibold text-lg"
+                      className="text-[#0F2A44] font-semibold text-lg"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {seg.title}
@@ -109,7 +109,7 @@ export function WhoWeHelp() {
 
                   <ul className="space-y-3" role="list">
                     {seg.challenges.map((c) => (
-                      <li key={c} className="flex items-start gap-3 text-sm text-white/50 leading-relaxed">
+                      <li key={c} className="flex items-start gap-3 text-sm text-[#4A6580] leading-relaxed">
                         <span
                           className={`w-1.5 h-1.5 rounded-full ${seg.color.replace("text-", "bg-")} shrink-0 mt-2`}
                           aria-hidden="true"

@@ -4,9 +4,9 @@ import { useGridFloorMaterial } from "../materials/GridFloorMaterial";
 
 export function GridFloor() {
   const { material } = useGridFloorMaterial({
-    color: "#00d4ff",
+    color: "#0891B2",
     fadeDistance: 25.0,
-    lineThickness: 1.0,
+    lineThickness: 0.8,
   });
 
   return (

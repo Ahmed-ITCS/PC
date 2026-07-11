@@ -59,9 +59,9 @@ function InputField({
 }) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="block text-white/60 text-sm font-medium">
+      <label htmlFor={id} className="block text-[#4A6580] text-sm font-medium">
         {label}
-        {required && <span className="text-white/30 font-normal"> *</span>}
+        {required && <span className="text-[#8BA3B8] font-normal"> *</span>}
       </label>
       {children}
       {error && (
@@ -75,7 +75,7 @@ function InputField({
 }
 
 const inputCls =
-  "w-full rounded-xl bg-[#080e1e]/80 border border-white/8 text-white/80 placeholder:text-white/25 text-sm px-4 py-3 focus:outline-none focus:border-[#00d4ff]/40 focus:ring-1 focus:ring-[#00d4ff]/20 transition-colors aria-[invalid=true]:border-red-500/40";
+  "w-full rounded-xl bg-[#F0F7FA] border border-[#0F2A44]/10 text-[#0F2A44] placeholder:text-[#8BA3B8] text-sm px-4 py-3 focus:outline-none focus:border-[#0891B2]/40 focus:ring-1 focus:ring-[#0891B2]/20 transition-colors aria-[invalid=true]:border-red-500/40";
 
 export function ContactSection() {
   const [status, setStatus] = useState<Status>("idle");
@@ -125,7 +125,7 @@ export function ContactSection() {
             Ready to Start Your{" "}
             <span className="gradient-text">Next Project?</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-xl text-balance">
+          <p className="text-[#4A6580] text-lg max-w-xl text-balance">
             Tell us about your project and we&apos;ll respond within one
             business day with a scoping plan and honest timeline.
           </p>
@@ -135,25 +135,25 @@ export function ContactSection() {
           {/* Form */}
           <FadeIn direction="right">
             {status === "success" ? (
-              <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-[#00d4ff]/20 bg-[#00d4ff]/5 px-8">
-                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#00d4ff]/10 border border-[#00d4ff]/25">
-                  <CheckCircle2 className="w-8 h-8 text-[#00d4ff]" aria-hidden="true" />
+              <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-[#0891B2]/20 bg-[#0891B2]/5 px-8">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#0891B2]/10 border border-[#0891B2]/25">
+                  <CheckCircle2 className="w-8 h-8 text-[#0891B2]" aria-hidden="true" />
                 </div>
                 <div>
                   <h3
-                    className="text-2xl font-bold text-white mb-2"
+                    className="text-2xl font-bold text-[#0F2A44] mb-2"
                     style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                   >
                     Message Received
                   </h3>
-                  <p className="text-white/55">
+                  <p className="text-[#4A6580]">
                     We&apos;ll be in touch within one business day with a
                     scoping plan.
                   </p>
                 </div>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="text-[#00d4ff]/70 hover:text-[#00d4ff] text-sm underline underline-offset-2 transition-colors"
+                  className="text-[#0891B2] hover:text-[#0E7490] text-sm underline underline-offset-2 transition-colors"
                 >
                   Send another message
                 </button>
@@ -161,7 +161,7 @@ export function ContactSection() {
             ) : (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="space-y-5 rounded-2xl border border-white/10 bg-[#0d1529]/50 backdrop-blur-md p-8 md:p-10 shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
+                className="space-y-5 rounded-2xl border border-[#0F2A44]/8 bg-white/70 backdrop-blur-md p-8 md:p-10 shadow-[0_4px_24px_rgba(15,42,68,0.06)]"
                 aria-label="Contact form"
                 noValidate
               >
@@ -261,12 +261,12 @@ export function ContactSection() {
                   type="submit"
                   disabled={status === "loading"}
                   aria-busy={status === "loading"}
-                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-bold text-sm bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 shadow-[0_0_32px_rgba(0,212,255,0.3)] hover:shadow-[0_0_48px_rgba(0,212,255,0.5)] hover:scale-[1.01]"
+                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-bold text-sm bg-[#0891B2] text-white hover:bg-[#0E7490] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 hover:scale-[1.01]"
                 >
                   {status === "loading" ? (
                     <>
                       <span
-                        className="w-4 h-4 border-2 border-[#04070f]/30 border-t-[#04070f] rounded-full animate-spin"
+                        className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
                         aria-hidden="true"
                       />
                       Sending…
@@ -291,17 +291,17 @@ export function ContactSection() {
               <div className="space-y-5">
                 {contactDetails.map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-start gap-4">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#00d4ff]/8 border border-[#00d4ff]/15 shrink-0">
-                      <Icon className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
+                    <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#0891B2]/8 border border-[#0891B2]/15 shrink-0">
+                      <Icon className="w-4 h-4 text-[#0891B2]" aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-white/35 text-xs font-medium uppercase tracking-wide">{label}</p>
+                      <p className="text-[#8BA3B8] text-xs font-medium uppercase tracking-wide">{label}</p>
                       {href ? (
-                        <a href={href} className="text-white/80 text-sm hover:text-[#00d4ff] transition-colors">
+                        <a href={href} className="text-[#4A6580] text-sm hover:text-[#0891B2] transition-colors">
                           {value}
                         </a>
                       ) : (
-                        <p className="text-white/80 text-sm">{value}</p>
+                        <p className="text-[#4A6580] text-sm">{value}</p>
                       )}
                     </div>
                   </div>
@@ -310,21 +310,21 @@ export function ContactSection() {
             </FadeIn>
 
             <FadeIn direction="left" delay={0.15}>
-              <div className="rounded-xl border border-white/6 bg-[#0d1529]/50 p-6 space-y-4">
+              <div className="rounded-xl border border-[#0F2A44]/8 bg-[#E8F1F5]/50 p-6 space-y-4">
                 <h3
-                  className="text-white/80 text-sm font-semibold"
+                  className="text-[#0F2A44] text-sm font-semibold"
                   style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                 >
                   What to expect
                 </h3>
                 <ul className="space-y-3" role="list">
                   {trustPoints.map((point) => (
-                    <li key={point} className="flex items-start gap-2.5 text-sm text-white/55">
+                    <li key={point} className="flex items-start gap-2.5 text-sm text-[#4A6580]">
                       <div
-                        className="flex items-center justify-center w-4 h-4 rounded-full bg-[#00d4ff]/15 border border-[#00d4ff]/25 shrink-0 mt-0.5"
+                        className="flex items-center justify-center w-4 h-4 rounded-full bg-[#0891B2]/15 border border-[#0891B2]/25 shrink-0 mt-0.5"
                         aria-hidden="true"
                       >
-                        <Check className="w-2.5 h-2.5 text-[#00d4ff]" />
+                        <Check className="w-2.5 h-2.5 text-[#0891B2]" />
                       </div>
                       {point}
                     </li>

@@ -59,7 +59,7 @@ export function Process() {
             A Process Built for{" "}
             <span className="gradient-text">Predictable Outcomes</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-xl text-balance">
+          <p className="text-[#4A6580] text-lg max-w-xl text-balance">
             No surprises, no scope creep. Just a proven framework for shipping
             secure software on time.
           </p>
@@ -68,7 +68,7 @@ export function Process() {
         <div className="relative">
           {/* Connector line */}
           <div
-            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#00d4ff]/20 to-transparent"
+            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#0891B2]/15 to-transparent"
             aria-hidden="true"
           />
 
@@ -78,26 +78,26 @@ export function Process() {
               return (
                 <FadeIn key={step.number} delay={i * 0.1} direction="up">
                   <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-4">
-                    <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-[#00d4ff]/8 border border-[#00d4ff]/20">
+                    <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-[#0891B2]/8 border border-[#0891B2]/15">
                       <Icon
-                        className="w-5 h-5 text-[#00d4ff]"
+                        className="w-5 h-5 text-[#0891B2]"
                         aria-hidden="true"
                       />
-                      <span className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center rounded-full bg-[#080e1e] border border-[#00d4ff]/30 text-[#00d4ff] text-[10px] font-bold">
+                      <span className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center rounded-full bg-[#F0F7FA] border border-[#0891B2]/25 text-[#0891B2] text-[10px] font-bold">
                         {i + 1}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[#00d4ff]/40 text-xs font-mono font-medium">
+                      <span className="text-[#8BA3B8] text-xs font-mono font-medium">
                         {step.number}
                       </span>
                       <h3
-                        className="text-white font-semibold text-lg mt-0.5 mb-2"
+                        className="text-[#0F2A44] font-semibold text-lg mt-0.5 mb-2"
                         style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                       >
                         {step.title}
                       </h3>
-                      <p className="text-white/45 text-sm leading-relaxed">
+                      <p className="text-[#4A6580] text-sm leading-relaxed">
                         {step.description}
                       </p>
                     </div>

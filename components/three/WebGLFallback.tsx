@@ -17,19 +17,19 @@ class WebGLErrorBoundary extends Component<
 
 function FallbackScene() {
   return (
-    <div className="absolute inset-0 bg-[#04070f]">
+    <div className="absolute inset-0 bg-[#F0F7FA]">
       <div
         className="absolute inset-0 opacity-30"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(0,212,255,0.12) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(8,145,178,0.12) 0%, transparent 70%)",
         }}
       />
       <div
         className="absolute inset-0 opacity-15"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px)",
+            "linear-gradient(rgba(8,145,178,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(8,145,178,0.03) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
         }}
       />

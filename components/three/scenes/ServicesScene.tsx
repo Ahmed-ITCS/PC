@@ -18,9 +18,9 @@ export function ServicesScene() {
 
   return (
     <group ref={groupRef} position={[0, -4, 0]}>
-      <ServicePillar position={[-3, 0, -2]} color="#00d4ff" height={3.5} radius={0.35} />
-      <ServicePillar position={[0, 0.5, -3]} color="#7c3aed" height={3} radius={0.3} />
-      <ServicePillar position={[3, 0, -2]} color="#34d399" height={3.2} radius={0.32} />
+      <ServicePillar position={[-3, 0, -2]} color="#0891B2" height={3.5} radius={0.35} />
+      <ServicePillar position={[0, 0.5, -3]} color="#6366F1" height={3} radius={0.3} />
+      <ServicePillar position={[3, 0, -2]} color="#0D9488" height={3.2} radius={0.32} />
     </group>
   );
 }

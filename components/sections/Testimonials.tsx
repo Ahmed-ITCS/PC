@@ -52,14 +52,9 @@ export function Testimonials() {
 
   return (
     <section
-      className="relative py-24 md:py-32 bg-[#080e1e] overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#E8F1F5] overflow-hidden"
       aria-labelledby="testimonials-heading"
     >
-      <div
-        className="absolute inset-0 bg-glow-cyan opacity-50"
-        aria-hidden="true"
-      />
-
       <div className="relative z-10 container-max section-padding">
         <FadeIn className="flex flex-col items-center text-center gap-5 mb-14">
           <SectionLabel>Client Voices</SectionLabel>
@@ -73,10 +68,10 @@ export function Testimonials() {
         </FadeIn>
 
         <div className="max-w-3xl mx-auto">
-          <div className="relative rounded-2xl border border-white/8 bg-[#0d1529]/60 backdrop-blur-sm p-8 md:p-12">
+          <div className="relative rounded-2xl border border-[#0F2A44]/8 bg-white/70 backdrop-blur-sm p-8 md:p-12">
             {/* Quote icon */}
             <Quote
-              className="w-10 h-10 text-[#00d4ff]/15 mb-6"
+              className="w-10 h-10 text-[#0891B2]/15 mb-6"
               aria-hidden="true"
             />
 
@@ -89,21 +84,21 @@ export function Testimonials() {
                 transition={{ duration: 0.35 }}
               >
                 <blockquote>
-                  <p className="text-white/75 text-lg md:text-xl leading-relaxed font-light italic mb-8">
+                  <p className="text-[#0F2A44] text-lg md:text-xl leading-relaxed font-light italic mb-8">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <footer className="flex items-center gap-4">
                     <div
-                      className="w-11 h-11 rounded-full bg-[#00d4ff]/15 border border-[#00d4ff]/25 flex items-center justify-center text-[#00d4ff] font-bold text-base"
+                      className="w-11 h-11 rounded-full bg-[#0891B2]/10 border border-[#0891B2]/20 flex items-center justify-center text-[#0891B2] font-bold text-base"
                       aria-hidden="true"
                     >
                       {t.initial}
                     </div>
                     <div>
-                      <cite className="text-white font-semibold text-sm not-italic">
+                      <cite className="text-[#0F2A44] font-semibold text-sm not-italic">
                         {t.author}
                       </cite>
-                      <p className="text-white/40 text-xs mt-0.5">
+                      <p className="text-[#8BA3B8] text-xs mt-0.5">
                         {t.role}, {t.company}
                       </p>
                     </div>
@@ -113,7 +108,7 @@ export function Testimonials() {
             </AnimatePresence>
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/5">
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#0F2A44]/6">
               <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial navigation">
                 {testimonials.map((_, i) => (
                   <button
@@ -124,8 +119,8 @@ export function Testimonials() {
                     aria-label={`Testimonial ${i + 1} of ${total}`}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
                       i === current
-                        ? "w-6 bg-[#00d4ff]"
-                        : "w-1.5 bg-white/20 hover:bg-white/40"
+                        ? "w-6 bg-[#0891B2]"
+                        : "w-1.5 bg-[#0F2A44]/15 hover:bg-[#0F2A44]/25"
                     }`}
                   />
                 ))}
@@ -134,14 +129,14 @@ export function Testimonials() {
                 <button
                   onClick={prev}
                   aria-label="Previous testimonial"
-                  className="p-2 rounded-lg border border-white/8 text-white/50 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-150"
+                  className="p-2 rounded-lg border border-[#0F2A44]/8 text-[#8BA3B8] hover:text-[#0F2A44] hover:border-[#0F2A44]/20 hover:bg-[#F0F7FA] transition-all duration-150"
                 >
                   <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                 </button>
                 <button
                   onClick={next}
                   aria-label="Next testimonial"
-                  className="p-2 rounded-lg border border-white/8 text-white/50 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-150"
+                  className="p-2 rounded-lg border border-[#0F2A44]/8 text-[#8BA3B8] hover:text-[#0F2A44] hover:border-[#0F2A44]/20 hover:bg-[#F0F7FA] transition-all duration-150"
                 >
                   <ChevronRight className="w-4 h-4" aria-hidden="true" />
                 </button>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 export type QualityTier = "high" | "medium" | "low";
 
-interface QualityState {
+export interface QualityState {
   tier: QualityTier;
   isMobile: boolean;
   hasWebGL2: boolean;

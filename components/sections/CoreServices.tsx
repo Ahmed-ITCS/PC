@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Shield, Cloud, Layers, Check, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -11,7 +10,7 @@ const services = [
   {
     icon: Shield,
     badge: "Most Popular",
-    badgeColor: "bg-[#00d4ff]/15 text-[#00d4ff] border-[#00d4ff]/30",
+    badgeColor: "bg-[#0891B2]/10 text-[#0891B2] border-[#0891B2]/25",
     title: "Secure MVP Development",
     description:
       "Go from concept to production-ready product with security baked in at every layer — not bolted on after.",
@@ -27,7 +26,7 @@ const services = [
   {
     icon: Cloud,
     badge: "Enterprise Grade",
-    badgeColor: "bg-violet-500/15 text-violet-300 border-violet-400/25",
+    badgeColor: "bg-violet-500/10 text-violet-600 border-violet-400/25",
     title: "Cloud Deployment & Database Hardening",
     description:
       "Production-grade cloud infrastructure with hardened databases, automated failover, and zero-downtime deployments.",
@@ -43,7 +42,7 @@ const services = [
   {
     icon: Layers,
     badge: "Complete Solution",
-    badgeColor: "bg-emerald-500/15 text-emerald-300 border-emerald-400/25",
+    badgeColor: "bg-emerald-500/10 text-emerald-600 border-emerald-400/25",
     title: "End-to-End Product Development",
     description:
       "Your entire technical function — from first commit through launch, scaling, and ongoing operations.",
@@ -77,7 +76,7 @@ export function CoreServices() {
             Everything You Need to{" "}
             <span className="gradient-text">Ship With Confidence</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl text-balance">
+          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
             Three flagship engagements designed around how modern companies
             actually need to move — fast, secure, and without hiring overhead.
           </p>
@@ -92,8 +91,8 @@ export function CoreServices() {
                 <div
                   className={`relative flex flex-col gap-5 rounded-2xl border p-7 h-full ${
                     svc.featured
-                      ? "border-[#00d4ff]/25 bg-gradient-to-b from-[#00d4ff]/5 via-[#0d1529]/80 to-[#0d1529]/60 shadow-[0_0_0_1px_rgba(0,212,255,0.1),0_16px_48px_rgba(0,0,0,0.35)]"
-                      : "border-white/6 bg-[#0d1529]/30 hover:border-[#00d4ff]/15 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.08),0_16px_48px_rgba(0,0,0,0.3)]"
+                      ? "border-[#0891B2]/20 bg-gradient-to-b from-[#0891B2]/5 via-white/80 to-white/60 shadow-[0_16px_48px_rgba(15,42,68,0.06)]"
+                      : "border-[#0F2A44]/8 bg-white/70 hover:border-[#0891B2]/15 hover:shadow-[0_16px_48px_rgba(15,42,68,0.06)]"
                   }`}
                 >
                   {/* Badge */}
@@ -104,19 +103,19 @@ export function CoreServices() {
                   </span>
 
                   {/* Icon */}
-                  <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/25 shadow-[0_0_16px_rgba(0,212,255,0.1)]">
-                    <Icon className="w-7 h-7 text-[#00d4ff]" aria-hidden="true" />
+                  <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#0891B2]/10 border border-[#0891B2]/20">
+                    <Icon className="w-7 h-7 text-[#0891B2]" aria-hidden="true" />
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 space-y-3">
                     <h3
-                      className="text-white font-bold text-xl leading-snug"
+                      className="text-[#0F2A44] font-bold text-xl leading-snug"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {svc.title}
                     </h3>
-                    <p className="text-white/50 text-sm leading-relaxed">
+                    <p className="text-[#4A6580] text-sm leading-relaxed">
                       {svc.description}
                     </p>
                   </div>
@@ -124,9 +123,9 @@ export function CoreServices() {
                   {/* Feature bullets */}
                   <ul className="space-y-2.5" role="list">
                     {svc.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-white/60">
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-[#4A6580]">
                         <Check
-                          className="w-4 h-4 text-[#00d4ff]/70 shrink-0 mt-0.5"
+                          className="w-4 h-4 text-[#0891B2] shrink-0 mt-0.5"
                           aria-hidden="true"
                         />
                         {f}
@@ -137,7 +136,7 @@ export function CoreServices() {
                   {/* CTA */}
                   <Link
                     href={svc.href}
-                    className="group mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-[#00d4ff]/70 hover:text-[#00d4ff] transition-colors duration-150"
+                    className="group mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-[#0891B2]/70 hover:text-[#0891B2] transition-colors duration-150"
                     aria-label={`Learn more about ${svc.title}`}
                   >
                     Learn More
@@ -147,12 +146,10 @@ export function CoreServices() {
                     />
                   </Link>
 
-                  {/* Featured glow line */}
+                  {/* Featured top line */}
                   {svc.featured && (
-                    <motion.div
-                      className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-[#00d4ff]/60 to-transparent"
-                      animate={{ opacity: [0.5, 1, 0.5] }}
-                      transition={{ duration: 3, repeat: Infinity }}
+                    <div
+                      className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-[#0891B2]/30 to-transparent"
                       aria-hidden="true"
                     />
                   )}

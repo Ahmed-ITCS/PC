@@ -17,11 +17,11 @@ interface CyberMaterialProps {
 }
 
 export function useCyberMaterial({
-  color = "#00d4ff",
+  color = "#0891B2",
   gridSize = 8.0,
   noiseScale = 1.5,
   displacement = 0.05,
-  opacity = 0.9,
+  opacity = 0.7,
 }: CyberMaterialProps = {}) {
   const ref = useRef<THREE.ShaderMaterial>(null);
 
@@ -53,7 +53,7 @@ export function useCyberMaterial({
         transparent: true,
         side: THREE.DoubleSide,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
       }),
     [uniforms]
   );

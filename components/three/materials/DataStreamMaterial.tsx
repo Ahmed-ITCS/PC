@@ -15,9 +15,9 @@ interface DataStreamMaterialProps {
 }
 
 export function useDataStreamMaterial({
-  color = "#00d4ff",
+  color = "#0891B2",
   speed = 1.0,
-  opacity = 0.6,
+  opacity = 0.4,
 }: DataStreamMaterialProps = {}) {
   const ref = useRef<THREE.ShaderMaterial>(null);
 
@@ -46,7 +46,7 @@ export function useDataStreamMaterial({
         uniforms,
         transparent: true,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
       }),
     [uniforms]
   );

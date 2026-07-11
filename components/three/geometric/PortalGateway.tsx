@@ -13,7 +13,7 @@ interface PortalGatewayProps {
 
 export function PortalGateway({
   position,
-  color = "#00d4ff",
+  color = "#0891B2",
   scale = 1,
 }: PortalGatewayProps) {
   const groupRef = useRef<THREE.Group>(null);
@@ -67,7 +67,7 @@ export function PortalGateway({
           opacity={0.1}
           side={THREE.DoubleSide}
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
+          blending={THREE.NormalBlending}
         />
       </mesh>
 
@@ -79,7 +79,7 @@ export function PortalGateway({
           transparent
           opacity={0.15}
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
+          blending={THREE.NormalBlending}
         />
       </mesh>
 

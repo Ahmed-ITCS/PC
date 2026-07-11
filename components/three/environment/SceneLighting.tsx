@@ -14,7 +14,7 @@ export function SceneLighting() {
     if (keyLightRef.current) {
       keyLightRef.current.position.x = 3 + Math.sin(t * 0.3) * 0.5 + pointer.x * 1.5;
       keyLightRef.current.position.y = 3 + Math.cos(t * 0.2) * 0.3;
-      keyLightRef.current.intensity = 1.2 + Math.sin(t * 0.8) * 0.2;
+      keyLightRef.current.intensity = 0.6 + Math.sin(t * 0.8) * 0.1;
     }
 
     if (fillLightRef.current) {
@@ -25,27 +25,27 @@ export function SceneLighting() {
 
   return (
     <>
-      <ambientLight intensity={0.15} color="#0a1628" />
+      <ambientLight intensity={0.4} color="#d1e3ec" />
       <pointLight
         ref={keyLightRef}
         position={[3, 3, 5]}
-        intensity={1.2}
-        color="#00d4ff"
+        intensity={0.6}
+        color="#0891B2"
         distance={30}
         decay={2}
       />
       <pointLight
         ref={fillLightRef}
         position={[-3, -2, 3]}
-        intensity={0.5}
-        color="#7c3aed"
+        intensity={0.3}
+        color="#6366F1"
         distance={25}
         decay={2}
       />
       <pointLight
         position={[0, 8, 0]}
-        intensity={0.3}
-        color="#00d4ff"
+        intensity={0.15}
+        color="#0891B2"
         distance={40}
         decay={2}
       />

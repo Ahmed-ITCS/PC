@@ -13,7 +13,7 @@ interface DestinationPlatformProps {
 
 export function DestinationPlatform({
   position = [0, 0, 0],
-  color = "#00d4ff",
+  color = "#0891B2",
   radius = 3,
 }: DestinationPlatformProps) {
   const ringRef = useRef<THREE.Mesh>(null);
@@ -59,18 +59,18 @@ export function DestinationPlatform({
       {/* Concentric rings */}
       <mesh ref={ringRef} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]}>
         <torusGeometry args={[radius * 0.7, 0.015, 8, 48]} />
-        <meshBasicMaterial color={col} transparent opacity={0.15} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color={col} transparent opacity={0.15} depthWrite={false} blending={THREE.NormalBlending} />
       </mesh>
 
       <mesh ref={ring2Ref} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 0]}>
         <torusGeometry args={[radius * 1.1, 0.01, 8, 48]} />
-        <meshBasicMaterial color={col} transparent opacity={0.1} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color={col} transparent opacity={0.1} depthWrite={false} blending={THREE.NormalBlending} />
       </mesh>
 
       {/* Central beacon */}
       <mesh ref={beaconRef} position={[0, 0.5, 0]}>
         <sphereGeometry args={[0.35, 16, 16]} />
-        <meshBasicMaterial color={col} transparent opacity={0.15} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color={col} transparent opacity={0.15} depthWrite={false} blending={THREE.NormalBlending} />
       </mesh>
 
       <pointLight position={[0, 1, 0]} intensity={0.8} color={color} distance={8} decay={2} />

@@ -38,7 +38,7 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#04070f]/80 backdrop-blur-2xl border-b border-white/8 shadow-[0_4px_48px_rgba(0,0,0,0.5)]"
+            ? "bg-[#F0F7FA]/85 backdrop-blur-2xl border-b border-[#0F2A44]/8 shadow-[0_4px_24px_rgba(15,42,68,0.06)]"
             : "bg-transparent"
         }`}
       >
@@ -50,15 +50,14 @@ export function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00d4ff] rounded-lg"
+            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0891B2] rounded-lg"
             aria-label="PentaCipher home"
           >
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-[#00d4ff]/10 border border-[#00d4ff]/20 group-hover:bg-[#00d4ff]/15 group-hover:border-[#00d4ff]/40 transition-all duration-200">
-              <Shield className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
-              <div className="absolute inset-0 rounded-lg bg-[#00d4ff]/5 blur-sm group-hover:bg-[#00d4ff]/10 transition-all duration-200" />
+            <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-[#0891B2]/10 border border-[#0891B2]/20 group-hover:bg-[#0891B2]/15 group-hover:border-[#0891B2]/30 transition-all duration-200">
+              <Shield className="w-4 h-4 text-[#0891B2]" aria-hidden="true" />
             </div>
             <span
-              className="text-white font-semibold text-base tracking-tight"
+              className="text-[#0F2A44] font-semibold text-base tracking-tight"
               style={{ fontFamily: "var(--font-display, Syne, sans-serif)" }}
             >
               PentaCipher
@@ -71,10 +70,10 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#00d4ff] ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#0891B2] ${
                   pathname === link.href
-                    ? "text-[#00d4ff] border-b-2 border-[#00d4ff] rounded-none pb-[6px]"
-                    : "text-white/60 hover:text-white hover:bg-white/5 border-b-2 border-transparent pb-[6px]"
+                    ? "text-[#0891B2] border-b-2 border-[#0891B2] rounded-none pb-[6px]"
+                    : "text-[#4A6580] hover:text-[#0F2A44] hover:bg-[#0891B2]/5 border-b-2 border-transparent pb-[6px]"
                 }`}
               >
                 {link.label}
@@ -86,7 +85,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/contact"
-              className="btn-primary text-[#04070f] bg-[#00d4ff] hover:bg-[#00d4ff]/90 font-semibold"
+              className="btn-primary text-white bg-[#0891B2] hover:bg-[#0E7490] font-semibold"
             >
               Start a Project
             </Link>
@@ -94,7 +93,7 @@ export function Navbar() {
 
           {/* Mobile menu toggle */}
           <button
-            className="md:hidden p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-[#00d4ff]"
+            className="md:hidden p-2 rounded-lg text-[#4A6580] hover:text-[#0F2A44] hover:bg-[#0891B2]/5 transition-colors focus-visible:ring-2 focus-visible:ring-[#0891B2]"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -114,7 +113,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#04070f]/98 backdrop-blur-xl pt-16 flex flex-col"
+            className="fixed inset-0 z-40 bg-[#F0F7FA]/98 backdrop-blur-xl pt-16 flex flex-col"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
@@ -131,8 +130,8 @@ export function Navbar() {
                     href={link.href}
                     className={`flex items-center px-4 py-3.5 rounded-xl text-lg font-medium transition-all ${
                       pathname === link.href
-                        ? "text-[#00d4ff] bg-[#00d4ff]/10"
-                        : "text-white/70 hover:text-white hover:bg-white/5"
+                        ? "text-[#0891B2] bg-[#0891B2]/8"
+                        : "text-[#4A6580] hover:text-[#0F2A44] hover:bg-[#0891B2]/5"
                     }`}
                   >
                     {link.label}
@@ -147,7 +146,7 @@ export function Navbar() {
               >
                 <Link
                   href="/contact"
-                  className="flex items-center justify-center px-6 py-4 rounded-xl text-lg font-semibold bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 transition-all"
+                  className="flex items-center justify-center px-6 py-4 rounded-xl text-lg font-semibold bg-[#0891B2] text-white hover:bg-[#0E7490] transition-all"
                 >
                   Start a Project
                 </Link>

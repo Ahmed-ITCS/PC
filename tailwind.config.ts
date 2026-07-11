@@ -12,20 +12,26 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         navy: {
-          950: "#04070f",
-          900: "#080e1e",
-          800: "#0d1529",
-          700: "#111c36",
-          600: "#162244",
+          50: "#F0F7FA",
+          100: "#E8F1F5",
+          200: "#D1E3EC",
+          300: "#B4CFE0",
+          400: "#8BA3B8",
+          500: "#6B8AA3",
+          600: "#4A6580",
+          700: "#2D4A63",
+          800: "#1A365D",
+          900: "#0F2A44",
         },
         cyan: {
-          400: "#22d3ee",
-          500: "#06b6d4",
-          600: "#0891b2",
+          400: "#22D3EE",
+          500: "#06B6D4",
+          600: "#0891B2",
+          700: "#0E7490",
         },
-        electric: "#00d4ff",
-        "electric-dim": "#0099bb",
-        "electric-2": "#7c3aed",
+        accent: "#0891B2",
+        "accent-dim": "#0E7490",
+        "accent-2": "#6366F1",
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
@@ -34,13 +40,13 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px)",
+          "linear-gradient(rgba(8,145,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(8,145,178,0.04) 1px, transparent 1px)",
         "dot-pattern":
-          "radial-gradient(circle, rgba(0,212,255,0.08) 1px, transparent 1px)",
+          "radial-gradient(circle, rgba(8,145,178,0.06) 1px, transparent 1px)",
         "glow-cyan":
-          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,212,255,0.12) 0%, transparent 70%)",
+          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(8,145,178,0.06) 0%, transparent 70%)",
         "glow-bottom":
-          "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(0,212,255,0.08) 0%, transparent 70%)",
+          "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(8,145,178,0.04) 0%, transparent 70%)",
       },
       backgroundSize: {
         "grid-lg": "80px 80px",
@@ -49,8 +55,6 @@ const config: Config = {
       animation: {
         "fade-in": "fadeIn 0.6s ease forwards",
         "slide-up": "slideUp 0.6s ease forwards",
-        "glow-pulse": "glowPulse 3s ease-in-out infinite",
-        "border-flow": "borderFlow 4s linear infinite",
         counter: "counter 2s ease-out forwards",
       },
       keyframes: {
@@ -62,21 +66,13 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(24px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        glowPulse: {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
-        },
-        borderFlow: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "100%": { backgroundPosition: "200% 50%" },
-        },
       },
       boxShadow: {
-        "glow-sm": "0 0 12px rgba(0,212,255,0.2)",
-        "glow-md": "0 0 24px rgba(0,212,255,0.25)",
-        "glow-lg": "0 0 48px rgba(0,212,255,0.2)",
-        card: "0 1px 3px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3)",
-        "card-hover": "0 2px 8px rgba(0,0,0,0.5), 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,212,255,0.15)",
+        "subtle-sm": "0 1px 3px rgba(15,42,68,0.06), 0 4px 12px rgba(15,42,68,0.04)",
+        "subtle-md": "0 2px 6px rgba(15,42,68,0.06), 0 8px 24px rgba(15,42,68,0.06)",
+        "subtle-lg": "0 4px 12px rgba(15,42,68,0.06), 0 16px 48px rgba(15,42,68,0.08)",
+        card: "0 1px 3px rgba(15,42,68,0.06), 0 8px 32px rgba(15,42,68,0.04)",
+        "card-hover": "0 2px 8px rgba(15,42,68,0.08), 0 16px 48px rgba(15,42,68,0.06), 0 0 0 1px rgba(8,145,178,0.1)",
       },
     },
   },

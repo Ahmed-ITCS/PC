@@ -33,7 +33,7 @@ export function TiltCard({ children, className = "", intensity = 12 }: TiltCardP
       if (glow) {
         const px = (x / rect.width) * 100;
         const py = (y / rect.height) * 100;
-        glow.style.background = `radial-gradient(220px circle at ${px}% ${py}%, rgba(0,212,255,0.1), transparent 70%)`;
+        glow.style.background = `radial-gradient(220px circle at ${px}% ${py}%, rgba(8,145,178,0.06), transparent 70%)`;
         glow.style.opacity = "1";
       }
     },

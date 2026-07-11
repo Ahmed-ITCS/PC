@@ -146,7 +146,7 @@ export default function ServicesPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-white/50 text-lg max-w-2xl text-balance">
+            <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
               Six practice areas that cover every layer of the stack — from
               architecture through deployment, security, and operations.
             </p>
@@ -165,8 +165,8 @@ export default function ServicesPage() {
                   id={service.id}
                   className={`relative rounded-2xl border p-8 md:p-10 scroll-mt-24 transition-all duration-300 ${
                     service.featured
-                      ? "border-[#00d4ff]/25 bg-gradient-to-br from-[#00d4ff]/5 to-[#0d1529]/80"
-                      : "border-white/6 bg-[#0d1529]/50 hover:border-white/10"
+                      ? "border-[#0891B2]/25 bg-gradient-to-br from-[#0891B2]/5 to-[#E8F1F5]/80"
+                      : "border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0F2A44]/10"
                   }`}
                 >
                   {service.featured && (
@@ -179,21 +179,21 @@ export default function ServicesPage() {
                     {/* Left column */}
                     <div className="space-y-5">
                       <div className="flex items-center gap-4">
-                        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/20">
-                          <Icon className="w-6 h-6 text-[#00d4ff]" aria-hidden="true" />
+                        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#0891B2]/10 border border-[#0891B2]/20">
+                          <Icon className="w-6 h-6 text-[#0891B2]" aria-hidden="true" />
                         </div>
                         <div>
                           <h2
-                            className="text-xl md:text-2xl font-bold text-white leading-tight"
+                            className="text-xl md:text-2xl font-bold text-[#0F2A44] leading-tight"
                             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                           >
                             {service.title}
                           </h2>
-                          <p className="text-[#00d4ff]/60 text-sm mt-0.5">{service.tagline}</p>
+                          <p className="text-[#0891B2]/60 text-sm mt-0.5">{service.tagline}</p>
                         </div>
                       </div>
 
-                      <p className="text-white/50 text-base leading-relaxed">
+                      <p className="text-[#4A6580] text-base leading-relaxed">
                         {service.description}
                       </p>
 
@@ -201,7 +201,7 @@ export default function ServicesPage() {
                         {service.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2.5 py-1 rounded-md bg-white/4 border border-white/8 text-white/40 text-xs font-medium"
+                            className="px-2.5 py-1 rounded-md bg-[#0F2A44]/4 border border-[#0F2A44]/8 text-[#4A6580] text-xs font-medium"
                           >
                             {tag}
                           </span>
@@ -210,7 +210,7 @@ export default function ServicesPage() {
 
                       <Link
                         href="/contact"
-                        className="group inline-flex items-center gap-2 text-sm text-[#00d4ff] font-medium hover:text-[#00d4ff]/80 transition-colors"
+                        className="group inline-flex items-center gap-2 text-sm text-[#0891B2] font-medium hover:text-[#0891B2]/80 transition-colors"
                         aria-label={`Discuss ${service.title} with PentaCipher`}
                       >
                         Discuss this service
@@ -222,18 +222,18 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Right column — feature bullets */}
-                    <div className="rounded-xl border border-white/5 bg-[#080e1e]/40 p-6">
-                      <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-4">
+                    <div className="rounded-xl border border-[#0F2A44]/5 bg-[#E8F1F5]/40 p-6">
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#4A6580] mb-4">
                         What&apos;s included
                       </p>
                       <ul className="space-y-3" role="list">
                         {service.features.map((feat) => (
-                          <li key={feat} className="flex items-start gap-3 text-sm text-white/60 leading-relaxed">
+                          <li key={feat} className="flex items-start gap-3 text-sm text-[#4A6580] leading-relaxed">
                             <div
-                              className="flex items-center justify-center w-4 h-4 rounded-full bg-[#00d4ff]/15 border border-[#00d4ff]/25 shrink-0 mt-0.5"
+                              className="flex items-center justify-center w-4 h-4 rounded-full bg-[#0891B2]/15 border border-[#0891B2]/25 shrink-0 mt-0.5"
                               aria-hidden="true"
                             >
-                              <Check className="w-2.5 h-2.5 text-[#00d4ff]" />
+                              <Check className="w-2.5 h-2.5 text-[#0891B2]" />
                             </div>
                             {feat}
                           </li>
@@ -249,10 +249,10 @@ export default function ServicesPage() {
       </section>
 
       {/* Closing CTA band */}
-      <section className="py-16 md:py-20 border-t border-white/5" aria-label="Start your project">
+      <section className="py-16 md:py-20 border-t border-[#0F2A44]/5" aria-label="Start your project">
         <div className="container-max section-padding">
           <FadeIn>
-            <div className="relative rounded-2xl border border-[#00d4ff]/15 bg-gradient-to-br from-[#0d1529] to-[#080e1e] overflow-hidden">
+            <div className="relative rounded-2xl border border-[#0891B2]/15 bg-gradient-to-br from-[#E8F1F5] to-[#E8F1F5] overflow-hidden">
               <div
                 className="absolute inset-0 bg-glow-cyan opacity-60"
                 aria-hidden="true"
@@ -264,26 +264,26 @@ export default function ServicesPage() {
               <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 px-8 md:px-12 py-10 md:py-12">
                 <div className="text-center md:text-left space-y-2">
                   <h2
-                    className="text-2xl md:text-3xl font-bold text-white"
+                    className="text-2xl md:text-3xl font-bold text-[#0F2A44]"
                     style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                   >
                     Ready to get started?
                   </h2>
-                  <p className="text-white/50">
+                  <p className="text-[#4A6580]">
                     Free 30-minute scoping call. No commitment required.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
                   <Link
                     href="/contact"
-                    className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.3)] hover:shadow-[0_0_36px_rgba(0,212,255,0.5)] whitespace-nowrap"
+                    className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-[#0891B2] text-[#F0F7FA] hover:bg-[#0891B2]/90 transition-all duration-200 shadow-[0_0_24px_rgba(8,145,178,0.3)] hover:shadow-[0_0_36px_rgba(8,145,178,0.5)] whitespace-nowrap"
                   >
                     Start Your Project
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                   </Link>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-white/10 text-white/70 hover:border-white/20 hover:text-white hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-[#0F2A44]/10 text-[#4A6580] hover:border-[#0F2A44]/20 hover:text-[#0F2A44] hover:bg-[#0F2A44]/5 transition-all duration-200 whitespace-nowrap"
                   >
                     Schedule Consultation
                   </Link>

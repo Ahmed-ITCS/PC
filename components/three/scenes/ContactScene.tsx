@@ -10,7 +10,7 @@ function CalmParticles() {
   const matRef = useRef<THREE.PointsMaterial>(null);
 
   const { positions, phases } = useMemo(() => {
-    const count = 80;
+    const count = 60;
     const positions = new Float32Array(count * 3);
     const phases = new Float32Array(count);
 
@@ -31,7 +31,7 @@ function CalmParticles() {
     const posAttr = ref.current.geometry.getAttribute("position") as THREE.BufferAttribute;
     const arr = posAttr.array as Float32Array;
 
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 60; i++) {
       const i3 = i * 3;
       arr[i3] += Math.sin(t * 0.2 + phases[i]) * 0.001;
       arr[i3 + 1] += Math.cos(t * 0.15 + phases[i]) * 0.0005;
@@ -40,7 +40,7 @@ function CalmParticles() {
     posAttr.needsUpdate = true;
 
     if (matRef.current) {
-      matRef.current.opacity = 0.3 * (0.8 + Math.sin(t * 0.3) * 0.2);
+      matRef.current.opacity = 0.2 * (0.8 + Math.sin(t * 0.3) * 0.2);
     }
   });
 
@@ -51,13 +51,13 @@ function CalmParticles() {
       </bufferGeometry>
       <pointsMaterial
         ref={matRef}
-        color="#00d4ff"
-        size={0.025}
+        color="#0891B2"
+        size={0.02}
         transparent
-        opacity={0.3}
+        opacity={0.2}
         sizeAttenuation
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   );
@@ -66,7 +66,7 @@ function CalmParticles() {
 export function ContactScene() {
   return (
     <group position={[0, -28, 0]}>
-      <DestinationPlatform position={[0, -1, 0]} color="#00d4ff" radius={3} />
+      <DestinationPlatform position={[0, -1, 0]} color="#0891B2" radius={3} />
       <CalmParticles />
     </group>
   );

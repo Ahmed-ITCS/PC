@@ -26,12 +26,12 @@ const stats = [
 export function Stats() {
   return (
     <section
-      className="relative py-20 md:py-24 border-y border-white/5 overflow-hidden"
+      className="relative py-20 md:py-24 border-y border-[#0F2A44]/6 overflow-hidden"
       aria-label="Company statistics"
       style={{ background: "transparent" }}
     >
       <div
-        className="absolute inset-0 bg-glow-cyan opacity-60"
+        className="absolute inset-0 bg-[#0891B2]/[0.04]"
         aria-hidden="true"
       />
       <div className="relative z-10 container-max section-padding">
@@ -49,10 +49,10 @@ export function Stats() {
                   <AnimatedCounter end={stat.value!} suffix={stat.suffix} />
                 )}
               </div>
-              <div className="text-white/90 font-bold text-sm md:text-base tracking-wide">
+              <div className="text-[#0F2A44] font-bold text-sm md:text-base tracking-wide">
                 {stat.label}
               </div>
-              <div className="text-white/40 text-xs md:text-sm">{stat.description}</div>
+              <div className="text-[#8BA3B8] text-xs md:text-sm">{stat.description}</div>
             </FadeIn>
           ))}
         </div>

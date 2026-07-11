@@ -15,7 +15,7 @@ interface ConvergenceFieldProps {
 export function ConvergenceField({
   position = [0, 0, 0],
   count = 300,
-  color = "#00d4ff",
+  color = "#0891B2",
   sphereRadius = 2.5,
   size = 0.035,
 }: ConvergenceFieldProps) {
@@ -87,10 +87,10 @@ export function ConvergenceField({
         color={col}
         size={size}
         transparent
-        opacity={0.5}
+        opacity={0.3}
         sizeAttenuation
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   );

@@ -17,7 +17,7 @@ export function OrbitSystem({
   centerPosition = [0, 0, 0],
   count = 8,
   radius = 3,
-  color = "#00d4ff",
+  color = "#0891B2",
   dotSize = 0.08,
   speed = 0.2,
 }: OrbitSystemProps) {
@@ -67,7 +67,7 @@ export function OrbitSystem({
       <meshStandardMaterial
         color={col}
         emissive={col}
-        emissiveIntensity={0.5}
+        emissiveIntensity={0.3}
         roughness={0.3}
         metalness={0.5}
       />

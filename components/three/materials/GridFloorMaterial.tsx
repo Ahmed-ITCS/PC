@@ -15,7 +15,7 @@ interface GridFloorMaterialProps {
 }
 
 export function useGridFloorMaterial({
-  color = "#00d4ff",
+  color = "#0891B2",
   fadeDistance = 20.0,
   lineThickness = 1.0,
 }: GridFloorMaterialProps = {}) {

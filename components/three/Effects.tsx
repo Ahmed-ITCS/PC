@@ -2,45 +2,27 @@
 
 import {
   EffectComposer,
-  Bloom,
-  ChromaticAberration,
   Vignette,
   Noise,
 } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
-import * as THREE from "three";
 
 interface EffectsProps {
   quality?: "high" | "medium" | "low";
 }
 
-const chromaticOffset = new THREE.Vector2(0.001, 0.001);
-
 function HighQualityEffects() {
   return (
     <>
-      <Bloom
-        intensity={1.5}
-        luminanceThreshold={0.2}
-        luminanceSmoothing={0.9}
-        mipmapBlur
-        radius={0.8}
-      />
-      <ChromaticAberration
-        offset={chromaticOffset}
-        blendFunction={BlendFunction.NORMAL}
-        radialModulation
-        modulationOffset={0.5}
-      />
       <Noise
         premultiply
         blendFunction={BlendFunction.ADD}
-        opacity={0.08}
+        opacity={0.02}
       />
       <Vignette
         eskil={false}
         offset={0.1}
-        darkness={1.1}
+        darkness={0.3}
         blendFunction={BlendFunction.NORMAL}
       />
     </>
@@ -49,19 +31,12 @@ function HighQualityEffects() {
 
 function MediumQualityEffects() {
   return (
-    <>
-      <Noise
-        premultiply
-        blendFunction={BlendFunction.ADD}
-        opacity={0.04}
-      />
-      <Vignette
-        eskil={false}
-        offset={0.1}
-        darkness={1.1}
-        blendFunction={BlendFunction.NORMAL}
-      />
-    </>
+    <Vignette
+      eskil={false}
+      offset={0.1}
+      darkness={0.25}
+      blendFunction={BlendFunction.NORMAL}
+    />
   );
 }
 
@@ -70,7 +45,7 @@ function LowQualityEffects() {
     <Vignette
       eskil={false}
       offset={0.1}
-      darkness={1.1}
+      darkness={0.2}
       blendFunction={BlendFunction.NORMAL}
     />
   );

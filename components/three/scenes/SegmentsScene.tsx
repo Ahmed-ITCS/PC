@@ -5,10 +5,10 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 const ZONES = [
-  { position: [-3, 0.5, -3] as [number, number, number], color: "#00d4ff", geometry: "octahedron" as const },
-  { position: [3, 0.5, -3] as [number, number, number], color: "#7c3aed", geometry: "icosahedron" as const },
-  { position: [-3, -0.5, -4] as [number, number, number], color: "#34d399", geometry: "tetrahedron" as const },
-  { position: [3, -0.5, -4] as [number, number, number], color: "#f59e0b", geometry: "dodecahedron" as const },
+  { position: [-3, 0.5, -3] as [number, number, number], color: "#0891B2", geometry: "octahedron" as const },
+  { position: [3, 0.5, -3] as [number, number, number], color: "#6366F1", geometry: "icosahedron" as const },
+  { position: [-3, -0.5, -4] as [number, number, number], color: "#0D9488", geometry: "tetrahedron" as const },
+  { position: [3, -0.5, -4] as [number, number, number], color: "#D97706", geometry: "dodecahedron" as const },
 ];
 
 function ZoneMarker({
@@ -36,8 +36,8 @@ function ZoneMarker({
     }
 
     if (glowRef.current) {
-      glowRef.current.scale.setScalar(1 + pulse * 0.4);
-      (glowRef.current.material as THREE.MeshBasicMaterial).opacity = 0.05 + pulse * 0.08;
+      glowRef.current.scale.setScalar(1 + pulse * 0.3);
+      (glowRef.current.material as THREE.MeshBasicMaterial).opacity = 0.03 + pulse * 0.04;
     }
   });
 
@@ -54,7 +54,7 @@ function ZoneMarker({
     <group position={position}>
       <mesh ref={glowRef}>
         <sphereGeometry args={[0.8, 12, 12]} />
-        <meshBasicMaterial color={col} transparent opacity={0.06} depthWrite={false} />
+        <meshBasicMaterial color={col} transparent opacity={0.03} depthWrite={false} />
       </mesh>
       <mesh ref={meshRef}>
         {geoEl}
@@ -62,12 +62,12 @@ function ZoneMarker({
           color={col}
           wireframe
           transparent
-          opacity={0.35}
+          opacity={0.2}
           emissive={col}
-          emissiveIntensity={0.15}
+          emissiveIntensity={0.08}
         />
       </mesh>
-      <pointLight position={[0, 0, 0]} intensity={0.4} color={color} distance={5} decay={2} />
+      <pointLight position={[0, 0, 0]} intensity={0.2} color={color} distance={5} decay={2} />
     </group>
   );
 }

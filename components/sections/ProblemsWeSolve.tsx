@@ -77,7 +77,7 @@ export function ProblemsWeSolve() {
     >
       {/* Background dots */}
       <div
-        className="absolute inset-0 bg-dot-pattern opacity-35"
+        className="absolute inset-0 bg-dot-pattern opacity-15"
         aria-hidden="true"
         style={{ backgroundSize: "24px 24px" }}
       />
@@ -93,7 +93,7 @@ export function ProblemsWeSolve() {
             The Challenges We&apos;re{" "}
             <span className="gradient-text">Built to Solve</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl text-balance">
+          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
             Every engagement starts with understanding your pain points.
             Here&apos;s what we hear most — and how we fix them.
           </p>
@@ -104,13 +104,13 @@ export function ProblemsWeSolve() {
             const Icon = problem.icon;
             return (
               <FadeIn key={problem.title} delay={i * 0.08} direction="up">
-                <div className="group flex flex-col gap-4 rounded-xl border border-white/6 bg-[#0d1529]/30 p-6 h-full hover:border-[#00d4ff]/20 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(0,212,255,0.05)] transition-all duration-300 backdrop-blur-sm">
+                <div className="group flex flex-col gap-4 rounded-xl border border-[#0F2A44]/8 bg-white/70 p-6 h-full hover:border-[#0891B2]/15 hover:-translate-y-1 hover:shadow-md transition-all duration-300 backdrop-blur-sm">
                   <div className="flex items-center gap-3.5">
-                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/20 group-hover:bg-[#00d4ff]/15 group-hover:border-[#00d4ff]/30 transition-all duration-200 shadow-[0_0_12px_rgba(0,212,255,0.08)]">
-                      <Icon className="w-5 h-5 text-[#00d4ff]" aria-hidden="true" />
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#0891B2]/10 border border-[#0891B2]/20 group-hover:bg-[#0891B2]/15 group-hover:border-[#0891B2]/30 transition-all duration-200">
+                      <Icon className="w-5 h-5 text-[#0891B2]" aria-hidden="true" />
                     </div>
                     <h3
-                      className="text-white font-bold text-base"
+                      className="text-[#0F2A44] font-bold text-base"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {problem.title}
@@ -119,9 +119,9 @@ export function ProblemsWeSolve() {
 
                   <ul className="space-y-2.5" role="list">
                     {problem.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm text-white/45 leading-relaxed">
+                      <li key={b} className="flex items-start gap-2.5 text-sm text-[#4A6580] leading-relaxed">
                         <span
-                          className="w-1 h-1 rounded-full bg-[#00d4ff]/50 shrink-0 mt-2"
+                          className="w-1 h-1 rounded-full bg-[#0891B2]/50 shrink-0 mt-2"
                           aria-hidden="true"
                         />
                         {b}

@@ -17,8 +17,8 @@ interface HologramMaterialProps {
 }
 
 export function useHologramMaterial({
-  color = "#00d4ff",
-  opacity = 0.7,
+  color = "#0891B2",
+  opacity = 0.5,
   scanSpeed = 2.0,
   fresnelPower = 2.5,
   wobbleAmount = 0.02,
@@ -53,7 +53,7 @@ export function useHologramMaterial({
         transparent: true,
         side: THREE.DoubleSide,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
       }),
     [uniforms]
   );

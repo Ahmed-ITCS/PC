@@ -94,7 +94,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="antialiased bg-[#04070f] text-[#e8edf5] font-[family-name:var(--font-inter)]">
+      <body className="antialiased bg-[#F0F7FA] text-[#0F2A44] font-[family-name:var(--font-inter)]">
         <Navbar />
         <main><PageTransition>{children}</PageTransition></main>
         <FooterWrapper />

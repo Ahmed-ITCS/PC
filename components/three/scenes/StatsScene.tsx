@@ -4,7 +4,7 @@ import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-const SPHERE_COUNT = 120;
+const SPHERE_COUNT = 100;
 const SPHERES = 3;
 const SPHERE_RADIUS = 1.5;
 
@@ -39,7 +39,7 @@ function StatSphere({ index }: { index: number }) {
   useFrame(({ clock }) => {
     if (!ref.current) return;
     const t = clock.getElapsedTime();
-    const p = Math.min(1, Math.max(0, (t - 0.5) * 0.5)); // converge over time
+    const p = Math.min(1, Math.max(0, (t - 0.5) * 0.5));
 
     const posAttr = ref.current.geometry.getAttribute("position") as THREE.BufferAttribute;
     const arr = posAttr.array as Float32Array;
@@ -57,11 +57,11 @@ function StatSphere({ index }: { index: number }) {
     posAttr.needsUpdate = true;
 
     if (matRef.current) {
-      matRef.current.opacity = 0.3 + p * 0.35;
+      matRef.current.opacity = 0.2 + p * 0.2;
     }
   });
 
-  const colors = useMemo(() => ["#00d4ff", "#7c3aed", "#34d399"], []);
+  const colors = useMemo(() => ["#0891B2", "#6366F1", "#0D9488"], []);
   const col = useMemo(() => new THREE.Color(colors[index % colors.length]), [colors, index]);
 
   return (
@@ -72,12 +72,12 @@ function StatSphere({ index }: { index: number }) {
       <pointsMaterial
         ref={matRef}
         color={col}
-        size={0.04}
+        size={0.035}
         transparent
-        opacity={0.4}
+        opacity={0.3}
         sizeAttenuation
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   );
@@ -93,18 +93,18 @@ export function StatsScene() {
       {/* Ring halos */}
       <mesh position={[-3.5, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[SPHERE_RADIUS + 0.3, 0.01, 8, 48]} />
-        <meshBasicMaterial color="#00d4ff" transparent opacity={0.1} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color="#0891B2" transparent opacity={0.06} depthWrite={false} blending={THREE.NormalBlending} />
       </mesh>
       <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[SPHERE_RADIUS + 0.3, 0.01, 8, 48]} />
-        <meshBasicMaterial color="#7c3aed" transparent opacity={0.1} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color="#6366F1" transparent opacity={0.06} depthWrite={false} blending={THREE.NormalBlending} />
       </mesh>
       <mesh position={[3.5, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[SPHERE_RADIUS + 0.3, 0.01, 8, 48]} />
-        <meshBasicMaterial color="#34d399" transparent opacity={0.1} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color="#0D9488" transparent opacity={0.06} depthWrite={false} blending={THREE.NormalBlending} />
       </mesh>
 
-      <pointLight position={[0, 0, 3]} intensity={0.8} color="#00d4ff" distance={12} decay={2} />
+      <pointLight position={[0, 0, 3]} intensity={0.4} color="#0891B2" distance={12} decay={2} />
     </group>
   );
 }

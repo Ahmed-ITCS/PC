@@ -15,7 +15,7 @@ interface ServicePillarProps {
 
 export function ServicePillar({
   position,
-  color = "#00d4ff",
+  color = "#0891B2",
   height = 3,
   radius = 0.4,
 }: ServicePillarProps) {
@@ -68,7 +68,7 @@ export function ServicePillar({
       {/* Orbiting ring */}
       <mesh ref={ringRef} position={[0, 0, 0]}>
         <torusGeometry args={[radius * 1.5, 0.01, 8, 32]} />
-        <meshBasicMaterial color={col} transparent opacity={0.2} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color={col} transparent opacity={0.2} depthWrite={false} blending={THREE.NormalBlending} />
       </mesh>
 
       {/* Top cap glow */}

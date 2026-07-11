@@ -11,7 +11,7 @@ interface CyberNodeProps {
   isCenter?: boolean;
 }
 
-export function CyberNode({ position, color = "#00d4ff", size = 0.06, isCenter = false }: CyberNodeProps) {
+export function CyberNode({ position, color = "#0891B2", size = 0.06, isCenter = false }: CyberNodeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const glowRef = useRef<THREE.Mesh>(null);
   const phase = useMemo(() => Math.random() * Math.PI * 2, []);
@@ -60,7 +60,7 @@ interface CyberNodeInstancesProps {
   size?: number;
 }
 
-export function CyberNodeInstances({ positions, color = "#00d4ff", size = 0.06 }: CyberNodeInstancesProps) {
+export function CyberNodeInstances({ positions, color = "#0891B2", size = 0.06 }: CyberNodeInstancesProps) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const glowRef = useRef<THREE.InstancedMesh>(null);
   const temp = useMemo(() => new THREE.Object3D(), []);

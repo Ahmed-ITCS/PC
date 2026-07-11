@@ -17,9 +17,9 @@ interface AmbientParticlesProps {
 export function AmbientParticles({
   count = 600,
   spread = 14,
-  color = "#00d4ff",
-  size = 0.025,
-  opacity = 0.5,
+  color = "#0891B2",
+  size = 0.02,
+  opacity = 0.3,
   speed = 0.12,
   quality = "high",
 }: AmbientParticlesProps) {

@@ -29,10 +29,10 @@ const socials = [
 export function Footer() {
   return (
     <footer
-      className="relative border-t border-white/5 mt-0 overflow-hidden backdrop-blur-sm"
+      className="relative border-t border-[#0F2A44]/6 mt-0 overflow-hidden backdrop-blur-sm"
       role="contentinfo"
       aria-label="Site footer"
-      style={{ background: "rgba(8, 14, 30, 0.7)" }}
+      style={{ background: "rgba(232, 241, 245, 0.7)" }}
     >
       {/* Subtle gradient top accent */}
       <div className="absolute top-0 inset-x-0 h-px shimmer-border" aria-hidden="true" />
@@ -45,17 +45,17 @@ export function Footer() {
               className="inline-flex items-center gap-2.5 group"
               aria-label="PentaCipher home"
             >
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#00d4ff]/10 border border-[#00d4ff]/20">
-                <Shield className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#0891B2]/10 border border-[#0891B2]/20">
+                <Shield className="w-4 h-4 text-[#0891B2]" aria-hidden="true" />
               </div>
               <span
-                className="text-white font-semibold text-base"
+                className="text-[#0F2A44] font-semibold text-base"
                 style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
               >
                 PentaCipher
               </span>
             </Link>
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
+            <p className="text-[#4A6580] text-sm leading-relaxed max-w-xs">
               Security-first software development and DevOps consultancy. We help
               agencies, startups, and enterprises ship with confidence.
             </p>
@@ -67,7 +67,7 @@ export function Footer() {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/8 text-white/40 hover:text-[#00d4ff] hover:border-[#00d4ff]/30 hover:bg-[#00d4ff]/5 hover:scale-110 transition-all duration-200"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-[#0F2A44]/8 text-[#8BA3B8] hover:text-[#0891B2] hover:border-[#0891B2]/25 hover:bg-[#0891B2]/5 hover:scale-110 transition-all duration-200"
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </a>
@@ -78,7 +78,7 @@ export function Footer() {
           {/* Link cols */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category} className="space-y-4">
-              <h3 className="text-white/80 text-sm font-semibold tracking-wide uppercase text-xs">
+              <h3 className="text-[#0F2A44] text-sm font-semibold tracking-wide uppercase text-xs">
                 {category}
               </h3>
               <ul className="space-y-2.5" role="list">
@@ -86,7 +86,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-white/45 hover:text-white/80 text-sm transition-colors duration-150"
+                      className="text-[#8BA3B8] hover:text-[#0F2A44] text-sm transition-colors duration-150"
                     >
                       {link.label}
                     </Link>
@@ -97,13 +97,13 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-xs">
+        <div className="mt-12 pt-8 border-t border-[#0F2A44]/6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[#8BA3B8] text-xs">
             © {new Date().getFullYear()} PentaCipher. All rights reserved.
           </p>
-          <p className="text-white/30 text-xs flex items-center gap-1.5 italic">
-            <Shield className="w-3 h-3 text-[#00d4ff]/70" aria-hidden="true" />
-            <span className="text-[#00d4ff]/50">Security-first.</span> Always.
+          <p className="text-[#8BA3B8] text-xs flex items-center gap-1.5 italic">
+            <Shield className="w-3 h-3 text-[#0891B2]/70" aria-hidden="true" />
+            <span className="text-[#0891B2]/70">Security-first.</span> Always.
           </p>
         </div>
       </div>
