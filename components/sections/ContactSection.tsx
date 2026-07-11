@@ -14,8 +14,7 @@ import {
   Check,
 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { GlowOrb } from "@/components/ui/GlowOrb";
+
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -104,30 +103,21 @@ export function ContactSection() {
   };
 
   return (
-    <section
-      id="contact"
-      className="relative py-24 md:py-32 overflow-hidden"
-      aria-labelledby="contact-heading"
-      style={{ background: "transparent" }}
-    >
-      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-50" aria-hidden="true" />
-      <GlowOrb className="-top-40 left-1/4" size="lg" opacity={0.04} />
-      <GlowOrb className="top-1/2 -right-40" size="md" opacity={0.03} />
+    <section id="contact" className="py-section" aria-labelledby="contact-heading">
+      <div className="container-max section-padding">
 
-      <div className="relative z-10 container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
-          <SectionLabel>Get In Touch</SectionLabel>
+        <FadeIn className="mb-20">
           <h2
             id="contact-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
+            className="text-display-lg max-w-3xl"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
-            Ready to Start Your{" "}
-            <span className="gradient-text">Next Project?</span>
+            Let&apos;s{" "}
+            <span className="gradient-text">talk.</span>
           </h2>
-          <p className="text-[#4A6580] text-lg max-w-xl text-balance">
+          <p className="text-[#4A6580] text-xl mt-6 max-w-xl">
             Tell us about your project and we&apos;ll respond within one
-            business day with a scoping plan and honest timeline.
+            business day with a scoping plan.
           </p>
         </FadeIn>
 
@@ -147,8 +137,7 @@ export function ContactSection() {
                     Message Received
                   </h3>
                   <p className="text-[#4A6580]">
-                    We&apos;ll be in touch within one business day with a
-                    scoping plan.
+                    We&apos;ll be in touch within one business day.
                   </p>
                 </div>
                 <button
@@ -161,97 +150,42 @@ export function ContactSection() {
             ) : (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="space-y-5 rounded-2xl border border-[#0F2A44]/8 bg-white/70 backdrop-blur-md p-8 md:p-10 shadow-[0_4px_24px_rgba(15,42,68,0.06)]"
+                className="space-y-5 rounded-2xl border border-[#0F2A44]/8 bg-white/70 backdrop-blur-md p-8 md:p-10"
                 aria-label="Contact form"
                 noValidate
               >
                 <div className="grid sm:grid-cols-2 gap-5">
                   <InputField id="firstName" label="First name" error={errors.firstName?.message} required>
-                    <input
-                      {...register("firstName")}
-                      id="firstName"
-                      type="text"
-                      placeholder="Alex"
-                      autoComplete="given-name"
-                      aria-invalid={!!errors.firstName}
-                      className={inputCls}
-                    />
+                    <input {...register("firstName")} id="firstName" type="text" placeholder="Alex" autoComplete="given-name" aria-invalid={!!errors.firstName} className={inputCls} />
                   </InputField>
                   <InputField id="lastName" label="Last name" error={errors.lastName?.message} required>
-                    <input
-                      {...register("lastName")}
-                      id="lastName"
-                      type="text"
-                      placeholder="Smith"
-                      autoComplete="family-name"
-                      aria-invalid={!!errors.lastName}
-                      className={inputCls}
-                    />
+                    <input {...register("lastName")} id="lastName" type="text" placeholder="Smith" autoComplete="family-name" aria-invalid={!!errors.lastName} className={inputCls} />
                   </InputField>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <InputField id="email" label="Email address" error={errors.email?.message} required>
-                    <input
-                      {...register("email")}
-                      id="email"
-                      type="email"
-                      placeholder="alex@company.com"
-                      autoComplete="email"
-                      aria-invalid={!!errors.email}
-                      className={inputCls}
-                    />
+                    <input {...register("email")} id="email" type="email" placeholder="alex@company.com" autoComplete="email" aria-invalid={!!errors.email} className={inputCls} />
                   </InputField>
                   <InputField id="phone" label="Phone" error={errors.phone?.message}>
-                    <input
-                      {...register("phone")}
-                      id="phone"
-                      type="tel"
-                      placeholder="+1 (555) 000-0000"
-                      autoComplete="tel"
-                      className={inputCls}
-                    />
+                    <input {...register("phone")} id="phone" type="tel" placeholder="+1 (555) 000-0000" autoComplete="tel" className={inputCls} />
                   </InputField>
                 </div>
 
                 <InputField id="company" label="Company" error={errors.company?.message}>
-                  <input
-                    {...register("company")}
-                    id="company"
-                    type="text"
-                    placeholder="Your company name"
-                    autoComplete="organization"
-                    className={inputCls}
-                  />
+                  <input {...register("company")} id="company" type="text" placeholder="Your company name" autoComplete="organization" className={inputCls} />
                 </InputField>
 
                 <InputField id="subject" label="Subject" error={errors.subject?.message} required>
-                  <input
-                    {...register("subject")}
-                    id="subject"
-                    type="text"
-                    placeholder="e.g. MVP development for SaaS product"
-                    aria-invalid={!!errors.subject}
-                    className={inputCls}
-                  />
+                  <input {...register("subject")} id="subject" type="text" placeholder="e.g. MVP development for SaaS product" aria-invalid={!!errors.subject} className={inputCls} />
                 </InputField>
 
                 <InputField id="message" label="Message" error={errors.message?.message} required>
-                  <textarea
-                    {...register("message")}
-                    id="message"
-                    rows={5}
-                    placeholder="Describe your project, timeline, and what success looks like..."
-                    aria-invalid={!!errors.message}
-                    className={`${inputCls} resize-none`}
-                  />
+                  <textarea {...register("message")} id="message" rows={5} placeholder="Describe your project, timeline, and what success looks like..." aria-invalid={!!errors.message} className={`${inputCls} resize-none`} />
                 </InputField>
 
                 {status === "error" && (
-                  <div
-                    className="flex items-center gap-2.5 p-3.5 rounded-xl bg-red-500/8 border border-red-500/20 text-red-400 text-sm"
-                    role="alert"
-                  >
+                  <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-red-500/8 border border-red-500/20 text-red-400 text-sm" role="alert">
                     <AlertCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
                     Something went wrong. Please try again or email us directly at hello@pentacipher.com
                   </div>
@@ -261,23 +195,17 @@ export function ContactSection() {
                   type="submit"
                   disabled={status === "loading"}
                   aria-busy={status === "loading"}
-                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-bold text-sm bg-[#0891B2] text-white hover:bg-[#0E7490] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 hover:scale-[1.01]"
+                  className="group w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-bold text-sm bg-[#0891B2] text-white hover:bg-[#0E7490] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200"
                 >
                   {status === "loading" ? (
                     <>
-                      <span
-                        className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
-                        aria-hidden="true"
-                      />
+                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" aria-hidden="true" />
                       Sending…
                     </>
                   ) : (
                     <>
                       Send Message
-                      <Send
-                        className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
-                        aria-hidden="true"
-                      />
+                      <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                     </>
                   )}
                 </button>
@@ -291,9 +219,7 @@ export function ContactSection() {
               <div className="space-y-5">
                 {contactDetails.map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-start gap-4">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#0891B2]/8 border border-[#0891B2]/15 shrink-0">
-                      <Icon className="w-4 h-4 text-[#0891B2]" aria-hidden="true" />
-                    </div>
+                    <Icon className="w-4 h-4 text-[#0891B2] mt-1 shrink-0" aria-hidden="true" />
                     <div>
                       <p className="text-[#8BA3B8] text-xs font-medium uppercase tracking-wide">{label}</p>
                       {href ? (
@@ -320,12 +246,7 @@ export function ContactSection() {
                 <ul className="space-y-3" role="list">
                   {trustPoints.map((point) => (
                     <li key={point} className="flex items-start gap-2.5 text-sm text-[#4A6580]">
-                      <div
-                        className="flex items-center justify-center w-4 h-4 rounded-full bg-[#0891B2]/15 border border-[#0891B2]/25 shrink-0 mt-0.5"
-                        aria-hidden="true"
-                      >
-                        <Check className="w-2.5 h-2.5 text-[#0891B2]" />
-                      </div>
+                      <Check className="w-3.5 h-3.5 text-[#0891B2] shrink-0 mt-0.5" />
                       {point}
                     </li>
                   ))}

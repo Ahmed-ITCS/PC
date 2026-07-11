@@ -12,7 +12,6 @@ import {
 import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { GlowOrb } from "@/components/ui/GlowOrb";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -131,7 +130,6 @@ export default function ServicesPage() {
           className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-100"
           aria-hidden="true"
         />
-        <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.05} />
         <div className="relative z-10 container-max section-padding text-center flex flex-col items-center gap-6">
           <FadeIn>
             <SectionLabel>Our Services</SectionLabel>
@@ -163,10 +161,10 @@ export default function ServicesPage() {
               <FadeIn key={service.id} delay={i * 0.05}>
                 <article
                   id={service.id}
-                  className={`relative rounded-2xl border p-8 md:p-10 scroll-mt-24 transition-all duration-300 ${
+                  className={`relative rounded-2xl border p-8 md:p-10 scroll-mt-24 transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.99] ${
                     service.featured
-                      ? "border-[#0891B2]/25 bg-gradient-to-br from-[#0891B2]/5 to-[#E8F1F5]/80"
-                      : "border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0F2A44]/10"
+                      ? "border-[#0891B2]/25 bg-gradient-to-br from-[#0891B2]/5 to-[#E8F1F5]/80 hover:border-[#0891B2]/40 hover:shadow-card-hover"
+                      : "border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0F2A44]/10 hover:shadow-subtle"
                   }`}
                 >
                   {service.featured && (
@@ -201,7 +199,7 @@ export default function ServicesPage() {
                         {service.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2.5 py-1 rounded-md bg-[#0F2A44]/4 border border-[#0F2A44]/8 text-[#4A6580] text-xs font-medium"
+                            className="px-2.5 py-1 rounded-md bg-[#0F2A44]/4 border border-[#0F2A44]/8 text-[#4A6580] text-xs font-medium hover:bg-[#0891B2]/10 hover:text-[#0891B2] hover:border-[#0891B2]/20 transition-all duration-200"
                           >
                             {tag}
                           </span>

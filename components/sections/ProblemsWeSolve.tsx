@@ -8,8 +8,9 @@ import {
   TrendingUp,
   Trophy,
 } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const problems = [
   {
@@ -17,119 +18,126 @@ const problems = [
     title: "Keep Clients Happy",
     bullets: [
       "On-time delivery with weekly visibility",
-      "Clean, handoff-ready codebases clients love",
-      "Proactive communication — no nasty surprises",
+      "Clean, handoff-ready codebases",
+      "Proactive communication — no surprises",
     ],
   },
   {
     icon: UserMinus,
     title: "Avoid Hiring Overhead",
     bullets: [
-      "Skip recruitment, onboarding, and benefits costs",
-      "Scale your technical capacity up or down instantly",
-      "Senior talent without permanent head-count",
+      "Skip recruitment and benefits costs",
+      "Scale capacity up or down instantly",
+      "Senior talent without headcount",
     ],
   },
   {
     icon: Timer,
     title: "Deliver On Time",
     bullets: [
-      "Detailed scope and timeline agreed before work begins",
-      "Agile two-week sprints with live staging demos",
-      "Risk flagged early — never as a deadline excuse",
+      "Scope and timeline agreed before work begins",
+      "Two-week sprints with live demos",
+      "Risk flagged early — never as an excuse",
     ],
   },
   {
     icon: ShieldAlert,
     title: "Reduce Technical Risk",
     bullets: [
-      "Security-first architecture eliminates costly retrofits",
-      "Automated testing catches regressions before production",
-      "Architecture reviews prevent decisions you'll regret",
+      "Security-first architecture",
+      "Automated testing catches regressions",
+      "Architecture reviews prevent regret",
     ],
   },
   {
     icon: TrendingUp,
     title: "Scale Rapidly",
     bullets: [
-      "Cloud infrastructure designed for 10× traffic from day one",
-      "Feature-flag driven releases enable zero-downtime scaling",
-      "Observability stack built in so you can act before users notice",
+      "Infrastructure designed for 10× traffic",
+      "Feature-flag driven releases",
+      "Observability built in from day one",
     ],
   },
   {
     icon: Trophy,
     title: "Ensure Success",
     bullets: [
-      "100% project completion rate across all engagements",
-      "Full documentation and runbooks handed over at close",
-      "Optional ongoing retainer for SRE and support",
+      "100% project completion rate",
+      "Full documentation and runbooks",
+      "Optional ongoing SRE retainer",
     ],
   },
 ];
 
 export function ProblemsWeSolve() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <section
-      className="relative py-24 md:py-32 overflow-hidden"
-      aria-labelledby="problems-heading"
-      style={{ background: "transparent" }}
-    >
-      {/* Background dots */}
-      <div
-        className="absolute inset-0 bg-dot-pattern opacity-15"
-        aria-hidden="true"
-        style={{ backgroundSize: "24px 24px" }}
-      />
-
-      <div className="relative z-10 container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
-          <SectionLabel>Problems We Solve</SectionLabel>
-          <h2
-            id="problems-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
-            style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+    <section className="py-section" aria-labelledby="problems-heading" ref={ref}>
+      <div className="container-max section-padding">
+        <div className="mb-20">
+          <TextReveal
+            as="h2"
+            className="text-display-lg max-w-3xl"
           >
-            The Challenges We&apos;re{" "}
-            <span className="gradient-text">Built to Solve</span>
-          </h2>
-          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
-            Every engagement starts with understanding your pain points.
-            Here&apos;s what we hear most — and how we fix them.
-          </p>
-        </FadeIn>
+            The challenges we&apos;re{" "}
+            <span className="gradient-text">built to solve.</span>
+          </TextReveal>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
           {problems.map((problem, i) => {
             const Icon = problem.icon;
             return (
-              <FadeIn key={problem.title} delay={i * 0.08} direction="up">
-                <div className="group flex flex-col gap-4 rounded-xl border border-[#0F2A44]/8 bg-white/70 p-6 h-full hover:border-[#0891B2]/15 hover:-translate-y-1 hover:shadow-md transition-all duration-300 backdrop-blur-sm">
-                  <div className="flex items-center gap-3.5">
-                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#0891B2]/10 border border-[#0891B2]/20 group-hover:bg-[#0891B2]/15 group-hover:border-[#0891B2]/30 transition-all duration-200">
-                      <Icon className="w-5 h-5 text-[#0891B2]" aria-hidden="true" />
-                    </div>
-                    <h3
-                      className="text-[#0F2A44] font-bold text-base"
-                      style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+              <motion.div
+                key={problem.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.1 + i * 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group/card space-y-4 rounded-2xl p-6 -m-6 hover:bg-white/60 hover:shadow-card hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
+              >
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.2 + i * 0.1,
+                    type: "spring",
+                    stiffness: 200,
+                  }}
+                  className="group-hover/card:rotate-[360deg] transition-transform duration-700"
+                >
+                  <Icon className="w-5 h-5 text-[#0891B2]" aria-hidden="true" />
+                </motion.div>
+                <h3
+                  className="text-[#0F2A44] font-semibold text-base group-hover/card:text-[#0891B2] transition-colors duration-300"
+                  style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                >
+                  {problem.title}
+                </h3>
+                <ul className="space-y-2" role="list">
+                  {problem.bullets.map((b, j) => (
+                    <motion.li
+                      key={b}
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.3 + i * 0.1 + j * 0.06,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="text-[#4A6580] text-sm leading-relaxed list-disc marker:text-[#0891B2]/40 pl-4"
                     >
-                      {problem.title}
-                    </h3>
-                  </div>
-
-                  <ul className="space-y-2.5" role="list">
-                    {problem.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm text-[#4A6580] leading-relaxed">
-                        <span
-                          className="w-1 h-1 rounded-full bg-[#0891B2]/50 shrink-0 mt-2"
-                          aria-hidden="true"
-                        />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeIn>
+                      {b}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
             );
           })}
         </div>

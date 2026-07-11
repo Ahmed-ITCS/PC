@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -48,48 +49,82 @@ export function Navbar() {
           aria-label="Main navigation"
         >
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0891B2] rounded-lg"
-            aria-label="PentaCipher home"
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-[#0891B2]/10 border border-[#0891B2]/20 group-hover:bg-[#0891B2]/15 group-hover:border-[#0891B2]/30 transition-all duration-200">
-              <Shield className="w-4 h-4 text-[#0891B2]" aria-hidden="true" />
-            </div>
-            <span
-              className="text-[#0F2A44] font-semibold text-base tracking-tight"
-              style={{ fontFamily: "var(--font-display, Syne, sans-serif)" }}
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0891B2] rounded-lg"
+              aria-label="PentaCipher home"
             >
-              PentaCipher
-            </span>
-          </Link>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative flex items-center justify-center w-8 h-8 rounded-lg overflow-hidden transition-all duration-300"
+              >
+                <img src="/logo.jpeg" alt="PentaCipher" className="w-full h-full object-contain" />
+              </motion.div>
+              <span
+                className="text-[#0F2A44] font-semibold text-base tracking-tight"
+                style={{ fontFamily: "var(--font-display, Syne, sans-serif)" }}
+              >
+                PentaCipher
+              </span>
+            </Link>
+          </motion.div>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
+            {navLinks.map((link, i) => (
+              <motion.div
                 key={link.href}
-                href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#0891B2] ${
-                  pathname === link.href
-                    ? "text-[#0891B2] border-b-2 border-[#0891B2] rounded-none pb-[6px]"
-                    : "text-[#4A6580] hover:text-[#0F2A44] hover:bg-[#0891B2]/5 border-b-2 border-transparent pb-[6px]"
-                }`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.1 + i * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={link.href}
+                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#0891B2] ${
+                    pathname === link.href
+                      ? "text-[#0891B2]"
+                      : "text-[#4A6580] hover:text-[#0F2A44]"
+                  }`}
+                >
+                  {link.label}
+                  {pathname === link.href && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#0891B2] rounded-full"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              </motion.div>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden md:flex items-center gap-3"
+          >
+            <MagneticButton
+              as="a"
               href="/contact"
               className="btn-primary text-white bg-[#0891B2] hover:bg-[#0E7490] font-semibold"
+              strength={0.15}
             >
               Start a Project
-            </Link>
-          </div>
+            </MagneticButton>
+          </motion.div>
 
           {/* Mobile menu toggle */}
           <button
@@ -99,7 +134,29 @@ export function Navbar() {
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            <AnimatePresence mode="wait">
+              {mobileOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="w-5 h-5" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="w-5 h-5" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </nav>
       </header>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Clock, Users, TrendingUp } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { GlowOrb } from "@/components/ui/GlowOrb";
 import { CTA } from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
@@ -80,7 +79,6 @@ export default function CaseStudiesPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden" aria-label="Case studies hero">
         <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-100" aria-hidden="true" />
-        <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.05} />
         <div className="relative z-10 container-max section-padding flex flex-col items-center text-center gap-6">
           <FadeIn>
             <SectionLabel>Case Studies</SectionLabel>
@@ -108,7 +106,7 @@ export default function CaseStudiesPage() {
           {cases.map((c, i) => (
             <FadeIn key={c.slug} delay={i * 0.08}>
               <article
-                className="rounded-2xl border border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0F2A44]/10 transition-all duration-300 overflow-hidden"
+                className="rounded-2xl border border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0F2A44]/10 hover:border-[#0891B2]/15 hover:-translate-y-0.5 hover:shadow-card-hover active:scale-[0.99] transition-all duration-300 overflow-hidden"
                 aria-labelledby={`case-${c.slug}-title`}
               >
                 <div className="p-8 md:p-10 space-y-8">
@@ -156,7 +154,7 @@ export default function CaseStudiesPage() {
                   {/* Metrics */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 rounded-xl bg-[#E8F1F5]/60 border border-[#0F2A44]/5">
                     {c.metrics.map((m) => (
-                      <div key={m.label} className="flex items-center gap-3">
+                      <div key={m.label} className="flex items-center gap-3 hover:bg-white/60 rounded-lg p-2 -m-2 transition-all duration-200">
                         <TrendingUp className="w-4 h-4 text-[#0891B2]/50 shrink-0" aria-hidden="true" />
                         <div>
                           <p className="text-[#4A6580] text-xs">{m.label}</p>
@@ -180,7 +178,7 @@ export default function CaseStudiesPage() {
                     {c.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-2.5 py-1 rounded-md bg-[#0F2A44]/4 border border-[#0F2A44]/6 text-[#4A6580] text-xs font-medium"
+                        className="px-2.5 py-1 rounded-md bg-[#0F2A44]/4 border border-[#0F2A44]/6 text-[#4A6580] text-xs font-medium hover:bg-[#0891B2]/10 hover:text-[#0891B2] hover:border-[#0891B2]/20 transition-all duration-200"
                       >
                         {t}
                       </span>

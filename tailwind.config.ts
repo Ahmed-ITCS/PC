@@ -38,24 +38,20 @@ const config: Config = {
         body: ["var(--font-body)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
-      backgroundImage: {
-        "grid-pattern":
-          "linear-gradient(rgba(8,145,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(8,145,178,0.04) 1px, transparent 1px)",
-        "dot-pattern":
-          "radial-gradient(circle, rgba(8,145,178,0.06) 1px, transparent 1px)",
-        "glow-cyan":
-          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(8,145,178,0.06) 0%, transparent 70%)",
-        "glow-bottom":
-          "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(8,145,178,0.04) 0%, transparent 70%)",
+      fontSize: {
+        "display-xl": ["clamp(3rem, 8vw, 7rem)", { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "700" }],
+        "display-lg": ["clamp(2.5rem, 6vw, 5rem)", { lineHeight: "1.05", letterSpacing: "-0.025em", fontWeight: "700" }],
+        "display-md": ["clamp(2rem, 4vw, 3.5rem)", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+        "display-sm": ["clamp(1.5rem, 3vw, 2.25rem)", { lineHeight: "1.2", letterSpacing: "-0.015em", fontWeight: "600" }],
       },
-      backgroundSize: {
-        "grid-lg": "80px 80px",
-        "dot-sm": "24px 24px",
+      spacing: {
+        "section": "clamp(6rem, 12vw, 10rem)",
+        "section-sm": "clamp(4rem, 8vw, 6rem)",
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease forwards",
         "slide-up": "slideUp 0.6s ease forwards",
-        counter: "counter 2s ease-out forwards",
+        marquee: "marquee 30s linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -66,13 +62,15 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(24px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       boxShadow: {
-        "subtle-sm": "0 1px 3px rgba(15,42,68,0.06), 0 4px 12px rgba(15,42,68,0.04)",
-        "subtle-md": "0 2px 6px rgba(15,42,68,0.06), 0 8px 24px rgba(15,42,68,0.06)",
-        "subtle-lg": "0 4px 12px rgba(15,42,68,0.06), 0 16px 48px rgba(15,42,68,0.08)",
-        card: "0 1px 3px rgba(15,42,68,0.06), 0 8px 32px rgba(15,42,68,0.04)",
-        "card-hover": "0 2px 8px rgba(15,42,68,0.08), 0 16px 48px rgba(15,42,68,0.06), 0 0 0 1px rgba(8,145,178,0.1)",
+        subtle: "0 1px 3px rgba(15,42,68,0.04), 0 4px 16px rgba(15,42,68,0.03)",
+        card: "0 1px 3px rgba(15,42,68,0.04), 0 8px 32px rgba(15,42,68,0.03)",
+        "card-hover": "0 2px 8px rgba(15,42,68,0.06), 0 16px 48px rgba(15,42,68,0.05), 0 0 0 1px rgba(8,145,178,0.08)",
       },
     },
   },

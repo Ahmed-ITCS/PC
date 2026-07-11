@@ -1,71 +1,75 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
+  glareColor?: string;
   intensity?: number;
 }
 
-export function TiltCard({ children, className = "", intensity = 12 }: TiltCardProps) {
+export function TiltCard({
+  children,
+  className = "",
+  glareColor = "#0891B2",
+  intensity = 15,
+}: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const el = ref.current;
-      const glow = glowRef.current;
-      if (!el) return;
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [intensity, -intensity]), {
+    damping: 20,
+    stiffness: 200,
+  });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-intensity, intensity]), {
+    damping: 20,
+    stiffness: 200,
+  });
 
-      const rotX = ((y - cy) / cy) * -intensity;
-      const rotY = ((x - cx) / cx) * intensity;
+  const glareOpacity = useSpring(useTransform(y, [-0.5, 0.5], [0, 0.15]), {
+    damping: 20,
+    stiffness: 200,
+  });
 
-      el.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
-      el.style.transition = "transform 0.1s ease-out";
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const xPos = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPos = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(xPos);
+    y.set(yPos);
+  };
 
-      if (glow) {
-        const px = (x / rect.width) * 100;
-        const py = (y / rect.height) * 100;
-        glow.style.background = `radial-gradient(220px circle at ${px}% ${py}%, rgba(8,145,178,0.06), transparent 70%)`;
-        glow.style.opacity = "1";
-      }
-    },
-    [intensity]
-  );
-
-  const handleMouseLeave = useCallback(() => {
-    const el = ref.current;
-    const glow = glowRef.current;
-    if (el) {
-      el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
-      el.style.transition = "transform 0.5s ease-out";
-    }
-    if (glow) {
-      glow.style.opacity = "0";
-    }
-  }, []);
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
-    <div
+    <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformPerspective: 1000,
+      }}
       className={`relative ${className}`}
-      style={{ transformStyle: "preserve-3d", willChange: "transform" }}
     >
       {children}
-      <div
-        ref={glowRef}
-        className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-0 transition-opacity duration-300"
-        aria-hidden="true"
+      {/* Glare overlay */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{
+          background: `linear-gradient(135deg, ${glareColor}20 0%, transparent 60%)`,
+          opacity: glareOpacity,
+        }}
       />
-    </div>
+    </motion.div>
   );
 }

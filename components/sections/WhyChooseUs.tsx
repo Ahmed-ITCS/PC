@@ -10,114 +10,76 @@ import {
   Lightbulb,
   Handshake,
 } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { TiltCard } from "@/components/ui/TiltCard";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const reasons = [
-  {
-    icon: Zap,
-    title: "Rapid Development",
-    description:
-      "Sprints start within two weeks of signing. We move fast without cutting corners on security or quality.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Enterprise Security",
-    description:
-      "Every line of code is written with security in mind — OWASP compliance, secrets management, and zero-trust by default.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Expert Team",
-    description:
-      "Senior engineers with 5–12 years of production experience. No juniors learning on your project.",
-  },
-  {
-    icon: Target,
-    title: "Business-Focused",
-    description:
-      "We align technical decisions with your business outcomes — not just what's technically interesting.",
-  },
-  {
-    icon: Clock,
-    title: "24/7 Support",
-    description:
-      "Critical issues get a response at any hour. We maintain on-call coverage for all active engagements.",
-  },
-  {
-    icon: Award,
-    title: "Proven Track Record",
-    description:
-      "100% project completion rate across 50+ clients. Zero security breaches across all client systems.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation First",
-    description:
-      "We bring emerging technology — AI/ML integrations, edge compute, modern data stack — only when it genuinely adds value.",
-  },
-  {
-    icon: Handshake,
-    title: "Dedicated Partnership",
-    description:
-      "You get a named team that knows your codebase, context, and goals — not a ticket queue.",
-  },
+  { icon: Zap, title: "Rapid Development", description: "Sprints start within two weeks. We move fast without cutting corners." },
+  { icon: ShieldCheck, title: "Enterprise Security", description: "OWASP compliance, secrets management, and zero-trust by default." },
+  { icon: GraduationCap, title: "Expert Team", description: "Senior engineers with 5–12 years of production experience." },
+  { icon: Target, title: "Business-Focused", description: "Technical decisions aligned with your business outcomes." },
+  { icon: Clock, title: "24/7 Support", description: "Critical issues get a response at any hour." },
+  { icon: Award, title: "Proven Track Record", description: "100% completion rate. Zero security breaches." },
+  { icon: Lightbulb, title: "Innovation First", description: "Emerging tech only when it genuinely adds value." },
+  { icon: Handshake, title: "Dedicated Partnership", description: "A named team that knows your codebase and goals." },
 ];
 
 export function WhyChooseUs() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <section
-      className="relative py-24 md:py-32 overflow-hidden"
-      aria-labelledby="why-choose-us-heading"
-      style={{ background: "transparent" }}
-    >
-      <div
-        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20"
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
-          <SectionLabel>Why PentaCipher</SectionLabel>
-          <h2
-            id="why-choose-us-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
-            style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+    <section className="py-section" aria-labelledby="why-choose-us-heading" ref={ref}>
+      <div className="container-max section-padding">
+        <div className="mb-20">
+          <TextReveal
+            as="h2"
+            className="text-display-lg max-w-3xl"
           >
-            Eight Reasons Clients{" "}
-            <span className="gradient-text">Come Back Every Time</span>
-          </h2>
-          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
-            We&apos;ve earned long-term partnerships by combining technical
-            depth with a working style that feels like an internal team.
-          </p>
-        </FadeIn>
+            Why clients{" "}
+            <span className="gradient-text">come back every time.</span>
+          </TextReveal>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
           {reasons.map((reason, i) => {
             const Icon = reason.icon;
             return (
-              <FadeIn key={reason.title} delay={i * 0.07} direction="up">
-                <TiltCard className="h-full rounded-xl" intensity={10}>
-                <div className="group flex flex-col gap-4 rounded-xl border border-[#0F2A44]/8 bg-white/70 p-6 h-full hover:border-[#0891B2]/15 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#0891B2]/15 to-[#0891B2]/5 border border-[#0891B2]/20 group-hover:border-[#0891B2]/35 transition-all duration-200">
-                    <Icon className="w-5 h-5 text-[#0891B2]" aria-hidden="true" />
-                  </div>
-                  <div className="space-y-2">
-                    <h3
-                      className="text-[#0F2A44] font-bold text-sm"
-                      style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-                    >
-                      {reason.title}
-                    </h3>
-                    <p className="text-[#4A6580] text-sm leading-relaxed">
-                      {reason.description}
-                    </p>
-                  </div>
-                </div>
-                </TiltCard>
-              </FadeIn>
+              <motion.div
+                key={reason.title}
+                initial={{ opacity: 0, y: 24 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.1 + i * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group/card space-y-4 rounded-2xl p-5 -m-5 hover:bg-white/60 hover:shadow-subtle hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : { scale: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.2 + i * 0.08,
+                    type: "spring",
+                    stiffness: 300,
+                  }}
+                  className="w-10 h-10 rounded-xl bg-[#0891B2]/8 flex items-center justify-center group-hover/card:bg-[#0891B2] transition-all duration-300"
+                >
+                  <Icon className="w-5 h-5 text-[#0891B2] group-hover/card:text-white transition-colors duration-300" aria-hidden="true" />
+                </motion.div>
+                <h3
+                  className="text-[#0F2A44] font-semibold text-base group-hover/card:text-[#0891B2] transition-colors duration-300"
+                  style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                >
+                  {reason.title}
+                </h3>
+                <p className="text-[#4A6580] text-sm leading-relaxed">
+                  {reason.description}
+                </p>
+              </motion.div>
             );
           })}
         </div>

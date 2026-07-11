@@ -1,126 +1,120 @@
 "use client";
 
 import { Building2, Rocket, Briefcase, Users } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { TiltCard } from "@/components/ui/TiltCard";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const segments = [
   {
     icon: Building2,
     title: "Digital Agencies",
-    color: "text-[#0891B2]",
-    bg: "bg-[#0891B2]/8",
-    border: "border-[#0891B2]/15",
     challenges: [
       "Clients demand technical deliverables you don't have in-house",
       "Tight margins make hiring full-time engineers impractical",
-      "Delivery delays threaten client relationships and renewals",
+      "Delivery delays threaten client relationships",
     ],
   },
   {
     icon: Rocket,
     title: "Growing Startups",
-    color: "text-violet-400",
-    bg: "bg-violet-500/8",
-    border: "border-violet-400/15",
     challenges: [
-      "Moving fast creates security and technical debt you'll pay later",
-      "Hiring senior engineers at early-stage budgets is nearly impossible",
-      "Scaling infrastructure beyond the MVP without dedicated DevOps expertise",
+      "Moving fast creates security and technical debt",
+      "Hiring senior engineers at early-stage budgets is hard",
+      "Scaling infrastructure without dedicated DevOps",
     ],
   },
   {
     icon: Briefcase,
     title: "Enterprise Businesses",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/8",
-    border: "border-emerald-400/15",
     challenges: [
-      "Legacy systems blocking adoption of modern cloud-native architecture",
-      "Compliance requirements (SOC 2, ISO 27001) slow development velocity",
-      "Internal teams lack specialised DevOps and security expertise",
+      "Legacy systems blocking cloud-native architecture",
+      "Compliance requirements slow development velocity",
+      "Internal teams lack specialised DevOps expertise",
     ],
   },
   {
     icon: Users,
     title: "Consulting Firms",
-    color: "text-amber-400",
-    bg: "bg-amber-500/8",
-    border: "border-amber-400/15",
     challenges: [
-      "Advising on technical strategy without a trusted delivery partner",
-      "Client engagements expand into execution you're not staffed for",
-      "Technology recommendations need a vetted team to bring them to life",
+      "Advising on tech strategy without a delivery partner",
+      "Client engagements expand beyond your staffing",
+      "Technology recommendations need a vetted team",
     ],
   },
 ];
 
 export function WhoWeHelp() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <section
-      className="relative py-24 md:py-32 overflow-hidden"
-      aria-labelledby="who-we-help-heading"
-      style={{ background: "transparent" }}
-    >
-      <div
-        className="absolute inset-0 bg-glow-cyan opacity-10"
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
-          <SectionLabel>Who We Help</SectionLabel>
-          <h2
-            id="who-we-help-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
-            style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+    <section className="py-section" aria-labelledby="who-we-help-heading" ref={ref}>
+      <div className="container-max section-padding">
+        <div className="mb-20">
+          <TextReveal
+            as="h2"
+            className="text-display-lg max-w-3xl"
           >
-            Built for Teams That Need to{" "}
-            <span className="gradient-text">Move Without Friction</span>
-          </h2>
-          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
-            We work with four types of organisations — each with distinct
-            challenges we&apos;ve solved dozens of times over.
-          </p>
-        </FadeIn>
+            Built for teams that need to{" "}
+            <span className="gradient-text">move without friction.</span>
+          </TextReveal>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {segments.map((seg, i) => {
             const Icon = seg.icon;
             return (
-              <FadeIn key={seg.title} delay={i * 0.1} direction="up">
-                <TiltCard className="h-full rounded-2xl">
-                <div className="flex flex-col gap-5 rounded-2xl border border-[#0F2A44]/8 bg-white/70 p-7 h-full hover:border-[#0891B2]/15 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
-                  <div className="flex items-center gap-4">
-                    <div
-                      className={`flex items-center justify-center w-13 h-13 rounded-xl border ${seg.bg} ${seg.border} shadow-sm`}
-                      style={{ width: "3.25rem", height: "3.25rem" }}
-                    >
-                      <Icon className={`w-6 h-6 ${seg.color}`} aria-hidden="true" />
-                    </div>
-                    <h3
-                      className="text-[#0F2A44] font-semibold text-lg"
-                      style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-                    >
-                      {seg.title}
-                    </h3>
-                  </div>
-
-                  <ul className="space-y-3" role="list">
-                    {seg.challenges.map((c) => (
-                      <li key={c} className="flex items-start gap-3 text-sm text-[#4A6580] leading-relaxed">
-                        <span
-                          className={`w-1.5 h-1.5 rounded-full ${seg.color.replace("text-", "bg-")} shrink-0 mt-2`}
-                          aria-hidden="true"
-                        />
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
+              <motion.div
+                key={seg.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.1 + i * 0.12,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group/card space-y-5 rounded-2xl p-6 -m-6 hover:bg-white/60 hover:shadow-subtle hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300"
+              >
+                <div className="flex items-center gap-3">
+                  <motion.div
+                    initial={{ scale: 0, rotate: -45 }}
+                    animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -45 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.2 + i * 0.12,
+                      type: "spring",
+                      stiffness: 200,
+                    }}
+                    className="group-hover/card:scale-110 group-hover/card:rotate-6 transition-transform duration-300"
+                  >
+                    <Icon className="w-5 h-5 text-[#0891B2]" aria-hidden="true" />
+                  </motion.div>
+                  <h3
+                    className="text-[#0F2A44] font-semibold text-lg group-hover/card:text-[#0891B2] transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                  >
+                    {seg.title}
+                  </h3>
                 </div>
-                </TiltCard>
-              </FadeIn>
+                <ul className="space-y-3 pl-8" role="list">
+                  {seg.challenges.map((c, j) => (
+                    <motion.li
+                      key={c}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.3 + i * 0.12 + j * 0.08,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="text-[#4A6580] text-sm leading-relaxed list-disc marker:text-[#0891B2]/40"
+                    >
+                      {c}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
             );
           })}
         </div>

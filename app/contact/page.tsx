@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Mail, MessageSquare, Calendar, Shield } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { GlowOrb } from "@/components/ui/GlowOrb";
 import { ContactFormFull } from "@/components/ContactFormFull";
 
 export const metadata: Metadata = {
@@ -57,7 +56,6 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-16 overflow-hidden" aria-label="Contact hero">
         <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-100" aria-hidden="true" />
-        <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.05} />
         <div className="relative z-10 container-max section-padding flex flex-col items-center text-center gap-6">
           <FadeIn>
             <SectionLabel>Get in Touch</SectionLabel>
@@ -94,7 +92,7 @@ export default function ContactPage() {
               <FadeIn direction="left" delay={0.1}>
                 <div className="space-y-5">
                   {contactInfo.map(({ icon: Icon, label, value, href }) => (
-                    <div key={label} className="flex items-start gap-4">
+                    <div key={label} className="flex items-start gap-4 hover:bg-[#0891B2]/[0.03] rounded-xl p-3 -m-3 transition-all duration-200">
                       <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#0891B2]/8 border border-[#0891B2]/15 shrink-0">
                         <Icon className="w-4 h-4 text-[#0891B2]" aria-hidden="true" />
                       </div>
@@ -117,7 +115,7 @@ export default function ContactPage() {
               </FadeIn>
 
               <FadeIn direction="left" delay={0.15}>
-                <div className="p-5 rounded-xl border border-[#0891B2]/15 bg-[#0891B2]/5">
+                <div className="p-5 rounded-xl border border-[#0891B2]/15 bg-[#0891B2]/5 hover:-translate-y-0.5 hover:shadow-subtle hover:border-[#0891B2]/25 active:scale-[0.98] transition-all duration-300">
                   <div className="flex items-center gap-2.5 mb-3">
                     <Shield className="w-4 h-4 text-[#0891B2]" aria-hidden="true" />
                     <span className="text-[#0891B2] text-sm font-semibold">NDA Available</span>
@@ -137,7 +135,7 @@ export default function ContactPage() {
                   </h2>
                   <div className="space-y-4">
                     {faqs.map((faq) => (
-                      <div key={faq.q} className="space-y-1.5">
+                      <div key={faq.q} className="space-y-1.5 hover:border-l-2 hover:border-[#0891B2] hover:bg-[#0891B2]/[0.02] hover:pl-3 hover:py-1 transition-all duration-200 border-l-2 border-transparent">
                         <p className="text-[#0F2A44] text-sm font-medium">{faq.q}</p>
                         <p className="text-[#4A6580] text-sm leading-relaxed">{faq.a}</p>
                       </div>

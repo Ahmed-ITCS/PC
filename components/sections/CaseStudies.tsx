@@ -1,328 +1,138 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ExternalLink, Clock } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { TextReveal } from "@/components/ui/TextReveal";
 
-type CaseStudy = {
-  client: string;
-  tagline: string;
-  challenge: string;
-  solution: string;
-  stats: { value: number; suffix: string; prefix?: string; label: string }[];
-  stack: string[];
-  timeline: string;
-  gradientFrom: string;
-  gradientTo: string;
-  accentColor: string;
-};
-
-const caseStudies: CaseStudy[] = [
+const caseStudies = [
   {
     client: "Narrato",
     tagline: "Story Collaboration Platform",
-    challenge:
-      "A content-tech startup needed a real-time collaborative writing platform for editorial teams — think Google Docs meets Notion, built for publishers. Their existing prototype couldn't handle concurrent edits and had no access-control model.",
-    solution:
-      "PentaCipher rebuilt the platform on a Next.js / Node.js stack with operational transforms for real-time collaboration, fine-grained RBAC, and an event-sourced audit log. Deployed to AWS with a zero-downtime blue-green pipeline.",
-    stats: [
-      { value: 40, suffix: "%", label: "Faster page loads" },
-      { value: 99, suffix: ".9%", label: "Uptime SLA achieved" },
-      { value: 12, suffix: "wks", label: "From spec to launch" },
-    ],
-    stack: ["Next.js", "Node.js", "PostgreSQL", "Redis", "AWS ECS", "GitHub Actions"],
-    timeline: "12 weeks",
-    gradientFrom: "#00d4ff",
-    gradientTo: "#0066cc",
-    accentColor: "#00d4ff",
+    description:
+      "Real-time collaborative writing platform for editorial teams. Rebuilt on Next.js with operational transforms and event-sourced audit log.",
+    stats: "40% faster page loads · 99.9% uptime",
+    stack: ["Next.js", "Node.js", "PostgreSQL", "AWS"],
+    color: "#0891B2",
   },
   {
     client: "AirDrive",
     tagline: "P2P Car Rental Marketplace",
-    challenge:
-      "A mobility startup was scaling a peer-to-peer car rental marketplace across three cities. Their monolithic Rails app couldn't handle the transaction volume and payment flow was riddled with race conditions causing double-bookings.",
-    solution:
-      "PentaCipher extracted a payment and booking microservice in Go, implemented idempotent reservation logic, and migrated the frontend to a React / Next.js SPA. The cloud infrastructure was redesigned on GCP with auto-scaling and real-time availability sync.",
-    stats: [
-      { value: 0, suffix: "", label: "Double-bookings post-launch", prefix: "Zero" },
-      { value: 3, suffix: "×", label: "Transaction throughput increase" },
-      { value: 60, suffix: "%", label: "Infrastructure cost reduction" },
-    ],
-    stack: ["React", "Next.js", "Go", "PostgreSQL", "GCP GKE", "Stripe", "Terraform"],
-    timeline: "16 weeks",
-    gradientFrom: "#7c3aed",
-    gradientTo: "#4f46e5",
-    accentColor: "#a78bfa",
+    description:
+      "Extracted payment microservice in Go, migrated frontend to React/Next.js, redesigned cloud infrastructure on GCP with auto-scaling.",
+    stats: "Zero double-bookings · 3× throughput",
+    stack: ["React", "Go", "GCP", "Stripe"],
+    color: "#6366F1",
   },
   {
     client: "UniFix",
     tagline: "Study Abroad Platform",
-    challenge:
-      "An edtech company helping students navigate international university applications needed a unified platform to replace a tangle of spreadsheets and manual email workflows. Data security was critical given the volume of personal student documents.",
-    solution:
-      "PentaCipher built a multi-tenant SaaS platform with document management (encrypted at rest), automated status workflows, and a student-facing portal. SOC 2-readiness was built in from the start with full audit logging and secrets management via AWS Secrets Manager.",
-    stats: [
-      { value: 85, suffix: "%", label: "Reduction in admin time" },
-      { value: 5000, suffix: "+", label: "Students onboarded in month one" },
-      { value: 100, suffix: "%", label: "SOC 2 audit pass rate" },
-    ],
-    stack: ["Next.js", "Python", "PostgreSQL", "AWS", "Vault", "Datadog"],
-    timeline: "20 weeks",
-    gradientFrom: "#059669",
-    gradientTo: "#0d9488",
-    accentColor: "#34d399",
+    description:
+      "Multi-tenant SaaS with encrypted document management, automated workflows, and SOC 2-readiness built in from day one.",
+    stats: "85% admin time reduction · 5000+ students",
+    stack: ["Next.js", "Python", "AWS", "Datadog"],
+    color: "#059669",
   },
 ];
 
-function MockupFrame({
-  gradientFrom,
-  gradientTo,
-  accentColor,
-  client,
-}: {
-  gradientFrom: string;
-  gradientTo: string;
-  accentColor: string;
-  client: string;
-}) {
-  return (
-    <div
-      className="relative rounded-xl overflow-hidden border border-[#0F2A44]/8 aspect-video bg-[#E8F1F5] shadow-[0_4px_24px_rgba(15,42,68,0.08)]"
-      aria-label={`${client} product mockup`}
-    >
-      {/* Gradient mesh background */}
-      <div
-        className="absolute inset-0 opacity-25"
-        style={{
-          background: `radial-gradient(ellipse 80% 60% at 30% 40%, ${gradientFrom}55 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 70% 60%, ${gradientTo}44 0%, transparent 60%)`,
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Browser chrome */}
-      <div className="absolute top-0 inset-x-0 h-8 bg-[#E8F1F5]/80 border-b border-[#0F2A44]/6 flex items-center px-4 gap-2">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#0F2A44]/10" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#0F2A44]/10" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#0F2A44]/10" />
-        </div>
-        <div className="flex-1 h-4 rounded bg-[#0F2A44]/5 mx-4 max-w-40" />
-      </div>
-
-      {/* Fake UI content */}
-      <div className="absolute inset-0 top-8 flex items-center justify-center p-6">
-        <div className="space-y-3 w-full max-w-xs">
-          <div
-            className="h-5 rounded-md w-2/3"
-            style={{ background: `${accentColor}25` }}
-          />
-          <div className="h-3 rounded w-full bg-[#0F2A44]/5" />
-          <div className="h-3 rounded w-5/6 bg-[#0F2A44]/5" />
-          <div className="h-3 rounded w-4/6 bg-[#0F2A44]/5" />
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            {[1, 2, 3].map((n) => (
-              <div
-                key={n}
-                className="h-12 rounded-lg"
-                style={{ background: `${accentColor}12`, border: `1px solid ${accentColor}20` }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* "Real screenshots coming" overlay */}
-      <div className="absolute bottom-3 right-3">
-        <span className="text-[10px] text-[#8BA3B8] font-mono">mockup — real screenshots coming</span>
-      </div>
-    </div>
-  );
-}
-
 export function CaseStudies() {
-  const [current, setCurrent] = useState(0);
-  const total = caseStudies.length;
-
-  const prev = () => setCurrent((c) => (c - 1 + total) % total);
-  const next = () => setCurrent((c) => (c + 1) % total);
-
-  const cs = caseStudies[current];
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="py-section section-padding"
+      ref={ref}
       aria-labelledby="case-studies-heading"
-      style={{ background: "transparent" }}
     >
-      <div className="absolute inset-0 bg-glow-bottom opacity-50" aria-hidden="true" />
-
-      <div className="relative z-10 container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
-          <SectionLabel>Case Studies</SectionLabel>
-          <h2
-            id="case-studies-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
-            style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-          >
-            Real Projects,{" "}
-            <span className="gradient-text">Measurable Results</span>
-          </h2>
-          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
-            A selection of recent engagements — each representing a distinct
-            challenge, approach, and outcome.
-          </p>
-        </FadeIn>
-
-        <div className="rounded-2xl border border-[#0F2A44]/8 bg-white/70 overflow-hidden backdrop-blur-sm">
-          {/* Slide nav header */}
-          <div className="flex items-center justify-between px-6 md:px-8 py-4 border-b border-[#0F2A44]/6">
-            <div className="flex items-center gap-3">
-              {caseStudies.map((c, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  aria-label={`View ${c.client} case study`}
-                  aria-current={i === current ? "true" : undefined}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
-                    i === current
-                      ? "bg-[#0891B2]/10 text-[#0891B2] border border-[#0891B2]/25"
-                      : "text-[#8BA3B8] hover:text-[#4A6580] hover:bg-[#F0F7FA]"
-                  }`}
-                >
-                  {c.client}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                onClick={prev}
-                aria-label="Previous case study"
-                className="p-1.5 rounded-lg border border-[#0F2A44]/8 text-[#8BA3B8] hover:text-[#0F2A44] hover:border-[#0F2A44]/20 hover:bg-[#F0F7FA] transition-all duration-150"
-              >
-                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              </button>
-              <button
-                onClick={next}
-                aria-label="Next case study"
-                className="p-1.5 rounded-lg border border-[#0F2A44]/8 text-[#8BA3B8] hover:text-[#0F2A44] hover:border-[#0F2A44]/20 hover:bg-[#F0F7FA] transition-all duration-150"
-              >
-                <ChevronRight className="w-4 h-4" aria-hidden="true" />
-              </button>
-            </div>
+      <div className="container-max">
+        <div className="flex items-end justify-between mb-16">
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#0891B2] mb-4 font-medium">
+              Case Studies
+            </p>
+            <TextReveal
+              as="h2"
+              className="text-display-md"
+            >
+              Client outcomes
+            </TextReveal>
           </div>
 
-          {/* Case study content */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="grid lg:grid-cols-2 gap-8 lg:gap-12 p-6 md:p-8 lg:p-10"
+          <motion.a
+            href="/case-studies"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="hidden md:flex items-center gap-2 text-sm text-[#4A6580] hover:text-[#0891B2] transition-colors group"
+          >
+            All case studies
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </motion.a>
+        </div>
+
+        <div className="space-y-4">
+          {caseStudies.map((cs, i) => (
+            <motion.a
+              key={cs.client}
+              href="/contact"
+              initial={{ clipPath: "inset(0 100% 0 0)" }}
+              animate={isInView ? { clipPath: "inset(0 0% 0 0)" } : { clipPath: "inset(0 100% 0 0)" }}
+              transition={{
+                duration: 0.7,
+                delay: 0.1 + i * 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="group flex flex-col md:flex-row md:items-center gap-6 md:gap-12 p-6 md:p-8 rounded-2xl border border-[#0F2A44]/6 hover:border-[#0891B2]/15 hover:bg-white/50 transition-all duration-300"
+              data-cursor="View"
             >
-              {/* Left */}
-              <div className="space-y-6">
-                {/* Client header */}
-                <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <h3
-                      className="text-2xl md:text-3xl font-bold text-[#0F2A44]"
-                      style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-                    >
-                      {cs.client}
-                    </h3>
-                    <div className="flex items-center gap-1.5 text-[#8BA3B8] text-xs">
-                      <Clock className="w-3.5 h-3.5" aria-hidden="true" />
-                      {cs.timeline}
-                    </div>
-                  </div>
-                  <p className="text-[#0891B2] text-sm font-medium">{cs.tagline}</p>
-                </div>
+              {/* Left: Project name */}
+              <div className="md:w-1/4">
+                <h3
+                  className="text-2xl md:text-3xl font-bold transition-colors duration-300 group-hover:text-[#0891B2]"
+                  style={{
+                    fontFamily: "var(--font-syne), Syne, sans-serif",
+                    color: cs.color,
+                  }}
+                >
+                  {cs.client}
+                </h3>
+                <p className="text-sm text-[#4A6580] mt-1">{cs.tagline}</p>
+              </div>
 
-                {/* Challenge / Solution */}
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#8BA3B8] mb-1.5">
-                      Challenge
-                    </p>
-                    <p className="text-[#4A6580] text-sm leading-relaxed">{cs.challenge}</p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#8BA3B8] mb-1.5">
-                      Solution
-                    </p>
-                    <p className="text-[#4A6580] text-sm leading-relaxed">{cs.solution}</p>
-                  </div>
-                </div>
-
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-3">
-                  {cs.stats.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="rounded-xl border border-[#0891B2]/12 bg-[#0891B2]/5 p-3 text-center"
+              {/* Center: Description */}
+              <div className="md:w-2/4">
+                <p className="text-[#4A6580] text-sm leading-relaxed">
+                  {cs.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5 mt-3">
+                  {cs.stack.map((t, j) => (
+                    <motion.span
+                      key={t}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                      transition={{
+                        duration: 0.3,
+                        delay: 0.5 + i * 0.15 + j * 0.05,
+                      }}
+                      className="text-xs text-[#8BA3B8]"
                     >
-                      <div
-                        className="text-xl md:text-2xl font-bold gradient-text"
-                        style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-                        aria-label={`${stat.prefix ?? ""}${stat.value}${stat.suffix} ${stat.label}`}
-                      >
-                        {stat.prefix ? (
-                          stat.prefix
-                        ) : (
-                          <AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                        )}
-                      </div>
-                      <p className="text-[#8BA3B8] text-[10px] mt-1 leading-tight">{stat.label}</p>
-                    </div>
+                      {t}
+                      {j < cs.stack.length - 1 ? " ·" : ""}
+                    </motion.span>
                   ))}
                 </div>
-
-                {/* Tech stack */}
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-[#8BA3B8] mb-2.5">
-                    Tech Stack
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {cs.stack.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2.5 py-1 rounded-md bg-[#F0F7FA] border border-[#0F2A44]/8 text-[#4A6580] text-xs font-medium"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <a
-                  href="/contact"
-                  className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#0891B2] hover:text-[#0E7490] transition-colors"
-                  aria-label={`Discuss a similar project to ${cs.client}`}
-                >
-                  Discuss a Similar Project
-                  <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
-                </a>
               </div>
 
-              {/* Right — mockup */}
-              <div className="flex items-center justify-center">
-                <div className="w-full">
-                  <MockupFrame
-                    gradientFrom={cs.gradientFrom}
-                    gradientTo={cs.gradientTo}
-                    accentColor={cs.accentColor}
-                    client={cs.client}
-                  />
-                </div>
+              {/* Right: Stats + arrow */}
+              <div className="md:w-1/4 flex items-center justify-between md:flex-col md:items-end gap-2">
+                <p className="text-xs text-[#8BA3B8] font-medium text-right">
+                  {cs.stats}
+                </p>
+                <ArrowUpRight className="w-5 h-5 text-[#0891B2] opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </motion.a>
+          ))}
         </div>
       </div>
     </section>

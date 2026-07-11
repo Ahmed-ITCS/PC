@@ -1,163 +1,139 @@
 "use client";
 
 import Link from "next/link";
-import { Shield, Cloud, Layers, Check, ArrowRight } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { TiltCard } from "@/components/ui/TiltCard";
+import { ArrowRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const services = [
   {
-    icon: Shield,
-    badge: "Most Popular",
-    badgeColor: "bg-[#0891B2]/10 text-[#0891B2] border-[#0891B2]/25",
+    number: "01",
     title: "Secure MVP Development",
     description:
-      "Go from concept to production-ready product with security baked in at every layer — not bolted on after.",
+      "Go from concept to production-ready product with security baked in at every layer.",
     features: [
-      "Full-stack React + Node.js or Next.js build",
-      "OWASP-compliant architecture from day one",
-      "CI/CD pipeline with automated security scans",
-      "Staged rollout with feature flags",
+      "Full-stack React + Next.js build",
+      "OWASP-compliant architecture",
+      "CI/CD with automated security scans",
     ],
     href: "/services",
-    featured: false,
   },
   {
-    icon: Cloud,
-    badge: "Enterprise Grade",
-    badgeColor: "bg-violet-500/10 text-violet-600 border-violet-400/25",
-    title: "Cloud Deployment & Database Hardening",
+    number: "02",
+    title: "Cloud Deployment & Hardening",
     description:
-      "Production-grade cloud infrastructure with hardened databases, automated failover, and zero-downtime deployments.",
+      "Production-grade cloud infrastructure with hardened databases, automated failover, and zero-downtime deploys.",
     features: [
-      "AWS / GCP / Azure multi-region setup",
-      "Postgres / MongoDB encryption at rest & transit",
-      "Auto-scaling Kubernetes with Terraform IaC",
-      "Continuous compliance monitoring",
+      "AWS / GCP / Azure multi-region",
+      "Encryption at rest & in transit",
+      "Auto-scaling Kubernetes with Terraform",
     ],
     href: "/services",
-    featured: true,
   },
   {
-    icon: Layers,
-    badge: "Complete Solution",
-    badgeColor: "bg-emerald-500/10 text-emerald-600 border-emerald-400/25",
+    number: "03",
     title: "End-to-End Product Development",
     description:
       "Your entire technical function — from first commit through launch, scaling, and ongoing operations.",
     features: [
       "Discovery, architecture, build & deploy",
-      "Dedicated team embedded in your workflow",
-      "Weekly demos, transparent milestone billing",
-      "Post-launch SRE and support retainer",
+      "Dedicated team in your workflow",
+      "Post-launch SRE and support",
     ],
     href: "/services",
-    featured: false,
   },
 ];
 
 export function CoreServices() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <section
-      id="core-services"
-      className="relative py-24 md:py-32 overflow-hidden"
-      aria-labelledby="core-services-heading"
-      style={{ background: "transparent" }}
-    >
+    <section id="core-services" className="py-section" aria-labelledby="core-services-heading" ref={ref}>
       <div className="container-max section-padding">
-        <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
-          <SectionLabel>Core Services</SectionLabel>
-          <h2
-            id="core-services-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl"
-            style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+        <div className="mb-20">
+          <TextReveal
+            as="h2"
+            className="text-display-lg max-w-3xl"
           >
-            Everything You Need to{" "}
-            <span className="gradient-text">Ship With Confidence</span>
-          </h2>
-          <p className="text-[#4A6580] text-lg max-w-2xl text-balance">
-            Three flagship engagements designed around how modern companies
-            actually need to move — fast, secure, and without hiring overhead.
-          </p>
-        </FadeIn>
+            Everything you need to{" "}
+            <span className="gradient-text">ship with confidence.</span>
+          </TextReveal>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {services.map((svc, i) => {
-            const Icon = svc.icon;
-            return (
-              <FadeIn key={svc.title} delay={i * 0.1} direction="up">
-                <TiltCard className="h-full rounded-2xl">
-                <div
-                  className={`relative flex flex-col gap-5 rounded-2xl border p-7 h-full ${
-                    svc.featured
-                      ? "border-[#0891B2]/20 bg-gradient-to-b from-[#0891B2]/5 via-white/80 to-white/60 shadow-[0_16px_48px_rgba(15,42,68,0.06)]"
-                      : "border-[#0F2A44]/8 bg-white/70 hover:border-[#0891B2]/15 hover:shadow-[0_16px_48px_rgba(15,42,68,0.06)]"
-                  }`}
-                >
-                  {/* Badge */}
-                  <span
-                    className={`self-start px-3 py-1 rounded-full text-xs font-semibold border ${svc.badgeColor}`}
+        <div className="space-y-0 divide-y divide-[#0F2A44]/8">
+          {services.map((svc, i) => (
+            <motion.div
+              key={svc.title}
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.2 + i * 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="group/row py-10 md:py-14 flex flex-col md:flex-row md:items-start gap-6 md:gap-12 border-l-2 border-transparent hover:border-[#0891B2] hover:bg-[#0891B2]/[0.02] hover:pl-5 active:bg-[#0891B2]/[0.02] transition-all duration-300"
+            >
+              <motion.span
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.3 + i * 0.15, type: "spring" }}
+                className="text-[#0891B2] font-mono text-sm mt-1 shrink-0 group-hover/row:scale-110 transition-transform duration-300"
+              >
+                {svc.number}
+              </motion.span>
+              <div className="flex-1 grid md:grid-cols-2 gap-6 md:gap-12">
+                <div className="space-y-3">
+                  <h3
+                    className="text-display-sm"
+                    style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                   >
-                    {svc.badge}
-                  </span>
-
-                  {/* Icon */}
-                  <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#0891B2]/10 border border-[#0891B2]/20">
-                    <Icon className="w-7 h-7 text-[#0891B2]" aria-hidden="true" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 space-y-3">
-                    <h3
-                      className="text-[#0F2A44] font-bold text-xl leading-snug"
-                      style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-                    >
-                      {svc.title}
-                    </h3>
-                    <p className="text-[#4A6580] text-sm leading-relaxed">
-                      {svc.description}
-                    </p>
-                  </div>
-
-                  {/* Feature bullets */}
-                  <ul className="space-y-2.5" role="list">
-                    {svc.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-[#4A6580]">
-                        <Check
-                          className="w-4 h-4 text-[#0891B2] shrink-0 mt-0.5"
-                          aria-hidden="true"
-                        />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <Link
-                    href={svc.href}
-                    className="group mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-[#0891B2]/70 hover:text-[#0891B2] transition-colors duration-150"
-                    aria-label={`Learn more about ${svc.title}`}
-                  >
-                    Learn More
-                    <ArrowRight
-                      className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
-                      aria-hidden="true"
-                    />
-                  </Link>
-
-                  {/* Featured top line */}
-                  {svc.featured && (
-                    <div
-                      className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-[#0891B2]/30 to-transparent"
-                      aria-hidden="true"
-                    />
-                  )}
+                    {svc.title}
+                  </h3>
+                  <p className="text-[#4A6580] text-lg leading-relaxed">
+                    {svc.description}
+                  </p>
                 </div>
-                </TiltCard>
-              </FadeIn>
-            );
-          })}
+                <div className="space-y-2">
+                  {svc.features.map((f, j) => (
+                    <motion.div
+                      key={f}
+                      initial={{ opacity: 0, x: 12 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 12 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.4 + i * 0.15 + j * 0.08,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="text-[#4A6580] text-sm flex items-center gap-2"
+                    >
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={isInView ? { scale: 1 } : { scale: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: 0.5 + i * 0.15 + j * 0.08,
+                          type: "spring",
+                          stiffness: 300,
+                        }}
+                        className="w-1 h-1 rounded-full bg-[#0891B2] shrink-0"
+                      />
+                      {f}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              <Link
+                href={svc.href}
+                className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-[#0891B2] shrink-0 mt-1"
+                aria-label={`Learn more about ${svc.title}`}
+              >
+                Learn More
+                <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" />
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@ import { Inter, Syne, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { FooterWrapper } from "@/components/FooterWrapper";
-import { PageTransition } from "@/components/PageTransition";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -95,8 +95,9 @@ export default function RootLayout({
       className={`${inter.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
       <body className="antialiased bg-[#F0F7FA] text-[#0F2A44] font-[family-name:var(--font-inter)]">
+        <CustomCursor />
         <Navbar />
-        <main><PageTransition>{children}</PageTransition></main>
+        <main>{children}</main>
         <FooterWrapper />
       </body>
     </html>

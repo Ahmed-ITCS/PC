@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Shield, Target, Heart, Zap } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { GlowOrb } from "@/components/ui/GlowOrb";
 import { CTA } from "@/components/sections/CTA";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "About",
@@ -87,7 +85,6 @@ export default function AboutPage() {
           className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-100"
           aria-hidden="true"
         />
-        <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.05} />
         <div className="relative z-10 container-max section-padding flex flex-col items-center text-center gap-6">
           <FadeIn>
             <SectionLabel>About PentaCipher</SectionLabel>
@@ -143,27 +140,23 @@ export default function AboutPage() {
             <FadeIn direction="left" delay={0.1}>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { value: 120, suffix: "+", label: "Projects" },
-                  { value: 98, suffix: "%", label: "Retention Rate" },
-                  { value: 8, suffix: "+", label: "Years Active" },
-                  { special: "Zero", label: "Breaches" },
+                  { value: "120+", label: "Projects" },
+                  { value: "98%", label: "Retention Rate" },
+                  { value: "8+", label: "Years Active" },
+                  { value: "Zero", label: "Breaches" },
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-xl border border-[#0F2A44]/6 bg-[#E8F1F5]/60 p-6 text-center"
-                  >
-                    <div
-                      className="text-3xl font-bold gradient-text mb-1"
-                      style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-                    >
-                      {stat.special ? (
-                        stat.special
-                      ) : (
-                        <AnimatedCounter end={stat.value!} suffix={stat.suffix} />
-                      )}
-                    </div>
-                    <div className="text-[#4A6580] text-sm">{stat.label}</div>
-                  </div>
+                     className="rounded-xl border border-[#0F2A44]/6 bg-[#E8F1F5]/60 p-6 text-center hover:-translate-y-1 hover:shadow-card-hover hover:border-[#0891B2]/20 active:scale-[0.97] transition-all duration-300"
+                   >
+                     <div
+                       className="text-3xl font-bold gradient-text mb-1"
+                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                     >
+                       {stat.value}
+                     </div>
+                     <div className="text-[#4A6580] text-sm">{stat.label}</div>
+                   </div>
                 ))}
               </div>
             </FadeIn>
@@ -189,8 +182,8 @@ export default function AboutPage() {
               const Icon = v.icon;
               return (
                 <FadeIn key={v.title} delay={i * 0.1}>
-                  <div className="flex gap-5 p-6 rounded-xl border border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0F2A44]/10 transition-colors">
-                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#0891B2]/8 border border-[#0891B2]/15 shrink-0">
+                  <div className="flex gap-5 p-6 rounded-xl border border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0891B2]/15 hover:bg-white/60 hover:-translate-y-0.5 hover:shadow-subtle active:scale-[0.98] transition-all duration-300">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#0891B2]/8 border border-[#0891B2]/15 shrink-0 hover:bg-[#0891B2]/15 transition-colors duration-300">
                       <Icon className="w-5 h-5 text-[#0891B2]" aria-hidden="true" />
                     </div>
                     <div>
@@ -232,7 +225,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {team.map((member, i) => (
               <FadeIn key={member.name} delay={i * 0.1}>
-                <div className="flex flex-col p-6 rounded-xl border border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0F2A44]/10 hover:-translate-y-1 transition-all duration-300 gap-4">
+                <div className="flex flex-col p-6 rounded-xl border border-[#0F2A44]/6 bg-[#E8F1F5]/50 hover:border-[#0891B2]/15 hover:bg-white/60 hover:-translate-y-1 hover:shadow-subtle active:scale-[0.98] transition-all duration-300 gap-4">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-xl bg-[#0891B2]/12 border border-[#0891B2]/20 flex items-center justify-center text-[#0891B2] font-bold text-lg" aria-hidden="true">
                       {member.initial}
@@ -247,7 +240,7 @@ export default function AboutPage() {
                     {member.expertise.map((e) => (
                       <span
                         key={e}
-                        className="px-2.5 py-0.5 rounded-md text-xs bg-[#0F2A44]/4 border border-[#0F2A44]/6 text-[#4A6580]"
+                        className="px-2.5 py-0.5 rounded-md text-xs bg-[#0F2A44]/4 border border-[#0F2A44]/6 text-[#4A6580] hover:bg-[#0891B2]/10 hover:text-[#0891B2] hover:border-[#0891B2]/20 transition-all duration-200"
                       >
                         {e}
                       </span>
@@ -276,9 +269,9 @@ export default function AboutPage() {
           <div className="max-w-2xl mx-auto space-y-0">
             {milestones.map((m, i) => (
               <FadeIn key={m.year} delay={i * 0.08}>
-                <div className="flex gap-6 relative">
+                <div className="flex gap-6 relative group/timeline hover:bg-[#0891B2]/[0.02] hover:rounded-lg hover:p-2 hover:-m-2 active:bg-[#0891B2]/[0.02] transition-all duration-200">
                   <div className="flex flex-col items-center">
-                    <div className="w-3 h-3 rounded-full bg-[#0891B2] border-2 border-[#F0F7FA] mt-1.5 shrink-0" />
+                    <div className="w-3 h-3 rounded-full bg-[#0891B2] border-2 border-[#F0F7FA] mt-1.5 shrink-0 group-hover/timeline:scale-150 group-hover/timeline:shadow-[0_0_8px_rgba(8,145,178,0.4)] transition-all duration-300" />
                     {i < milestones.length - 1 && (
                       <div className="w-px flex-1 bg-gradient-to-b from-[#0891B2]/30 to-transparent mt-1 mb-0" style={{ minHeight: "40px" }} />
                     )}

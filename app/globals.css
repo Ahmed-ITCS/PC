@@ -19,6 +19,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -60,61 +62,7 @@ body {
   background: #0891B260;
 }
 
-/* 3D Canvas container */
-.canvas-container {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Scroll container override for drei ScrollControls */
-[data-scroll] {
-  position: relative !important;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes orbFloat1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.05); }
-  66% { transform: translate(-20px, 15px) scale(0.95); }
-}
-@keyframes orbFloat2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-25px, 15px) scale(1.08); }
-  66% { transform: translate(20px, -10px) scale(0.92); }
-}
-@keyframes orbFloat3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(15px, -25px) scale(1.1); }
-}
-
 @layer utilities {
-  .glass-card {
-    @apply bg-white/60 backdrop-blur-md border border-[#0F2A44]/8;
-  }
-  .shimmer-border {
-    background: linear-gradient(90deg, transparent, rgba(8,145,178,0.2), transparent);
-    background-size: 200% auto;
-    animation: shimmer 3s linear infinite;
-  }
-  .animate-float {
-    animation: float 4s ease-in-out infinite;
-  }
   .text-balance {
     text-wrap: balance;
   }
@@ -127,67 +75,98 @@ body {
   .bg-accent {
     background-color: #0891B2;
   }
-  .border-accent {
-    border-color: #0891B2;
-  }
   .gradient-text {
-    background: linear-gradient(135deg, #0F2A44 0%, #0891B2 50%, #0E7490 100%);
+    background: linear-gradient(135deg, #0891B2 0%, #0E7490 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .card-border {
-    border: 1px solid rgba(15, 42, 68, 0.08);
-  }
-  .card-border-hover {
-    border: 1px solid rgba(8, 145, 178, 0.25);
-  }
   .section-padding {
-    @apply px-6 md:px-12 lg:px-16 xl:px-24;
+    @apply px-6 md:px-12 lg:px-20 xl:px-24;
   }
   .container-max {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-[1400px] mx-auto;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm
-      bg-accent text-white hover:bg-[#0E7490]
-      transition-all duration-200 shadow-sm hover:shadow-md
-      focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#F0F7FA];
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-sm
+      bg-[#0891B2] text-white hover:bg-[#0E7490]
+      active:scale-[0.97] active:bg-[#0E7490]
+      transition-all duration-300
+      focus-visible:ring-2 focus-visible:ring-[#0891B2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F0F7FA];
   }
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm
-      border border-[#0F2A44]/15 text-[#4A6580] hover:border-accent/40 hover:text-[#0F2A44]
-      hover:bg-[#0891B2]/5 transition-all duration-200
-      focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#F0F7FA];
-  }
-  .service-card {
-    @apply relative rounded-xl p-6 card-border bg-white/70 backdrop-blur-sm
-      transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:card-border-hover
-      cursor-default;
-  }
-  .tag {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-      text-accent border border-accent/15;
-    background-color: rgba(8, 145, 178, 0.08);
-  }
-  .shader-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    contain: layout style;
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-sm
+      border border-[#0F2A44]/15 text-[#0F2A44] hover:border-[#0891B2]/40 hover:text-[#0891B2]
+      active:scale-[0.97] active:border-[#0891B2]/40 active:text-[#0891B2]
+      transition-all duration-300
+      focus-visible:ring-2 focus-visible:ring-[#0891B2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F0F7FA];
   }
 }
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .animate-float,
-  .shimmer-border {
-    animation: none;
-  }
-  [data-scroll] {
+  html {
     scroll-behavior: auto;
   }
+}
+
+/* Custom cursor - hide default on desktop */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, input, textarea, select, [role="button"] {
+    cursor: none;
+  }
+}
+
+/* Smooth page load */
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: pageLoad 0.4s ease-out;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Marquee pause on hover */
+.group\/marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Touch feedback for cards */
+@media (hover: none) {
+  .touch-card:active {
+    transform: scale(0.98);
+    transition: transform 0.15s ease;
+  }
+}
+
+/* Hover card utility */
+.card-interactive {
+  @apply transition-all duration-300;
+}
+.card-interactive:hover {
+  @apply -translate-y-1 shadow-card-hover;
+}
+.card-interactive:active {
+  transform: scale(0.98);
 }
