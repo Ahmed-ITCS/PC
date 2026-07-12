@@ -96,7 +96,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="antialiased bg-[#04070f] text-[#e8edf5] font-[family-name:var(--font-inter)]">
+      <body className="antialiased bg-[#EBF6F9] text-[#0A1B2E] font-[family-name:var(--font-inter)]">
         <Cursor />
         <GlobalCanvas />
         <div className="relative z-10">
