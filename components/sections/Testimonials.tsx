@@ -52,11 +52,11 @@ export function Testimonials() {
 
   return (
     <section
-      className="relative py-24 md:py-32 bg-[#080e1e] overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#0A1B2E] overflow-hidden"
       aria-labelledby="testimonials-heading"
     >
       <div
-        className="absolute inset-0 bg-glow-cyan opacity-50"
+        className="absolute inset-0 bg-glow-cyan opacity-40"
         aria-hidden="true"
       />
 
@@ -65,7 +65,7 @@ export function Testimonials() {
           <SectionLabel>Client Voices</SectionLabel>
           <h2
             id="testimonials-heading"
-            className="text-3xl md:text-4xl font-bold text-balance"
+            className="text-3xl md:text-4xl font-bold text-balance text-white"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             What Our Partners Say
@@ -73,10 +73,10 @@ export function Testimonials() {
         </FadeIn>
 
         <div className="max-w-3xl mx-auto">
-          <div className="relative rounded-2xl border border-white/8 bg-[#0d1529]/60 backdrop-blur-sm p-8 md:p-12">
+          <div className="relative rounded-2xl border border-white/8 bg-white/[0.06] backdrop-blur-sm p-8 md:p-12">
             {/* Quote icon */}
             <Quote
-              className="w-10 h-10 text-[#00d4ff]/15 mb-6"
+              className="w-10 h-10 text-[#00d4ff]/20 mb-6"
               aria-hidden="true"
             />
 
@@ -113,7 +113,7 @@ export function Testimonials() {
             </AnimatePresence>
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/5">
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/8">
               <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial navigation">
                 {testimonials.map((_, i) => (
                   <button

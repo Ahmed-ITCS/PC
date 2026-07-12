@@ -75,10 +75,10 @@ export function WhyChooseUs() {
       aria-labelledby="why-choose-us-heading"
     >
       <div
-        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-60"
+        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-80"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-glow-cyan opacity-30" aria-hidden="true" />
+      <div className="absolute inset-0 bg-glow-cyan opacity-25" aria-hidden="true" />
 
       <div className="relative z-10 container-max section-padding">
         <SectionNumber number="01" className="top-0 right-0 md:right-8" />
@@ -93,7 +93,7 @@ export function WhyChooseUs() {
             Eight Reasons Clients{" "}
             <span className="gradient-text">Come Back Every Time</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl text-balance">
+          <p className="text-[#0A1B2E]/55 text-lg max-w-2xl text-balance">
             We&apos;ve earned long-term partnerships by combining technical
             depth with a working style that feels like an internal team.
           </p>
@@ -105,18 +105,18 @@ export function WhyChooseUs() {
             return (
               <FadeIn key={reason.title} delay={i * 0.07} direction="up">
                 <TiltCard className="h-full rounded-xl" intensity={10}>
-                <div className="group flex flex-col gap-4 rounded-xl border border-white/6 bg-[#0d1529]/60 p-6 h-full hover:border-[#00d4ff]/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),0_0_0_1px_rgba(0,212,255,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#00d4ff]/15 to-[#00d4ff]/5 border border-[#00d4ff]/20 group-hover:border-[#00d4ff]/35 group-hover:shadow-[0_0_16px_rgba(0,212,255,0.15)] transition-all duration-200">
+                <div className="group flex flex-col gap-4 rounded-xl border border-[#0A1B2E]/8 bg-white/80 p-6 h-full hover:border-[#00d4ff]/25 hover:shadow-[0_12px_40px_rgba(10,27,46,0.1),0_0_0_1px_rgba(0,212,255,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#00d4ff]/15 to-[#00d4ff]/5 border border-[#00d4ff]/20 group-hover:border-[#00d4ff]/40 group-hover:shadow-[0_0_16px_rgba(0,212,255,0.15)] transition-all duration-200">
                     <Icon className="w-5 h-5 text-[#00d4ff]" aria-hidden="true" />
                   </div>
                   <div className="space-y-2">
                     <h3
-                      className="text-white font-bold text-sm"
+                      className="text-[#0A1B2E] font-bold text-sm"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {reason.title}
                     </h3>
-                    <p className="text-white/45 text-sm leading-relaxed">
+                    <p className="text-[#0A1B2E]/50 text-sm leading-relaxed">
                       {reason.description}
                     </p>
                   </div>

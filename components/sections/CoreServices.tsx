@@ -28,7 +28,7 @@ const services = [
   {
     icon: Cloud,
     badge: "Enterprise Grade",
-    badgeColor: "bg-violet-500/15 text-violet-300 border-violet-400/25",
+    badgeColor: "bg-violet-500/15 text-violet-600 border-violet-400/25",
     title: "Cloud Deployment & Database Hardening",
     description:
       "Production-grade cloud infrastructure with hardened databases, automated failover, and zero-downtime deployments.",
@@ -44,7 +44,7 @@ const services = [
   {
     icon: Layers,
     badge: "Complete Solution",
-    badgeColor: "bg-emerald-500/15 text-emerald-300 border-emerald-400/25",
+    badgeColor: "bg-emerald-500/15 text-emerald-700 border-emerald-400/25",
     title: "End-to-End Product Development",
     description:
       "Your entire technical function — from first commit through launch, scaling, and ongoing operations.",
@@ -77,7 +77,7 @@ export function CoreServices() {
             Everything You Need to{" "}
             <span className="gradient-text">Ship With Confidence</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl text-balance">
+          <p className="text-[#0A1B2E]/55 text-lg max-w-2xl text-balance">
             Three flagship engagements designed around how modern companies
             actually need to move — fast, secure, and without hiring overhead.
           </p>
@@ -92,8 +92,8 @@ export function CoreServices() {
                 <div
                   className={`group/card relative flex flex-col gap-5 rounded-2xl border p-7 h-full ${
                     svc.featured
-                      ? "border-[#00d4ff]/25 bg-gradient-to-b from-[#00d4ff]/5 via-[#0d1529]/80 to-[#0d1529]/60 shadow-[0_0_0_1px_rgba(0,212,255,0.1),0_16px_48px_rgba(0,0,0,0.35)]"
-                      : "border-white/6 bg-[#0d1529]/50 hover:border-[#00d4ff]/15 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.08),0_16px_48px_rgba(0,0,0,0.3)]"
+                      ? "border-[#00d4ff]/30 bg-gradient-to-b from-[#00d4ff]/8 via-white/90 to-white/80 shadow-[0_0_0_1px_rgba(0,212,255,0.12),0_16px_48px_rgba(10,27,46,0.12)]"
+                      : "border-[#0A1B2E]/8 bg-white/80 hover:border-[#00d4ff]/20 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.1),0_16px_48px_rgba(10,27,46,0.08)]"
                   }`}
                 >
                   {/* 3D gem on hover */}
@@ -114,12 +114,12 @@ export function CoreServices() {
                   {/* Content */}
                   <div className="flex-1 space-y-3">
                     <h3
-                      className="text-white font-bold text-xl leading-snug"
+                      className="text-[#0A1B2E] font-bold text-xl leading-snug"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {svc.title}
                     </h3>
-                    <p className="text-white/50 text-sm leading-relaxed">
+                    <p className="text-[#0A1B2E]/55 text-sm leading-relaxed">
                       {svc.description}
                     </p>
                   </div>
@@ -127,9 +127,9 @@ export function CoreServices() {
                   {/* Feature bullets */}
                   <ul className="space-y-2.5" role="list">
                     {svc.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-white/60">
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-[#0A1B2E]/60">
                         <Check
-                          className="w-4 h-4 text-[#00d4ff]/70 shrink-0 mt-0.5"
+                          className="w-4 h-4 text-[#00d4ff]/80 shrink-0 mt-0.5"
                           aria-hidden="true"
                         />
                         {f}

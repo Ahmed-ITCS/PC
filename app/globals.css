@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #04070f;
-  --foreground: #e8edf5;
+  --background: #EBF6F9;
+  --foreground: #0A1B2E;
   --font-display: var(--font-syne), system-ui, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
   --electric: #00d4ff;
   --electric-dim: #0099bb;
-  --navy-900: #080e1e;
-  --navy-800: #0d1529;
-  --navy-700: #111c36;
+  --navy-900: #0A1B2E;
+  --navy-800: #0D2238;
+  --navy-700: #112A45;
 }
 
 * {
@@ -33,7 +33,7 @@ body {
 
 ::selection {
   background: rgba(0, 212, 255, 0.25);
-  color: #e8edf5;
+  color: #0A1B2E;
 }
 
 :focus-visible {
@@ -47,10 +47,10 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #04070f;
+  background: #EBF6F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #162244;
+  background: #0A1B2E30;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -95,7 +95,7 @@ body {
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-md border border-white/8;
+    @apply bg-white/70 backdrop-blur-md border border-[#0A1B2E]/8;
   }
   .shimmer-border {
     background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
@@ -124,16 +124,22 @@ body {
     text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
   }
   .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0099bb 100%);
+    background: linear-gradient(135deg, #0A1B2E 0%, #00d4ff 55%, #0099bb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-light {
+    background: linear-gradient(135deg, #00d4ff 0%, #00b8d4 50%, #0099bb 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .card-border {
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(10, 27, 46, 0.08);
   }
   .card-border-hover {
-    border: 1px solid rgba(0, 212, 255, 0.2);
+    border: 1px solid rgba(0, 212, 255, 0.3);
   }
   .section-padding {
     @apply px-6 md:px-12 lg:px-16 xl:px-24;
@@ -148,16 +154,16 @@ body {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm
       bg-electric text-navy-900 hover:bg-opacity-90
       transition-all duration-200 shadow-glow-sm hover:shadow-glow-md
-      focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900;
+      focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-[#EBF6F9];
   }
   .btn-secondary {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm
-      border border-white/10 text-white/80 hover:border-electric/40 hover:text-white
-      hover:bg-white/5 transition-all duration-200
-      focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900;
+      border border-[#0A1B2E]/15 text-[#0A1B2E]/70 hover:border-electric/40 hover:text-[#0A1B2E]
+      hover:bg-[#0A1B2E]/5 transition-all duration-200
+      focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-[#EBF6F9];
   }
   .service-card {
-    @apply relative rounded-xl p-6 card-border bg-navy-800/60 backdrop-blur-sm
+    @apply relative rounded-xl p-6 card-border bg-white/70 backdrop-blur-sm
       transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover hover:card-border-hover
       cursor-default;
   }

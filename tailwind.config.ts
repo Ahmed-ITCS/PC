@@ -12,11 +12,11 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         navy: {
-          950: "#04070f",
-          900: "#080e1e",
-          800: "#0d1529",
-          700: "#111c36",
-          600: "#162244",
+          950: "#061020",
+          900: "#0A1B2E",
+          800: "#0D2238",
+          700: "#112A45",
+          600: "#163355",
         },
         cyan: {
           400: "#22d3ee",
@@ -33,11 +33,11 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px)",
+          "linear-gradient(rgba(10,27,46,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(10,27,46,0.06) 1px, transparent 1px)",
         "dot-pattern":
-          "radial-gradient(circle, rgba(0,212,255,0.08) 1px, transparent 1px)",
+          "radial-gradient(circle, rgba(10,27,46,0.12) 1px, transparent 1px)",
         "glow-cyan":
-          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,212,255,0.12) 0%, transparent 70%)",
+          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,212,255,0.10) 0%, transparent 70%)",
         "glow-bottom":
           "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(0,212,255,0.08) 0%, transparent 70%)",
       },
@@ -86,11 +86,11 @@ const config: Config = {
         },
       },
       boxShadow: {
-        "glow-sm": "0 0 12px rgba(0,212,255,0.2)",
-        "glow-md": "0 0 24px rgba(0,212,255,0.25)",
-        "glow-lg": "0 0 48px rgba(0,212,255,0.2)",
-        card: "0 1px 3px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3)",
-        "card-hover": "0 2px 8px rgba(0,0,0,0.5), 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,212,255,0.15)",
+        "glow-sm": "0 0 12px rgba(0,212,255,0.3)",
+        "glow-md": "0 0 24px rgba(0,212,255,0.35)",
+        "glow-lg": "0 0 48px rgba(0,212,255,0.3)",
+        card: "0 1px 3px rgba(10,27,46,0.08), 0 8px 32px rgba(10,27,46,0.06)",
+        "card-hover": "0 2px 8px rgba(10,27,46,0.1), 0 16px 48px rgba(10,27,46,0.08), 0 0 0 1px rgba(0,212,255,0.2)",
       },
     },
   },

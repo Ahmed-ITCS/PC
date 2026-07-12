@@ -84,10 +84,10 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden" aria-label="About hero">
         <div
-          className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-100"
+          className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-80"
           aria-hidden="true"
         />
-        <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.05} />
+        <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.06} />
         <div className="relative z-10 container-max section-padding flex flex-col items-center text-center gap-6">
           <FadeIn>
             <SectionLabel>About PentaCipher</SectionLabel>
@@ -102,7 +102,7 @@ export default function AboutPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-white/50 text-lg max-w-2xl text-balance">
+            <p className="text-[#0A1B2E]/55 text-lg max-w-2xl text-balance">
               Founded by engineers who got tired of shipping software that worked
               but wasn&apos;t secure — PentaCipher exists to prove you don&apos;t have to
               choose between speed and security.
@@ -112,7 +112,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="py-16 bg-[#080e1e] border-y border-white/5" aria-labelledby="mission-heading">
+      <section className="py-16 bg-[#0A1B2E] border-y border-white/5" aria-labelledby="mission-heading">
         <div className="container-max section-padding">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right">
@@ -150,10 +150,10 @@ export default function AboutPage() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-xl border border-white/6 bg-[#0d1529]/60 p-6 text-center"
+                    className="rounded-xl border border-white/8 bg-white/[0.06] p-6 text-center"
                   >
                     <div
-                      className="text-3xl font-bold gradient-text mb-1"
+                      className="text-3xl font-bold gradient-text-light mb-1"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {stat.special ? (
@@ -162,7 +162,7 @@ export default function AboutPage() {
                         <AnimatedCounter end={stat.value!} suffix={stat.suffix} />
                       )}
                     </div>
-                    <div className="text-white/40 text-sm">{stat.label}</div>
+                    <div className="text-white/45 text-sm">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -189,18 +189,18 @@ export default function AboutPage() {
               const Icon = v.icon;
               return (
                 <FadeIn key={v.title} delay={i * 0.1}>
-                  <div className="flex gap-5 p-6 rounded-xl border border-white/6 bg-[#0d1529]/50 hover:border-white/10 transition-colors">
-                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#00d4ff]/8 border border-[#00d4ff]/15 shrink-0">
+                  <div className="flex gap-5 p-6 rounded-xl border border-[#0A1B2E]/8 bg-white/80 hover:border-[#00d4ff]/20 transition-colors">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/20 shrink-0">
                       <Icon className="w-5 h-5 text-[#00d4ff]" aria-hidden="true" />
                     </div>
                     <div>
                       <h3
-                        className="text-white font-semibold text-base mb-1.5"
+                        className="text-[#0A1B2E] font-semibold text-base mb-1.5"
                         style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                       >
                         {v.title}
                       </h3>
-                      <p className="text-white/45 text-sm leading-relaxed">
+                      <p className="text-[#0A1B2E]/50 text-sm leading-relaxed">
                         {v.description}
                       </p>
                     </div>
@@ -213,7 +213,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-24 md:py-28 bg-[#080e1e] border-y border-white/5" aria-labelledby="team-heading">
+      <section className="py-24 md:py-28 bg-[#D4EEF5] border-y border-[#0A1B2E]/8" aria-labelledby="team-heading">
         <div className="container-max section-padding">
           <FadeIn className="flex flex-col items-center text-center gap-5 mb-14">
             <SectionLabel>The Team</SectionLabel>
@@ -224,7 +224,7 @@ export default function AboutPage() {
             >
               Senior Engineers, Not Juniors Learning on Your Dime
             </h2>
-            <p className="text-white/50 text-base max-w-xl text-balance">
+            <p className="text-[#0A1B2E]/55 text-base max-w-xl text-balance">
               Every engagement is led by a senior engineer with 7+ years of
               production experience.
             </p>
@@ -232,22 +232,22 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {team.map((member, i) => (
               <FadeIn key={member.name} delay={i * 0.1}>
-                <div className="flex flex-col p-6 rounded-xl border border-white/6 bg-[#0d1529]/50 hover:border-white/10 hover:-translate-y-1 transition-all duration-300 gap-4">
+                <div className="flex flex-col p-6 rounded-xl border border-[#0A1B2E]/8 bg-white/80 hover:border-[#00d4ff]/20 hover:-translate-y-1 transition-all duration-300 gap-4">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-xl bg-[#00d4ff]/12 border border-[#00d4ff]/20 flex items-center justify-center text-[#00d4ff] font-bold text-lg" aria-hidden="true">
                       {member.initial}
                     </div>
                     <div>
-                      <p className="text-white font-semibold text-sm">{member.name}</p>
-                      <p className="text-[#00d4ff]/70 text-xs">{member.role}</p>
+                      <p className="text-[#0A1B2E] font-semibold text-sm">{member.name}</p>
+                      <p className="text-[#00d4ff]/80 text-xs">{member.role}</p>
                     </div>
                   </div>
-                  <p className="text-white/40 text-sm leading-relaxed flex-1">{member.bio}</p>
+                  <p className="text-[#0A1B2E]/50 text-sm leading-relaxed flex-1">{member.bio}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {member.expertise.map((e) => (
                       <span
                         key={e}
-                        className="px-2.5 py-0.5 rounded-md text-xs bg-white/4 border border-white/6 text-white/40"
+                        className="px-2.5 py-0.5 rounded-md text-xs bg-[#0A1B2E]/5 border border-[#0A1B2E]/8 text-[#0A1B2E]/50"
                       >
                         {e}
                       </span>
@@ -278,14 +278,14 @@ export default function AboutPage() {
               <FadeIn key={m.year} delay={i * 0.08}>
                 <div className="flex gap-6 relative">
                   <div className="flex flex-col items-center">
-                    <div className="w-3 h-3 rounded-full bg-[#00d4ff] border-2 border-[#04070f] mt-1.5 shrink-0 shadow-glow-sm" />
+                    <div className="w-3 h-3 rounded-full bg-[#00d4ff] border-2 border-[#EBF6F9] mt-1.5 shrink-0 shadow-glow-sm" />
                     {i < milestones.length - 1 && (
                       <div className="w-px flex-1 bg-gradient-to-b from-[#00d4ff]/30 to-transparent mt-1 mb-0" style={{ minHeight: "40px" }} />
                     )}
                   </div>
                   <div className="pb-8">
                     <span className="text-[#00d4ff] text-sm font-mono font-semibold">{m.year}</span>
-                    <p className="text-white/60 text-sm mt-1 leading-relaxed">{m.event}</p>
+                    <p className="text-[#0A1B2E]/60 text-sm mt-1 leading-relaxed">{m.event}</p>
                   </div>
                 </div>
               </FadeIn>

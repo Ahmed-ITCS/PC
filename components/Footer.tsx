@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Shield, GitBranch, Link2, AtSign, Mail } from "lucide-react";
+import { GitBranch, Link2, AtSign, Mail } from "lucide-react";
+import { PentaCipherIcon, PentaCipherLogoText } from "@/components/ui/PentaCipherLogo";
 
 const footerLinks = {
   Services: [
@@ -29,7 +30,7 @@ const socials = [
 export function Footer() {
   return (
     <footer
-      className="relative border-t border-white/5 bg-[#080e1e] mt-0 overflow-hidden"
+      className="relative border-t border-[#0A1B2E]/10 bg-[#0A1B2E] mt-0 overflow-hidden"
       role="contentinfo"
       aria-label="Site footer"
     >
@@ -44,15 +45,10 @@ export function Footer() {
               className="inline-flex items-center gap-2.5 group"
               aria-label="PentaCipher home"
             >
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#00d4ff]/10 border border-[#00d4ff]/20">
-                <Shield className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
+              <div className="group-hover:scale-105 transition-transform duration-200">
+                <PentaCipherIcon size={36} />
               </div>
-              <span
-                className="text-white font-semibold text-base"
-                style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
-              >
-                PentaCipher
-              </span>
+              <PentaCipherLogoText variant="light" />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Security-first software development and DevOps consultancy. We help
@@ -66,7 +62,7 @@ export function Footer() {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/8 text-white/40 hover:text-[#00d4ff] hover:border-[#00d4ff]/30 hover:bg-[#00d4ff]/5 hover:scale-110 transition-all duration-200"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/10 text-white/40 hover:text-[#00d4ff] hover:border-[#00d4ff]/30 hover:bg-[#00d4ff]/5 hover:scale-110 transition-all duration-200"
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </a>
@@ -96,12 +92,12 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-xs">
             © {new Date().getFullYear()} PentaCipher. All rights reserved.
           </p>
           <p className="text-white/30 text-xs flex items-center gap-1.5 italic">
-            <Shield className="w-3 h-3 text-[#00d4ff]/70" aria-hidden="true" />
+            <PentaCipherIcon size={12} />
             <span className="text-[#00d4ff]/50">Security-first.</span> Always.
           </p>
         </div>

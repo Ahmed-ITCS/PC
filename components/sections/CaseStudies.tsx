@@ -91,7 +91,7 @@ function MockupFrame({
 }) {
   return (
     <div
-      className="relative rounded-xl overflow-hidden border border-white/10 aspect-video bg-[#080e1e] shadow-[0_24px_64px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)]"
+      className="relative rounded-xl overflow-hidden border border-[#0A1B2E]/10 aspect-video bg-[#0A1B2E] shadow-[0_24px_64px_rgba(10,27,46,0.15),0_0_0_1px_rgba(10,27,46,0.06)]"
       aria-label={`${client} product mockup`}
     >
       <div
@@ -101,20 +101,20 @@ function MockupFrame({
         }}
         aria-hidden="true"
       />
-      <div className="absolute top-0 inset-x-0 h-8 bg-[#0d1529]/80 border-b border-white/5 flex items-center px-4 gap-2">
+      <div className="absolute top-0 inset-x-0 h-8 bg-[#0D2238]/80 border-b border-white/8 flex items-center px-4 gap-2">
         <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+          <div className="w-2.5 h-2.5 rounded-full bg-white/15" />
+          <div className="w-2.5 h-2.5 rounded-full bg-white/15" />
+          <div className="w-2.5 h-2.5 rounded-full bg-white/15" />
         </div>
-        <div className="flex-1 h-4 rounded bg-white/5 mx-4 max-w-40" />
+        <div className="flex-1 h-4 rounded bg-white/8 mx-4 max-w-40" />
       </div>
       <div className="absolute inset-0 top-8 flex items-center justify-center p-6">
         <div className="space-y-3 w-full max-w-xs">
           <div className="h-5 rounded-md w-2/3" style={{ background: `${accentColor}25` }} />
-          <div className="h-3 rounded w-full bg-white/5" />
-          <div className="h-3 rounded w-5/6 bg-white/5" />
-          <div className="h-3 rounded w-4/6 bg-white/5" />
+          <div className="h-3 rounded w-full bg-white/8" />
+          <div className="h-3 rounded w-5/6 bg-white/8" />
+          <div className="h-3 rounded w-4/6 bg-white/8" />
           <div className="mt-4 grid grid-cols-3 gap-2">
             {[1, 2, 3].map((n) => (
               <div
@@ -139,11 +139,11 @@ export function CaseStudies() {
 
   return (
     <section
-      className="relative py-24 md:py-32 bg-[#080e1e] overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#D4EEF5] overflow-hidden"
       aria-labelledby="case-studies-heading"
     >
       <SectionNumber number="03" className="top-8 right-4 md:right-12" />
-      <div className="absolute inset-0 bg-glow-bottom opacity-50" aria-hidden="true" />
+      <div className="absolute inset-0 bg-glow-bottom opacity-30" aria-hidden="true" />
 
       <div className="relative z-10 container-max section-padding">
 
@@ -157,7 +157,7 @@ export function CaseStudies() {
             Real Projects,{" "}
             <span className="gradient-text">Measurable Results</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl text-balance">
+          <p className="text-[#0A1B2E]/55 text-lg max-w-2xl text-balance">
             A selection of recent engagements — each representing a distinct
             challenge, approach, and outcome.
           </p>
@@ -168,7 +168,7 @@ export function CaseStudies() {
           {caseStudies.map((cs, i) => {
             const isActive = i === active;
             return (
-              <div key={cs.client} className="border-t border-white/8 last:border-b">
+              <div key={cs.client} className="border-t border-[#0A1B2E]/10 last:border-b">
                 {/* Collapsed row — clickable header */}
                 <button
                   onClick={() => setActive(i)}
@@ -177,13 +177,13 @@ export function CaseStudies() {
                   aria-controls={`case-study-${i}`}
                 >
                   <span
-                    className="shrink-0 text-[#00d4ff]/30 font-bold font-mono text-sm md:text-base transition-colors duration-200 group-hover:text-[#00d4ff]/60"
+                    className="shrink-0 text-[#00d4ff]/40 font-bold font-mono text-sm md:text-base transition-colors duration-200 group-hover:text-[#00d4ff]/70"
                     aria-hidden="true"
                   >
                     0{i + 1}
                   </span>
                   <h3
-                    className="flex-1 font-bold text-white/60 group-hover:text-white transition-colors duration-300"
+                    className="flex-1 font-bold text-[#0A1B2E]/50 group-hover:text-[#0A1B2E] transition-colors duration-300"
                     style={{
                       fontFamily: "var(--font-syne), Syne, sans-serif",
                       fontSize: isActive
@@ -192,18 +192,18 @@ export function CaseStudies() {
                       lineHeight: "1.0",
                       letterSpacing: "-0.025em",
                       transition: "font-size 0.4s cubic-bezier(0.22,1,0.36,1), color 0.3s",
-                      color: isActive ? "white" : undefined,
+                      color: isActive ? "#0A1B2E" : undefined,
                     }}
                   >
                     {cs.client}
                   </h3>
-                  <span className="shrink-0 text-white/25 text-sm font-medium hidden md:block">
+                  <span className="shrink-0 text-[#0A1B2E]/30 text-sm font-medium hidden md:block">
                     {cs.tagline}
                   </span>
                   <motion.span
                     animate={{ rotate: isActive ? 45 : 0 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="shrink-0 text-[#00d4ff]/40 text-2xl font-light leading-none"
+                    className="shrink-0 text-[#00d4ff]/50 text-2xl font-light leading-none"
                     aria-hidden="true"
                   >
                     +
@@ -225,25 +225,25 @@ export function CaseStudies() {
                       <div className="pb-12 grid lg:grid-cols-2 gap-8 lg:gap-16">
                         {/* Left */}
                         <div className="space-y-8">
-                          <div className="flex items-center gap-3 text-white/30 text-sm">
+                          <div className="flex items-center gap-3 text-[#0A1B2E]/40 text-sm">
                             <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                             {cs.timeline}
                             <span className="mx-1">·</span>
-                            <span className="text-[#00d4ff]/60">{cs.tagline}</span>
+                            <span className="text-[#00d4ff]/70">{cs.tagline}</span>
                           </div>
 
                           <div className="space-y-5">
                             <div>
-                              <p className="text-[10px] font-semibold uppercase tracking-widest text-white/25 mb-2">
+                              <p className="text-[10px] font-semibold uppercase tracking-widest text-[#0A1B2E]/30 mb-2">
                                 Challenge
                               </p>
-                              <p className="text-white/55 text-sm leading-relaxed">{cs.challenge}</p>
+                              <p className="text-[#0A1B2E]/60 text-sm leading-relaxed">{cs.challenge}</p>
                             </div>
                             <div>
-                              <p className="text-[10px] font-semibold uppercase tracking-widest text-white/25 mb-2">
+                              <p className="text-[10px] font-semibold uppercase tracking-widest text-[#0A1B2E]/30 mb-2">
                                 Solution
                               </p>
-                              <p className="text-white/55 text-sm leading-relaxed">{cs.solution}</p>
+                              <p className="text-[#0A1B2E]/60 text-sm leading-relaxed">{cs.solution}</p>
                             </div>
                           </div>
 
@@ -252,7 +252,7 @@ export function CaseStudies() {
                             {cs.stats.map((stat) => (
                               <div
                                 key={stat.label}
-                                className="rounded-xl border border-white/8 bg-white/[0.03] p-4 text-center"
+                                className="rounded-xl border border-[#0A1B2E]/8 bg-white/80 p-4 text-center"
                               >
                                 <div
                                   className="text-2xl font-bold gradient-text"
@@ -265,21 +265,21 @@ export function CaseStudies() {
                                     <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                                   )}
                                 </div>
-                                <p className="text-white/35 text-[10px] mt-1 leading-tight">{stat.label}</p>
+                                <p className="text-[#0A1B2E]/40 text-[10px] mt-1 leading-tight">{stat.label}</p>
                               </div>
                             ))}
                           </div>
 
                           {/* Stack */}
                           <div>
-                            <p className="text-[10px] font-semibold uppercase tracking-widest text-white/25 mb-2.5">
+                            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#0A1B2E]/30 mb-2.5">
                               Tech Stack
                             </p>
                             <div className="flex flex-wrap gap-2">
                               {cs.stack.map((t) => (
                                 <span
                                   key={t}
-                                  className="px-2.5 py-1 rounded-md bg-white/4 border border-white/8 text-white/45 text-xs font-medium"
+                                  className="px-2.5 py-1 rounded-md bg-[#0A1B2E]/5 border border-[#0A1B2E]/10 text-[#0A1B2E]/55 text-xs font-medium"
                                 >
                                   {t}
                                 </span>

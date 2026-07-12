@@ -32,19 +32,19 @@ const allTech = [...techStack, ...techStack, ...techStack, ...techStack];
 export function TrustBar() {
   return (
     <section
-      className="relative py-12 border-y border-white/5 bg-[#080e1e]/60 overflow-hidden"
+      className="relative py-12 border-y border-[#0A1B2E]/8 bg-[#D4EEF5]/60 overflow-hidden"
       aria-label="Trusted by companies"
     >
       {/* Left fade */}
       <div
         className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to right, #080e1e, transparent)" }}
+        style={{ background: "linear-gradient(to right, #D4EEF5, transparent)" }}
         aria-hidden="true"
       />
       {/* Right fade */}
       <div
         className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to left, #080e1e, transparent)" }}
+        style={{ background: "linear-gradient(to left, #D4EEF5, transparent)" }}
         aria-hidden="true"
       />
 
@@ -61,7 +61,7 @@ export function TrustBar() {
           {allLogos.map((name, i) => (
             <div
               key={i}
-              className="flex items-center px-6 py-2.5 rounded-lg border border-white/10 bg-white/[0.04] backdrop-blur-sm text-white/35 text-base font-semibold whitespace-nowrap tracking-wide hover:border-[#00d4ff]/15 hover:text-white/50 transition-colors duration-300"
+              className="flex items-center px-6 py-2.5 rounded-lg border border-[#0A1B2E]/10 bg-white/50 backdrop-blur-sm text-[#0A1B2E]/45 text-base font-semibold whitespace-nowrap tracking-wide hover:border-[#00d4ff]/25 hover:text-[#0A1B2E]/70 transition-colors duration-300"
               style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
             >
               {name}
@@ -79,7 +79,7 @@ export function TrustBar() {
           {allTech.map((name, i) => (
             <div
               key={i}
-              className="flex items-center px-6 py-2.5 rounded-lg border border-[#00d4ff]/8 bg-[#00d4ff]/[0.03] text-[#00d4ff]/30 text-base font-semibold whitespace-nowrap tracking-widest uppercase hover:text-[#00d4ff]/50 transition-colors duration-300"
+              className="flex items-center px-6 py-2.5 rounded-lg border border-[#00d4ff]/15 bg-[#00d4ff]/[0.04] text-[#00d4ff]/60 text-base font-semibold whitespace-nowrap tracking-widest uppercase hover:text-[#00d4ff]/80 transition-colors duration-300"
               style={{ fontFamily: "var(--font-mono), JetBrains Mono, monospace", fontSize: "0.75rem" }}
             >
               {name}

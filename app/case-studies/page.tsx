@@ -94,7 +94,7 @@ export default function CaseStudiesPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-white/50 text-lg max-w-2xl text-balance">
+            <p className="text-[#0A1B2E]/55 text-lg max-w-2xl text-balance">
               Three representative engagements that show how we work and what we
               deliver.
             </p>
@@ -108,7 +108,7 @@ export default function CaseStudiesPage() {
           {cases.map((c, i) => (
             <FadeIn key={c.slug} delay={i * 0.08}>
               <article
-                className="rounded-2xl border border-white/6 bg-[#0d1529]/50 hover:border-white/10 transition-all duration-300 overflow-hidden"
+                className="rounded-2xl border border-[#0A1B2E]/8 bg-white/80 hover:border-[#00d4ff]/15 hover:shadow-[0_8px_32px_rgba(10,27,46,0.08)] transition-all duration-300 overflow-hidden"
                 aria-labelledby={`case-${c.slug}-title`}
               >
                 <div className="p-8 md:p-10 space-y-8">
@@ -118,14 +118,14 @@ export default function CaseStudiesPage() {
                       <span className="tag">{c.label}</span>
                       <h2
                         id={`case-${c.slug}-title`}
-                        className="text-xl md:text-2xl font-bold text-white mt-2"
+                        className="text-xl md:text-2xl font-bold text-[#0A1B2E] mt-2"
                         style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                       >
                         {c.title}
                       </h2>
-                      <p className="text-white/40 text-sm">{c.client}</p>
+                      <p className="text-[#0A1B2E]/40 text-sm">{c.client}</p>
                     </div>
-                    <div className="flex items-center gap-4 text-white/30 text-xs">
+                    <div className="flex items-center gap-4 text-[#0A1B2E]/35 text-xs">
                       <span className="flex items-center gap-1.5">
                         <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                         {c.duration}
@@ -140,34 +140,34 @@ export default function CaseStudiesPage() {
                   {/* Body */}
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="space-y-1.5">
-                      <h3 className="text-white/70 text-xs font-semibold uppercase tracking-widest">Overview</h3>
-                      <p className="text-white/50 text-sm leading-relaxed">{c.overview}</p>
+                      <h3 className="text-[#0A1B2E]/60 text-xs font-semibold uppercase tracking-widest">Overview</h3>
+                      <p className="text-[#0A1B2E]/50 text-sm leading-relaxed">{c.overview}</p>
                     </div>
                     <div className="space-y-1.5">
-                      <h3 className="text-white/70 text-xs font-semibold uppercase tracking-widest">Challenge</h3>
-                      <p className="text-white/50 text-sm leading-relaxed">{c.challenge}</p>
+                      <h3 className="text-[#0A1B2E]/60 text-xs font-semibold uppercase tracking-widest">Challenge</h3>
+                      <p className="text-[#0A1B2E]/50 text-sm leading-relaxed">{c.challenge}</p>
                     </div>
                     <div className="space-y-1.5">
                       <h3 className="text-[#00d4ff]/70 text-xs font-semibold uppercase tracking-widest">Outcome</h3>
-                      <p className="text-white/60 text-sm leading-relaxed">{c.outcome}</p>
+                      <p className="text-[#0A1B2E]/60 text-sm leading-relaxed">{c.outcome}</p>
                     </div>
                   </div>
 
                   {/* Metrics */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 rounded-xl bg-[#080e1e]/60 border border-white/5">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 rounded-xl bg-[#EBF6F9]/60 border border-[#0A1B2E]/8">
                     {c.metrics.map((m) => (
                       <div key={m.label} className="flex items-center gap-3">
-                        <TrendingUp className="w-4 h-4 text-[#00d4ff]/50 shrink-0" aria-hidden="true" />
+                        <TrendingUp className="w-4 h-4 text-[#00d4ff]/60 shrink-0" aria-hidden="true" />
                         <div>
-                          <p className="text-white/30 text-xs">{m.label}</p>
+                          <p className="text-[#0A1B2E]/40 text-xs">{m.label}</p>
                           <div className="flex items-center gap-2 text-sm">
                             {m.before !== "—" && (
                               <>
-                                <span className="text-white/40 line-through text-xs">{m.before}</span>
-                                <span className="text-white/20 text-xs">→</span>
+                                <span className="text-[#0A1B2E]/35 line-through text-xs">{m.before}</span>
+                                <span className="text-[#0A1B2E]/25 text-xs">→</span>
                               </>
                             )}
-                            <span className="text-white font-semibold">{m.after}</span>
+                            <span className="text-[#0A1B2E] font-semibold">{m.after}</span>
                           </div>
                         </div>
                       </div>
@@ -176,11 +176,11 @@ export default function CaseStudiesPage() {
 
                   {/* Tech stack */}
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-white/30 text-xs mr-1">Stack:</span>
+                    <span className="text-[#0A1B2E]/35 text-xs mr-1">Stack:</span>
                     {c.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-2.5 py-1 rounded-md bg-white/4 border border-white/6 text-white/35 text-xs font-medium"
+                        className="px-2.5 py-1 rounded-md bg-[#0A1B2E]/5 border border-[#0A1B2E]/8 text-[#0A1B2E]/45 text-xs font-medium"
                       >
                         {t}
                       </span>

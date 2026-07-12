@@ -49,7 +49,7 @@ export function Process() {
     >
       {/* Background dots */}
       <div
-        className="absolute inset-0 bg-dot-pattern bg-dot-sm opacity-40"
+        className="absolute inset-0 bg-dot-pattern bg-dot-sm opacity-60"
         aria-hidden="true"
         style={{ backgroundSize: "24px 24px" }}
       />
@@ -67,7 +67,7 @@ export function Process() {
             A Process Built for{" "}
             <span className="gradient-text">Predictable Outcomes</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-xl text-balance">
+          <p className="text-[#0A1B2E]/55 text-lg max-w-xl text-balance">
             No surprises, no scope creep. Just a proven framework for shipping
             secure software on time.
           </p>
@@ -76,7 +76,7 @@ export function Process() {
         <div className="relative">
           {/* Animated connector line */}
           <motion.div
-            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent"
+            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#00d4ff]/40 to-transparent"
             aria-hidden="true"
             initial={shouldReduceMotion ? false : { scaleX: 0, transformOrigin: "left center" }}
             whileInView={{ scaleX: 1 }}
@@ -90,26 +90,26 @@ export function Process() {
               return (
                 <FadeIn key={step.number} delay={i * 0.1} direction="up">
                   <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-4">
-                    <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-[#00d4ff]/8 border border-[#00d4ff]/20">
+                    <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/25">
                       <Icon
                         className="w-5 h-5 text-[#00d4ff]"
                         aria-hidden="true"
                       />
-                      <span className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center rounded-full bg-[#080e1e] border border-[#00d4ff]/30 text-[#00d4ff] text-[10px] font-bold">
+                      <span className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center rounded-full bg-[#EBF6F9] border border-[#00d4ff]/35 text-[#00d4ff] text-[10px] font-bold">
                         {i + 1}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[#00d4ff]/40 text-xs font-mono font-medium">
+                      <span className="text-[#00d4ff]/50 text-xs font-mono font-medium">
                         {step.number}
                       </span>
                       <h3
-                        className="text-white font-semibold text-lg mt-0.5 mb-2"
+                        className="text-[#0A1B2E] font-semibold text-lg mt-0.5 mb-2"
                         style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                       >
                         {step.title}
                       </h3>
-                      <p className="text-white/45 text-sm leading-relaxed">
+                      <p className="text-[#0A1B2E]/50 text-sm leading-relaxed">
                         {step.description}
                       </p>
                     </div>

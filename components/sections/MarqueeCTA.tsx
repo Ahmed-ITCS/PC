@@ -4,18 +4,18 @@ const allWords = [...words, ...words];
 export function MarqueeCTA() {
   return (
     <section
-      className="relative py-6 border-y border-white/5 overflow-hidden"
+      className="relative py-6 border-y border-[#0A1B2E]/8 overflow-hidden"
       aria-hidden="true"
     >
       {/* Left fade */}
       <div
         className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to right, #04070f, transparent)" }}
+        style={{ background: "linear-gradient(to right, #EBF6F9, transparent)" }}
       />
       {/* Right fade */}
       <div
         className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to left, #04070f, transparent)" }}
+        style={{ background: "linear-gradient(to left, #EBF6F9, transparent)" }}
       />
 
       <div className="flex overflow-hidden select-none">
@@ -26,14 +26,14 @@ export function MarqueeCTA() {
           {allWords.map((word, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-0 text-[#00d4ff]/70 font-bold tracking-widest uppercase whitespace-nowrap"
+              className="inline-flex items-center gap-0 text-[#00d4ff]/60 font-bold tracking-widest uppercase whitespace-nowrap"
               style={{
                 fontSize: "clamp(2rem, 4vw, 3.5rem)",
                 fontFamily: "var(--font-syne), Syne, sans-serif",
               }}
             >
               {word}
-              <span className="mx-6 md:mx-10 text-[#00d4ff]/20 font-light">·</span>
+              <span className="mx-6 md:mx-10 text-[#0A1B2E]/15 font-light">·</span>
             </span>
           ))}
         </div>

@@ -26,12 +26,12 @@ const stats = [
 export function Stats() {
   return (
     <section
-      className="relative py-20 md:py-24 bg-[#080e1e] border-y border-white/5 overflow-hidden"
+      className="relative py-20 md:py-24 bg-[#0A1B2E] border-y border-white/5 overflow-hidden"
       aria-label="Company statistics"
     >
       <SectionNumber number="04" className="top-2 right-0 md:right-8" />
       <div
-        className="absolute inset-0 bg-glow-cyan opacity-60"
+        className="absolute inset-0 bg-glow-cyan opacity-50"
         aria-hidden="true"
       />
       <div className="relative z-10 container-max section-padding">
@@ -40,7 +40,7 @@ export function Stats() {
           {stats.map((stat, i) => (
             <FadeIn key={stat.label} delay={i * 0.1} className="text-center space-y-2">
               <div
-                className="font-bold gradient-text"
+                className="font-bold gradient-text-light"
                 style={{
                   fontFamily: "var(--font-syne), Syne, sans-serif",
                   fontSize: "clamp(3.5rem, 8vw, 7rem)",
@@ -54,7 +54,7 @@ export function Stats() {
               <div className="text-white/90 font-bold text-sm md:text-base tracking-wide">
                 {stat.label}
               </div>
-              <div className="text-white/40 text-xs md:text-sm">{stat.description}</div>
+              <div className="text-white/45 text-xs md:text-sm">{stat.description}</div>
             </FadeIn>
           ))}
         </div>

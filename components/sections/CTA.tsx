@@ -18,9 +18,9 @@ export function CTA() {
       </div>
 
       {/* Glow */}
-      <GlowOrb className="-top-20 left-1/2 -translate-x-1/2" size="xl" opacity={0.07} />
+      <GlowOrb className="-top-20 left-1/2 -translate-x-1/2" size="xl" opacity={0.08} />
       <div
-        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20"
+        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-60"
         aria-hidden="true"
       />
 
@@ -43,7 +43,7 @@ export function CTA() {
         </ClipReveal>
 
         <ClipReveal delay={0.2}>
-          <p className="text-white/45 text-xl max-w-lg text-balance leading-relaxed">
+          <p className="text-[#0A1B2E]/50 text-xl max-w-lg text-balance leading-relaxed">
             Tell us about your project and we&apos;ll respond within one
             business day with a scoping plan.
           </p>
@@ -53,7 +53,7 @@ export function CTA() {
           <div className="flex flex-col sm:flex-row items-center gap-5">
             <MagneticButton
               href="/contact"
-              className="px-12 py-5 rounded-xl font-bold text-lg bg-[#00d4ff] text-[#04070f] shadow-[0_0_48px_rgba(0,212,255,0.4)] hover:shadow-[0_0_72px_rgba(0,212,255,0.6)] transition-shadow duration-300"
+              className="px-12 py-5 rounded-xl font-bold text-lg bg-[#00d4ff] text-[#0A1B2E] shadow-[0_0_48px_rgba(0,212,255,0.4)] hover:shadow-[0_0_72px_rgba(0,212,255,0.6)] transition-shadow duration-300"
             >
               Start a Project
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
@@ -62,14 +62,14 @@ export function CTA() {
             <MagneticButton
               href="/services"
               strength={0.25}
-              className="px-10 py-4 rounded-xl font-semibold text-sm border border-white/10 text-white/60 hover:border-white/25 hover:text-white hover:bg-white/5 transition-all duration-200"
+              className="px-10 py-4 rounded-xl font-semibold text-sm border border-[#0A1B2E]/15 text-[#0A1B2E]/60 hover:border-[#0A1B2E]/30 hover:text-[#0A1B2E] hover:bg-[#0A1B2E]/5 transition-all duration-200"
             >
               Explore Services
             </MagneticButton>
           </div>
         </ClipReveal>
 
-        <p className="text-white/20 text-xs">
+        <p className="text-[#0A1B2E]/30 text-xs">
           No commitment required. Free 30-minute scoping call.
         </p>
       </div>

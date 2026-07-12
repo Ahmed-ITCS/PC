@@ -37,23 +37,13 @@ export function Hero() {
       </motion.div>
 
       <div
-        className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-30"
+        className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-60"
         aria-hidden="true"
       />
       <div className="absolute inset-0 z-[1] bg-glow-cyan" aria-hidden="true" />
-      <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.05} />
-      <GlowOrb className="top-1/2 -left-40" size="lg" opacity={0.04} />
-      <GlowOrb className="top-1/3 -right-40" size="md" opacity={0.03} />
-
-      <div
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "128px",
-        }}
-        aria-hidden="true"
-      />
+      <GlowOrb className="-top-40 left-1/2 -translate-x-1/2" size="xl" opacity={0.07} />
+      <GlowOrb className="top-1/2 -left-40" size="lg" opacity={0.05} />
+      <GlowOrb className="top-1/3 -right-40" size="md" opacity={0.04} />
 
       <div className="relative z-10 container-max section-padding py-20 lg:py-32">
         <div className="flex justify-center">
@@ -110,7 +100,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="text-white/50 text-lg md:text-xl leading-relaxed max-w-xl text-balance"
+              className="text-[#0A1B2E]/55 text-lg md:text-xl leading-relaxed max-w-xl text-balance"
             >
               We accelerate your digital transformation — delivering full-stack
               development, DevOps, and security-hardened systems without the
@@ -129,7 +119,7 @@ export function Hero() {
               {heroStats.map(({ value, label }, i) => (
                 <div key={label} role="listitem" className="flex items-center gap-2">
                   {i > 0 && (
-                    <span className="hidden sm:block text-white/15 text-sm" aria-hidden="true">·</span>
+                    <span className="hidden sm:block text-[#0A1B2E]/20 text-sm" aria-hidden="true">·</span>
                   )}
                   <span
                     className="text-[#00d4ff] font-bold text-xl"
@@ -137,7 +127,7 @@ export function Hero() {
                   >
                     <TextScramble text={value} trigger="inview" duration={600} delay={i * 80} />
                   </span>
-                  <span className="text-white/40 text-sm">{label}</span>
+                  <span className="text-[#0A1B2E]/45 text-sm">{label}</span>
                 </div>
               ))}
             </motion.div>
@@ -151,7 +141,7 @@ export function Hero() {
             >
               <MagneticButton
                 href="/contact"
-                className="px-10 py-5 rounded-xl font-bold text-base bg-[#00d4ff] text-[#04070f] shadow-[0_0_40px_rgba(0,212,255,0.45)] hover:shadow-[0_0_60px_rgba(0,212,255,0.65)] transition-shadow duration-300"
+                className="px-10 py-5 rounded-xl font-bold text-base bg-[#00d4ff] text-[#0A1B2E] shadow-[0_0_40px_rgba(0,212,255,0.45)] hover:shadow-[0_0_60px_rgba(0,212,255,0.65)] transition-shadow duration-300"
               >
                 Get Started
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -160,7 +150,7 @@ export function Hero() {
               <MagneticButton
                 href="/services"
                 strength={0.25}
-                className="px-8 py-4 rounded-xl font-semibold text-sm border border-white/10 text-white/70 hover:border-white/20 hover:text-white hover:bg-white/5 transition-all duration-200"
+                className="px-8 py-4 rounded-xl font-semibold text-sm border border-[#0A1B2E]/15 text-[#0A1B2E]/70 hover:border-[#0A1B2E]/30 hover:text-[#0A1B2E] hover:bg-[#0A1B2E]/5 transition-all duration-200"
               >
                 View Our Services
               </MagneticButton>
@@ -180,9 +170,9 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-white/15 flex items-start justify-center p-1"
+          className="w-5 h-8 rounded-full border border-[#0A1B2E]/20 flex items-start justify-center p-1"
         >
-          <div className="w-1 h-1.5 rounded-full bg-[#00d4ff]/60" />
+          <div className="w-1 h-1.5 rounded-full bg-[#00d4ff]/70" />
         </motion.div>
       </motion.div>
     </section>

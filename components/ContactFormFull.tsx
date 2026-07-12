@@ -20,9 +20,9 @@ type FormValues = z.infer<typeof schema>;
 type Status = "idle" | "loading" | "success" | "error";
 
 const inputCls =
-  "w-full rounded-xl bg-[#080e1e]/80 border border-white/8 text-white/80 placeholder:text-white/25 text-sm px-4 py-3 focus:outline-none focus:border-[#00d4ff]/40 focus:ring-1 focus:ring-[#00d4ff]/20 transition-colors";
+  "w-full rounded-xl bg-white/80 border border-[#0A1B2E]/12 text-[#0A1B2E]/85 placeholder:text-[#0A1B2E]/30 text-sm px-4 py-3 focus:outline-none focus:border-[#00d4ff]/50 focus:ring-1 focus:ring-[#00d4ff]/20 transition-colors";
 
-const inputErrorCls = `${inputCls} border-red-500/40 focus:border-red-500/50`;
+const inputErrorCls = `${inputCls} border-red-400/50 focus:border-red-400/60`;
 
 function Field({
   id,
@@ -39,13 +39,13 @@ function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="block text-white/60 text-sm font-medium">
+      <label htmlFor={id} className="block text-[#0A1B2E]/65 text-sm font-medium">
         {label}
-        {required && <span className="text-white/30 font-normal ml-1">*</span>}
+        {required && <span className="text-[#0A1B2E]/35 font-normal ml-1">*</span>}
       </label>
       {children}
       {error && (
-        <p className="flex items-center gap-1.5 text-red-400 text-xs" role="alert">
+        <p className="flex items-center gap-1.5 text-red-500 text-xs" role="alert">
           <AlertCircle className="w-3 h-3 shrink-0" aria-hidden="true" />
           {error}
         </p>
@@ -82,18 +82,18 @@ export function ContactFormFull() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-[#00d4ff]/20 bg-[#00d4ff]/5 px-8">
+      <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-[#00d4ff]/25 bg-[#00d4ff]/8 px-8">
         <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#00d4ff]/10 border border-[#00d4ff]/25">
           <CheckCircle2 className="w-8 h-8 text-[#00d4ff]" aria-hidden="true" />
         </div>
         <div>
           <h2
-            className="text-2xl font-bold text-white mb-2"
+            className="text-2xl font-bold text-[#0A1B2E] mb-2"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             Message Received
           </h2>
-          <p className="text-white/55 text-base">
+          <p className="text-[#0A1B2E]/60 text-base">
             We&apos;ll be in touch within one business day with a scoping plan.
           </p>
         </div>
@@ -110,12 +110,12 @@ export function ContactFormFull() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-5 rounded-2xl border border-white/6 bg-[#0d1529]/60 p-8 md:p-10"
+      className="space-y-5 rounded-2xl border border-[#0A1B2E]/10 bg-white/80 p-8 md:p-10 shadow-[0_24px_64px_rgba(10,27,46,0.08)]"
       aria-label="Contact form"
       noValidate
     >
       <h2
-        className="text-xl font-bold text-white mb-2"
+        className="text-xl font-bold text-[#0A1B2E] mb-2"
         style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
       >
         Tell Us About Your Project
@@ -205,7 +205,7 @@ export function ContactFormFull() {
 
       {status === "error" && (
         <div
-          className="flex items-center gap-2.5 p-3.5 rounded-xl bg-red-500/8 border border-red-500/20 text-red-400 text-sm"
+          className="flex items-center gap-2.5 p-3.5 rounded-xl bg-red-500/8 border border-red-400/20 text-red-600 text-sm"
           role="alert"
         >
           <AlertCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -217,12 +217,12 @@ export function ContactFormFull() {
         type="submit"
         disabled={status === "loading"}
         aria-busy={status === "loading"}
-        className="group w-full flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.25)] hover:shadow-[0_0_36px_rgba(0,212,255,0.4)]"
+        className="group w-full flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm bg-[#00d4ff] text-[#0A1B2E] hover:bg-[#00d4ff]/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.25)] hover:shadow-[0_0_36px_rgba(0,212,255,0.4)]"
       >
         {status === "loading" ? (
           <>
             <span
-              className="w-4 h-4 border-2 border-[#04070f]/30 border-t-[#04070f] rounded-full animate-spin"
+              className="w-4 h-4 border-2 border-[#0A1B2E]/30 border-t-[#0A1B2E] rounded-full animate-spin"
               aria-hidden="true"
             />
             Sending…
@@ -238,11 +238,11 @@ export function ContactFormFull() {
         )}
       </button>
 
-      <p className="text-white/25 text-xs text-center">
+      <p className="text-[#0A1B2E]/30 text-xs text-center">
         By submitting this form you agree to our{" "}
         <a
           href="/privacy"
-          className="hover:text-white/50 underline underline-offset-2 transition-colors"
+          className="hover:text-[#0A1B2E]/55 underline underline-offset-2 transition-colors"
         >
           Privacy Policy
         </a>

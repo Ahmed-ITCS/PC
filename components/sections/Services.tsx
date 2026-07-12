@@ -84,7 +84,7 @@ export function Services() {
             Everything Your Project Needs —{" "}
             <span className="gradient-text">None of the Overhead</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl text-balance">
+          <p className="text-[#0A1B2E]/55 text-lg max-w-2xl text-balance">
             From first commit to production, we handle the full technical stack
             so you can focus on your business.
           </p>
@@ -100,8 +100,8 @@ export function Services() {
                   href={service.href}
                   className={`group relative flex flex-col gap-4 p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#00d4ff] outline-none h-full ${
                     service.featured
-                      ? "border-[#00d4ff]/25 bg-gradient-to-b from-[#00d4ff]/5 to-[#0d1529]/80 shadow-[0_0_0_1px_rgba(0,212,255,0.15),0_8px_32px_rgba(0,0,0,0.3)]"
-                      : "border-white/6 bg-[#0d1529]/60 hover:border-[#00d4ff]/20 hover:bg-[#0d1529]/80 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.1),0_16px_48px_rgba(0,0,0,0.4)]"
+                      ? "border-[#00d4ff]/30 bg-gradient-to-b from-[#00d4ff]/8 to-white/90 shadow-[0_0_0_1px_rgba(0,212,255,0.12),0_8px_32px_rgba(10,27,46,0.1)]"
+                      : "border-[#0A1B2E]/8 bg-white/80 hover:border-[#00d4ff]/20 hover:bg-white/90 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.08),0_16px_48px_rgba(10,27,46,0.1)]"
                   }`}
                   aria-label={`${service.title} — Learn more`}
                 >
@@ -114,7 +114,7 @@ export function Services() {
                     className={`flex items-center justify-center w-11 h-11 rounded-xl border transition-colors duration-200 ${
                       service.featured
                         ? "bg-[#00d4ff]/12 border-[#00d4ff]/30 group-hover:bg-[#00d4ff]/18"
-                        : "bg-[#00d4ff]/8 border-[#00d4ff]/15 group-hover:bg-[#00d4ff]/12"
+                        : "bg-[#00d4ff]/8 border-[#00d4ff]/20 group-hover:bg-[#00d4ff]/12"
                     }`}
                   >
                     <Icon
@@ -124,12 +124,12 @@ export function Services() {
                   </div>
                   <div className="flex-1 space-y-2">
                     <h3
-                      className="text-white font-semibold text-base group-hover:text-white transition-colors"
+                      className="text-[#0A1B2E] font-semibold text-base transition-colors"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {service.title}
                     </h3>
-                    <p className="text-white/45 text-sm leading-relaxed">
+                    <p className="text-[#0A1B2E]/55 text-sm leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -137,13 +137,13 @@ export function Services() {
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 rounded-md bg-white/4 border border-white/6 text-white/35 text-xs font-medium"
+                        className="px-2.5 py-1 rounded-md bg-[#0A1B2E]/5 border border-[#0A1B2E]/8 text-[#0A1B2E]/45 text-xs font-medium"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center gap-1 text-[#00d4ff]/50 group-hover:text-[#00d4ff] text-xs font-medium transition-colors duration-200 mt-1">
+                  <div className="flex items-center gap-1 text-[#00d4ff]/60 group-hover:text-[#00d4ff] text-xs font-medium transition-colors duration-200 mt-1">
                     Learn more
                     <ArrowRight
                       className="w-3 h-3 group-hover:translate-x-0.5 transition-transform"
@@ -160,7 +160,7 @@ export function Services() {
         <FadeIn delay={0.4} className="flex justify-center mt-14">
           <Link
             href="/services"
-            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-white/10 text-white/70 hover:border-[#00d4ff]/30 hover:text-white hover:bg-[#00d4ff]/5 transition-all duration-200"
+            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-[#0A1B2E]/12 text-[#0A1B2E]/65 hover:border-[#00d4ff]/30 hover:text-[#0A1B2E] hover:bg-[#00d4ff]/5 transition-all duration-200"
           >
             View all services
             <ArrowRight
