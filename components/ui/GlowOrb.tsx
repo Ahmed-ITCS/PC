@@ -19,8 +19,8 @@ const sizeMap = {
 export function GlowOrb({
   className = "",
   size = "lg",
-  color = "#00d4ff",
-  opacity = 0.06,
+  color = "#0369A1",
+  opacity = 0.05,
 }: GlowOrbProps) {
   return (
     <motion.div

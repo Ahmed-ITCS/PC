@@ -64,7 +64,7 @@ export default function ContactPage() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance max-w-3xl"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance max-w-3xl text-[#0F172A]"
               style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
             >
               Let&apos;s Build{" "}
@@ -72,7 +72,7 @@ export default function ContactPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-[#0A1B2E]/55 text-lg max-w-xl text-balance">
+            <p className="text-[#475569] text-lg max-w-xl text-balance">
               Tell us about your project and we&apos;ll respond within one business
               day with a scoping plan and honest timeline estimate.
             </p>
@@ -81,7 +81,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main content */}
-      <section className="py-12 md:py-16 pb-24 md:pb-32" aria-label="Contact form and info">
+      <section className="py-12 md:py-16 pb-24 md:pb-32 bg-[#F8FAFC]" aria-label="Contact form and info">
         <div className="container-max section-padding">
           <div className="grid lg:grid-cols-[1.6fr_1fr] gap-12 lg:gap-16 items-start">
             {/* Form */}
@@ -95,20 +95,20 @@ export default function ContactPage() {
                 <div className="space-y-5">
                   {contactInfo.map(({ icon: Icon, label, value, href }) => (
                     <div key={label} className="flex items-start gap-4">
-                      <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/20 shrink-0">
-                        <Icon className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
+                      <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#F1F5F9] border border-[#E2E8F0] shrink-0">
+                        <Icon className="w-4 h-4 text-accent" aria-hidden="true" />
                       </div>
                       <div>
-                        <p className="text-[#0A1B2E]/40 text-xs font-medium uppercase tracking-wide">{label}</p>
+                        <p className="text-[#64748B] text-xs font-medium uppercase tracking-wide">{label}</p>
                         {href ? (
                           <a
                             href={href}
-                            className="text-[#0A1B2E]/80 text-sm hover:text-[#00d4ff] transition-colors"
+                            className="text-[#0F172A] text-sm hover:text-accent transition-colors"
                           >
                             {value}
                           </a>
                         ) : (
-                          <p className="text-[#0A1B2E]/80 text-sm">{value}</p>
+                          <p className="text-[#0F172A] text-sm">{value}</p>
                         )}
                       </div>
                     </div>
@@ -117,12 +117,12 @@ export default function ContactPage() {
               </FadeIn>
 
               <FadeIn direction="left" delay={0.15}>
-                <div className="p-5 rounded-xl border border-[#00d4ff]/20 bg-[#00d4ff]/8">
+                <div className="p-5 rounded-xl border border-[#E2E8F0] bg-white">
                   <div className="flex items-center gap-2.5 mb-3">
-                    <Shield className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
-                    <span className="text-[#00d4ff] text-sm font-semibold">NDA Available</span>
+                    <Shield className="w-4 h-4 text-accent" aria-hidden="true" />
+                    <span className="text-accent text-sm font-semibold">NDA Available</span>
                   </div>
-                  <p className="text-[#0A1B2E]/55 text-sm leading-relaxed">
+                  <p className="text-[#475569] text-sm leading-relaxed">
                     We&apos;re happy to sign an NDA before our first call. All project
                     details are treated with strict confidentiality.
                   </p>
@@ -132,14 +132,14 @@ export default function ContactPage() {
               {/* FAQ */}
               <FadeIn direction="left" delay={0.2}>
                 <div className="space-y-4">
-                  <h2 className="text-[#0A1B2E]/60 text-sm font-semibold uppercase tracking-widest">
+                  <h2 className="text-[#94A3B8] text-sm font-semibold uppercase tracking-widest">
                     Quick Answers
                   </h2>
                   <div className="space-y-4">
                     {faqs.map((faq) => (
                       <div key={faq.q} className="space-y-1.5">
-                        <p className="text-[#0A1B2E]/80 text-sm font-medium">{faq.q}</p>
-                        <p className="text-[#0A1B2E]/50 text-sm leading-relaxed">{faq.a}</p>
+                        <p className="text-[#0F172A] text-sm font-medium">{faq.q}</p>
+                        <p className="text-[#475569] text-sm leading-relaxed">{faq.a}</p>
                       </div>
                     ))}
                   </div>
