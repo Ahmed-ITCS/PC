@@ -112,14 +112,14 @@ export function Cursor() {
       <div
         ref={dotRef}
         aria-hidden="true"
-        className="fixed top-0 left-0 w-[6px] h-[6px] rounded-full bg-[#00d4ff] pointer-events-none z-[9999] transition-opacity duration-150"
+        className="fixed top-0 left-0 w-[6px] h-[6px] rounded-full bg-[#0369A1] pointer-events-none z-[9999] transition-opacity duration-150"
         style={{ willChange: "transform" }}
       />
       {/* Ring — lags behind */}
       <div
         ref={ringRef}
         aria-hidden="true"
-        className="fixed top-0 left-0 w-[36px] h-[36px] rounded-full border border-[#00d4ff]/60 pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-[36px] h-[36px] rounded-full border border-[#0369A1]/50 pointer-events-none z-[9998]"
         style={{ willChange: "transform", transition: "opacity 0.15s" }}
       />
     </>
