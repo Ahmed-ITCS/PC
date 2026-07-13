@@ -52,16 +52,16 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-[#00d4ff]/20 bg-[#00d4ff]/5 px-8">
-        <CheckCircle2 className="w-12 h-12 text-[#00d4ff]" aria-hidden="true" />
+      <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-accent/30 bg-white px-8">
+        <CheckCircle2 className="w-12 h-12 text-accent" aria-hidden="true" />
         <div>
           <h2
-            className="text-2xl font-bold text-white mb-2"
+            className="text-2xl font-bold text-[#0F172A] mb-2"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             Message Received
           </h2>
-          <p className="text-white/55 text-base">
+          <p className="text-[#475569] text-base">
             We&apos;ll be in touch within one business day with a scoping plan.
           </p>
         </div>
@@ -72,12 +72,12 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 rounded-2xl border border-white/6 bg-[#0d1529]/60 p-8 md:p-10"
+      className="space-y-5 rounded-2xl border border-[#E2E8F0] bg-white p-8 md:p-10 shadow-card"
       aria-label="Contact form"
       noValidate
     >
       <h2
-        className="text-xl font-bold text-white mb-6"
+        className="text-xl font-bold text-[#0F172A] mb-6"
         style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
       >
         Tell Us About Your Project
@@ -135,10 +135,10 @@ export function ContactForm() {
       <div className="space-y-1.5">
         <label
           htmlFor="message"
-          className="block text-white/60 text-sm font-medium"
+          className="text-sm font-medium text-[#334155]"
         >
           Project details{" "}
-          <span className="text-white/30 font-normal">(required)</span>
+          <span className="text-[#94A3B8] font-normal">(required)</span>
         </label>
         <textarea
           id="message"
@@ -148,13 +148,13 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           placeholder="Describe your project, current pain points, timeline, and anything else relevant..."
-          className="w-full rounded-xl bg-[#080e1e]/80 border border-white/8 text-white/80 placeholder:text-white/25 text-sm px-4 py-3 resize-none focus:outline-none focus:border-[#00d4ff]/40 focus:ring-1 focus:ring-[#00d4ff]/20 transition-colors"
+          className="w-full rounded-xl border border-[#E2E8F0] bg-white px-4 py-3 text-[#0F172A] placeholder:text-[#94A3B8] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition resize-none"
           aria-required="true"
         />
       </div>
 
       {status === "error" && (
-        <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-red-500/8 border border-red-500/20 text-red-400 text-sm">
+        <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
           <AlertCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
           Something went wrong. Please try again or email us directly.
         </div>
@@ -163,13 +163,13 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="group w-full flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm bg-[#00d4ff] text-[#04070f] hover:bg-[#00d4ff]/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.25)] hover:shadow-[0_0_32px_rgba(0,212,255,0.4)]"
+        className="btn-primary w-full justify-center"
         aria-busy={status === "loading"}
       >
         {status === "loading" ? (
           <>
             <span
-              className="w-4 h-4 border-2 border-[#04070f]/30 border-t-[#04070f] rounded-full animate-spin"
+              className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"
               aria-hidden="true"
             />
             Sending...
@@ -185,9 +185,9 @@ export function ContactForm() {
         )}
       </button>
 
-      <p className="text-white/25 text-xs text-center">
+      <p className="text-[#94A3B8] text-xs text-center">
         By submitting this form you agree to our{" "}
-        <a href="/privacy" className="hover:text-white/50 underline underline-offset-2 transition-colors">
+        <a href="/privacy" className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors">
           Privacy Policy
         </a>
         .
@@ -209,9 +209,9 @@ interface FieldProps {
 function Field({ label, name, type, placeholder, value, onChange, required }: FieldProps) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={name} className="block text-white/60 text-sm font-medium">
+      <label htmlFor={name} className="text-sm font-medium text-[#334155]">
         {label}
-        {required && <span className="text-white/30 font-normal"> (required)</span>}
+        {required && <span className="text-[#94A3B8] font-normal"> (required)</span>}
       </label>
       <input
         id={name}
@@ -221,7 +221,7 @@ function Field({ label, name, type, placeholder, value, onChange, required }: Fi
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full rounded-xl bg-[#080e1e]/80 border border-white/8 text-white/80 placeholder:text-white/25 text-sm px-4 py-3 focus:outline-none focus:border-[#00d4ff]/40 focus:ring-1 focus:ring-[#00d4ff]/20 transition-colors"
+        className="w-full rounded-xl border border-[#E2E8F0] bg-white px-4 py-3 text-[#0F172A] placeholder:text-[#94A3B8] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition"
         aria-required={required}
       />
     </div>
@@ -240,7 +240,7 @@ interface SelectFieldProps {
 function SelectField({ label, name, options, value, onChange, placeholder }: SelectFieldProps) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={name} className="block text-white/60 text-sm font-medium">
+      <label htmlFor={name} className="text-sm font-medium text-[#334155]">
         {label}
       </label>
       <select
@@ -248,8 +248,7 @@ function SelectField({ label, name, options, value, onChange, placeholder }: Sel
         name={name}
         value={value}
         onChange={onChange}
-        className="w-full rounded-xl bg-[#080e1e]/80 border border-white/8 text-white/80 text-sm px-4 py-3 focus:outline-none focus:border-[#00d4ff]/40 focus:ring-1 focus:ring-[#00d4ff]/20 transition-colors appearance-none cursor-pointer"
-        style={{ colorScheme: "dark" }}
+        className="w-full rounded-xl border border-[#E2E8F0] bg-white px-4 py-3 text-[#0F172A] placeholder:text-[#94A3B8] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition appearance-none cursor-pointer"
       >
         <option value="" disabled>
           {placeholder}

@@ -3,166 +3,208 @@
 @tailwind utilities;
 
 :root {
-  --background: #04070f;
-  --foreground: #e8edf5;
-  --font-display: var(--font-syne), system-ui, sans-serif;
+  /* Light surface scale */
+  --bg-base:      #F8FAFC;
+  --bg-surface:   #FFFFFF;
+  --bg-raised:    #FFFFFF;
+  --bg-muted:     #F1F5F9;
+  --bg-subtle:    #EEF2F6;
+
+  /* Brand accent — single, restrained blue */
+  --accent:        #0369A1;
+  --accent-hover:  #075985;
+  --accent-bright: #0284C7;
+  --accent-soft:   rgba(3, 105, 161, 0.08);
+  --accent-border: rgba(3, 105, 161, 0.22);
+  --on-accent:     #FFFFFF;
+
+  /* Text */
+  --text-primary:   #0F172A;
+  --text-strong:    #020617;
+  --text-secondary: #475569;
+  --text-muted:     #64748B;
+  --text-accent:    #0369A1;
+
+  /* Borders */
+  --border-subtle: #EDF1F5;
+  --border-dim:    #E2E8F0;
+  --border-bright: #CBD5E1;
+
+  /* Legacy compatibility (mapped to new light system) */
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --font-display: var(--font-inter), system-ui, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
-  --electric: #00d4ff;
-  --electric-dim: #0099bb;
-  --navy-900: #080e1e;
-  --navy-800: #0d1529;
-  --navy-700: #111c36;
+  --font-syne: var(--font-inter), system-ui, sans-serif;
+  --cyan: #0369A1;
+  --cyan-dim: #075985;
+  --electric: #0369A1;
+  --electric-dim: #075985;
+
+  --marquee-duration: 40s;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text-primary);
+  background: var(--bg-base);
   font-family: var(--font-body);
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(0, 212, 255, 0.25);
-  color: #e8edf5;
+  background: rgba(3, 105, 161, 0.16);
+  color: var(--text-strong);
 }
 
 :focus-visible {
-  outline: 2px solid #00d4ff;
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #04070f;
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
 ::-webkit-scrollbar-thumb {
-  background: #162244;
-  border-radius: 3px;
+  background: #CBD5E1;
+  border-radius: 6px;
+  border: 3px solid var(--bg-base);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #00d4ff40;
-}
-
-:root {
-  --marquee-duration: 40s;
-}
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --marquee-duration: 120s;
-  }
+  :root { --marquee-duration: 120s; }
+  html { scroll-behavior: auto; }
 }
 
-/* Custom cursor — hide native when active */
 .custom-cursor-active,
-.custom-cursor-active * {
-  cursor: none !important;
-}
+.custom-cursor-active * { cursor: none !important; }
 
 @keyframes marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
-
 @keyframes marqueeReverse {
   from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+  to   { transform: translateX(0); }
 }
-
 @keyframes shimmer {
-  0% { background-position: -200% center; }
+  0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
-
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes borderFlow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
 @layer utilities {
+  /* Card — light variant */
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-md border border-white/8;
+    @apply bg-white border border-[#E2E8F0];
   }
+  .glass-card-hover {
+    @apply hover:border-[#CBD5E1] hover:shadow-card-hover transition-all duration-300;
+  }
+
+  /* Shimmer border accent */
   .shimmer-border {
-    background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(3,105,161,0.5), transparent);
     background-size: 200% auto;
     animation: shimmer 3s linear infinite;
   }
-  .animate-float {
-    animation: float 4s ease-in-out infinite;
-  }
-  .text-balance {
-    text-wrap: balance;
-  }
-  .font-display {
-    font-family: var(--font-display);
-  }
-  .text-electric {
-    color: #00d4ff;
-  }
-  .bg-electric {
-    background-color: #00d4ff;
-  }
-  .border-electric {
-    border-color: #00d4ff;
-  }
-  .glow-text {
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-  }
+
+  .animate-float   { animation: float 4s ease-in-out infinite; }
+  .text-balance    { text-wrap: balance; }
+  .text-pretty     { text-wrap: pretty; }
+  .font-display    { font-family: var(--font-display); }
+
+  /* Text */
+  .text-primary    { color: var(--text-primary); }
+  .text-secondary  { color: var(--text-secondary); }
+  .text-muted-fg   { color: var(--text-muted); }
+  .text-electric   { color: var(--accent); }
+  .bg-electric     { background-color: var(--accent); }
+  .border-electric { border-color: var(--accent); }
+
+  /* Glow text — neutralised for light theme (kept for compatibility) */
+  .glow-text     { text-shadow: none; }
+  .glow-text-sm  { text-shadow: none; }
+  .glow-violet   { text-shadow: none; }
+
+  /* Gradient text — subtle navy → accent */
   .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0099bb 100%);
+    background: linear-gradient(120deg, #0F172A 0%, #0369A1 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .card-border {
-    border: 1px solid rgba(255, 255, 255, 0.06);
+  .gradient-text-cyan {
+    background: linear-gradient(120deg, #0284C7 0%, #0369A1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .card-border-hover {
-    border: 1px solid rgba(0, 212, 255, 0.2);
+  .gradient-text-light {
+    background: linear-gradient(120deg, #0F172A 0%, #0369A1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .section-padding {
-    @apply px-6 md:px-12 lg:px-16 xl:px-24;
-  }
-  .container-max {
-    @apply max-w-7xl mx-auto;
+
+  /* Layout */
+  .card-border        { border: 1px solid var(--border-dim); }
+  .card-border-hover  { border: 1px solid var(--border-bright); }
+  .section-padding    { @apply px-6 md:px-12 lg:px-16 xl:px-24; }
+  .container-max      { @apply max-w-7xl mx-auto; }
+
+  /* Eyebrow tag */
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent-border);
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm
-      bg-electric text-navy-900 hover:bg-opacity-90
-      transition-all duration-200 shadow-glow-sm hover:shadow-glow-md
-      focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900;
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm
+      bg-accent text-white
+      hover:bg-accent-hover transition-all duration-200
+      shadow-accent hover:shadow-accent-lg
+      focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
   }
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm
-      border border-white/10 text-white/80 hover:border-electric/40 hover:text-white
-      hover:bg-white/5 transition-all duration-200
-      focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900;
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium text-sm
+      border border-[#CBD5E1] text-[#334155] bg-white
+      hover:border-[#94A3B8] hover:text-[#0F172A] hover:bg-[#F8FAFC]
+      transition-all duration-200
+      focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
   }
   .service-card {
-    @apply relative rounded-xl p-6 card-border bg-navy-800/60 backdrop-blur-sm
-      transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover hover:card-border-hover
-      cursor-default;
-  }
-  .tag {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-      bg-electric/10 text-electric border border-electric/20;
+    @apply relative rounded-2xl p-7 bg-white card-border
+      transition-all duration-300 hover:-translate-y-1
+      hover:shadow-card-hover hover:card-border-hover cursor-default;
   }
 }
