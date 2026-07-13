@@ -1,18 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Shield, Cloud, Layers, Check, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { CardGem } from "@/components/3d/CardGem";
 
 const services = [
   {
     icon: Shield,
     badge: "Most Popular",
-    badgeColor: "bg-[#00d4ff]/15 text-[#00d4ff] border-[#00d4ff]/30",
+    badgeColor: "bg-[rgba(0,212,255,0.1)] text-[#00D4FF] border-[rgba(0,212,255,0.22)]",
     title: "Secure MVP Development",
     description:
       "Go from concept to production-ready product with security baked in at every layer — not bolted on after.",
@@ -24,11 +22,13 @@ const services = [
     ],
     href: "/services",
     featured: false,
+    accentColor: "#00D4FF",
+    gemColor: "#00d4ff",
   },
   {
     icon: Cloud,
     badge: "Enterprise Grade",
-    badgeColor: "bg-violet-500/15 text-violet-600 border-violet-400/25",
+    badgeColor: "bg-[rgba(124,58,237,0.12)] text-[#A78BFA] border-[rgba(124,58,237,0.25)]",
     title: "Cloud Deployment & Database Hardening",
     description:
       "Production-grade cloud infrastructure with hardened databases, automated failover, and zero-downtime deployments.",
@@ -40,11 +40,13 @@ const services = [
     ],
     href: "/services",
     featured: true,
+    accentColor: "#7C3AED",
+    gemColor: "#7c3aed",
   },
   {
     icon: Layers,
     badge: "Complete Solution",
-    badgeColor: "bg-emerald-500/15 text-emerald-700 border-emerald-400/25",
+    badgeColor: "bg-[rgba(16,185,129,0.1)] text-emerald-400 border-[rgba(16,185,129,0.22)]",
     title: "End-to-End Product Development",
     description:
       "Your entire technical function — from first commit through launch, scaling, and ongoing operations.",
@@ -56,6 +58,8 @@ const services = [
     ],
     href: "/services",
     featured: false,
+    accentColor: "#10B981",
+    gemColor: "#34d399",
   },
 ];
 
@@ -63,21 +67,24 @@ export function CoreServices() {
   return (
     <section
       id="core-services"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden bg-[#F8FAFC]"
       aria-labelledby="core-services-heading"
     >
-      <div className="container-max section-padding">
+      {/* Background */}
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-40" aria-hidden="true" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-glow-accent blur-3xl pointer-events-none" aria-hidden="true" />
+
+      <div className="relative z-10 container-max section-padding">
         <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
           <SectionLabel>Core Services</SectionLabel>
           <h2
             id="core-services-heading"
-            className="text-display-lg font-bold text-balance max-w-3xl"
-            style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+            className="text-display-lg font-bold text-balance max-w-3xl text-[#0F172A] font-display tracking-[-0.03em]"
           >
             Everything You Need to{" "}
             <span className="gradient-text">Ship With Confidence</span>
           </h2>
-          <p className="text-[#0A1B2E]/55 text-lg max-w-2xl text-balance">
+          <p className="text-[#475569] text-lg max-w-2xl text-balance">
             Three flagship engagements designed around how modern companies
             actually need to move — fast, secure, and without hiring overhead.
           </p>
@@ -89,77 +96,78 @@ export function CoreServices() {
             return (
               <FadeIn key={svc.title} delay={i * 0.1} direction="up">
                 <TiltCard className="h-full rounded-2xl">
-                <div
-                  className={`group/card relative flex flex-col gap-5 rounded-2xl border p-7 h-full ${
-                    svc.featured
-                      ? "border-[#00d4ff]/30 bg-gradient-to-b from-[#00d4ff]/8 via-white/90 to-white/80 shadow-[0_0_0_1px_rgba(0,212,255,0.12),0_16px_48px_rgba(10,27,46,0.12)]"
-                      : "border-[#0A1B2E]/8 bg-white/80 hover:border-[#00d4ff]/20 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.1),0_16px_48px_rgba(10,27,46,0.08)]"
-                  }`}
-                >
-                  {/* 3D gem on hover */}
-                  <CardGem color={i === 1 ? "#7c3aed" : i === 2 ? "#34d399" : "#00d4ff"} />
-
-                  {/* Badge */}
-                  <span
-                    className={`self-start px-3 py-1 rounded-full text-xs font-semibold border ${svc.badgeColor}`}
+                  <div
+                    className={`group/card relative flex flex-col gap-5 rounded-2xl border p-7 h-full transition-all duration-300 ${
+                      svc.featured
+                        ? "border-accent/40 ring-1 ring-accent/20 bg-white shadow-card hover:shadow-card-hover hover:-translate-y-1"
+                        : "border-[#E2E8F0] bg-white hover:border-[#CBD5E1] hover:shadow-card-hover hover:-translate-y-1"
+                    }`}
                   >
-                    {svc.badge}
-                  </span>
+                    {/* Subtle accent glow on hover */}
+                    <div
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(3,105,161,0.06) 0%, transparent 70%)" }}
+                      aria-hidden="true"
+                    />
 
-                  {/* Icon */}
-                  <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/25 shadow-[0_0_16px_rgba(0,212,255,0.1)]">
-                    <Icon className="w-7 h-7 text-[#00d4ff]" aria-hidden="true" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 space-y-3">
-                    <h3
-                      className="text-[#0A1B2E] font-bold text-xl leading-snug"
-                      style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
+                    {/* Badge */}
+                    <span
+                      className={
+                        svc.featured
+                          ? "self-start px-3 py-1 rounded-full text-[10px] font-semibold bg-accent text-white"
+                          : "self-start px-3 py-1 rounded-full text-xs font-semibold border bg-[#F1F5F9] text-accent border-[#E2E8F0]"
+                      }
                     >
-                      {svc.title}
-                    </h3>
-                    <p className="text-[#0A1B2E]/55 text-sm leading-relaxed">
-                      {svc.description}
-                    </p>
+                      {svc.badge}
+                    </span>
+
+                    {/* Icon */}
+                    <div
+                      className={`flex items-center justify-center w-14 h-14 rounded-xl border ${
+                        svc.featured ? "bg-accent text-white border-transparent" : "bg-[#F1F5F9] text-accent border-[#E2E8F0]"
+                      }`}
+                    >
+                      <Icon className="w-7 h-7" aria-hidden="true" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 space-y-3">
+                      <h3
+                        className="text-[#0F172A] font-bold text-xl leading-snug font-display tracking-[-0.02em]"
+                      >
+                        {svc.title}
+                      </h3>
+                      <p className="text-[#475569] text-sm leading-relaxed">
+                        {svc.description}
+                      </p>
+                    </div>
+
+                    {/* Feature bullets */}
+                    <ul className="space-y-2.5" role="list">
+                      {svc.features.map((f) => (
+                        <li key={f} className="flex items-start gap-2.5 text-sm text-[#475569]">
+                          <Check
+                            className="w-4 h-4 shrink-0 mt-0.5 text-accent"
+                            aria-hidden="true"
+                          />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* CTA */}
+                    <Link
+                      href={svc.href}
+                      className="group mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-colors duration-150 hover:text-accent-hover"
+                      aria-label={`Learn more about ${svc.title}`}
+                    >
+                      Learn More
+                      <ArrowRight
+                        className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
+                        aria-hidden="true"
+                      />
+                    </Link>
                   </div>
-
-                  {/* Feature bullets */}
-                  <ul className="space-y-2.5" role="list">
-                    {svc.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-[#0A1B2E]/60">
-                        <Check
-                          className="w-4 h-4 text-[#00d4ff]/80 shrink-0 mt-0.5"
-                          aria-hidden="true"
-                        />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <Link
-                    href={svc.href}
-                    className="group mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-[#00d4ff]/70 hover:text-[#00d4ff] transition-colors duration-150"
-                    aria-label={`Learn more about ${svc.title}`}
-                  >
-                    Learn More
-                    <ArrowRight
-                      className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
-                      aria-hidden="true"
-                    />
-                  </Link>
-
-                  {/* Featured glow line */}
-                  {svc.featured && (
-                    <motion.div
-                      className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-[#00d4ff]/60 to-transparent"
-                      animate={{ opacity: [0.5, 1, 0.5] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
                 </TiltCard>
               </FadeIn>
             );

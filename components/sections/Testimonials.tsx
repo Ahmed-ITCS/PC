@@ -14,6 +14,7 @@ const testimonials = [
     role: "CTO",
     company: "Skybridge Digital",
     initial: "S",
+    color: "#00D4FF",
   },
   {
     quote:
@@ -22,6 +23,7 @@ const testimonials = [
     role: "Founder & CEO",
     company: "NovaTech Solutions",
     initial: "M",
+    color: "#7C3AED",
   },
   {
     quote:
@@ -30,6 +32,7 @@ const testimonials = [
     role: "VP Engineering",
     company: "Meridian Financial",
     initial: "P",
+    color: "#10B981",
   },
   {
     quote:
@@ -38,6 +41,7 @@ const testimonials = [
     role: "Director of Technology",
     company: "Cascadia Creative",
     initial: "J",
+    color: "#F59E0B",
   },
 ];
 
@@ -52,20 +56,15 @@ export function Testimonials() {
 
   return (
     <section
-      className="relative py-24 md:py-32 bg-[#0A1B2E] overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden bg-[#F8FAFC]"
       aria-labelledby="testimonials-heading"
     >
-      <div
-        className="absolute inset-0 bg-glow-cyan opacity-40"
-        aria-hidden="true"
-      />
-
       <div className="relative z-10 container-max section-padding">
         <FadeIn className="flex flex-col items-center text-center gap-5 mb-14">
           <SectionLabel>Client Voices</SectionLabel>
           <h2
             id="testimonials-heading"
-            className="text-3xl md:text-4xl font-bold text-balance text-white"
+            className="text-3xl md:text-4xl font-bold text-balance text-[#0F172A]"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             What Our Partners Say
@@ -73,12 +72,19 @@ export function Testimonials() {
         </FadeIn>
 
         <div className="max-w-3xl mx-auto">
-          <div className="relative rounded-2xl border border-white/8 bg-white/[0.06] backdrop-blur-sm p-8 md:p-12">
-            {/* Quote icon */}
-            <Quote
-              className="w-10 h-10 text-[#00d4ff]/20 mb-6"
+          <div
+            className="relative rounded-2xl border border-[#E2E8F0] bg-white p-8 md:p-12 overflow-hidden shadow-card"
+          >
+            {/* Top accent line */}
+            <motion.div
+              key={current}
+              className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-accent/40"
+              animate={{ opacity: [0, 1] }}
+              transition={{ duration: 0.4 }}
               aria-hidden="true"
             />
+
+            <Quote className="w-10 h-10 mb-6 text-accent/20" aria-hidden="true" />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -86,24 +92,24 @@ export function Testimonials() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.35 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
                 <blockquote>
-                  <p className="text-white/75 text-lg md:text-xl leading-relaxed font-light italic mb-8">
+                  <p className="text-[#475569] text-lg md:text-xl leading-relaxed font-light italic mb-8">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <footer className="flex items-center gap-4">
                     <div
-                      className="w-11 h-11 rounded-full bg-[#00d4ff]/15 border border-[#00d4ff]/25 flex items-center justify-center text-[#00d4ff] font-bold text-base"
+                      className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-base shrink-0 bg-[#F1F5F9] border border-[#E2E8F0] text-accent"
                       aria-hidden="true"
                     >
                       {t.initial}
                     </div>
                     <div>
-                      <cite className="text-white font-semibold text-sm not-italic">
+                      <cite className="text-[#0F172A] font-semibold text-sm not-italic">
                         {t.author}
                       </cite>
-                      <p className="text-white/40 text-xs mt-0.5">
+                      <p className="text-[#64748B] text-xs mt-0.5">
                         {t.role}, {t.company}
                       </p>
                     </div>
@@ -113,38 +119,34 @@ export function Testimonials() {
             </AnimatePresence>
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/8">
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#E2E8F0]">
               <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial navigation">
-                {testimonials.map((_, i) => (
+                {testimonials.map((t2, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}
                     role="tab"
                     aria-selected={i === current}
                     aria-label={`Testimonial ${i + 1} of ${total}`}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === current
-                        ? "w-6 bg-[#00d4ff]"
-                        : "w-1.5 bg-white/20 hover:bg-white/40"
-                    }`}
+                    className="h-1.5 rounded-full transition-all duration-300"
+                    style={{
+                      width: i === current ? "1.5rem" : "0.375rem",
+                      background: i === current ? "#0369A1" : "#CBD5E1",
+                    }}
                   />
                 ))}
               </div>
               <div className="flex items-center gap-2">
-                <button
-                  onClick={prev}
-                  aria-label="Previous testimonial"
-                  className="p-2 rounded-lg border border-white/8 text-white/50 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-150"
-                >
-                  <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-                </button>
-                <button
-                  onClick={next}
-                  aria-label="Next testimonial"
-                  className="p-2 rounded-lg border border-white/8 text-white/50 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-150"
-                >
-                  <ChevronRight className="w-4 h-4" aria-hidden="true" />
-                </button>
+                {[{ fn: prev, label: "Previous testimonial", Icon: ChevronLeft }, { fn: next, label: "Next testimonial", Icon: ChevronRight }].map(({ fn, label, Icon }) => (
+                  <button
+                    key={label}
+                    onClick={fn}
+                    aria-label={label}
+                    className="p-2 rounded-lg border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] transition-all duration-150"
+                  >
+                    <Icon className="w-4 h-4" aria-hidden="true" />
+                  </button>
+                ))}
               </div>
             </div>
           </div>
