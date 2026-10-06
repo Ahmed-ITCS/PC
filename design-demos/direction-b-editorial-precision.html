@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PentaCipher — Direction B · Editorial Precision</title>
+<style>
+  :root{
+    --paper:#FBF6EE;
+    --paper-2:#F3EADB;
+    --ink:#1B140C;
+    --ink-soft:#4A3D2E;
+    --dim:#8A7B66;
+    --accent:#B45309;        /* burnt amber */
+    --accent-2:#C2410C;      /* terracotta */
+    --accent-soft:rgba(180,83,9,0.08);
+    --line:rgba(27,20,12,0.12);
+    --line-2:rgba(27,20,12,0.20);
+    --serif:"Fraunces",Georgia,serif;
+    --body:Inter,system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  ::selection{background:rgba(180,83,9,0.18)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .mono{font-family:var(--mono);letter-spacing:0.18em;text-transform:uppercase;font-size:11px;color:var(--accent)}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,246,238,0.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-0.02em}
+  .brand .mark{width:30px;height:30px}
+  .nav-links{display:flex;gap:4px}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:14px;padding:9px 15px;border-radius:9px;transition:.2s}
+  .nav-links a:hover{color:var(--ink);background:var(--paper-2)}
+  .nav-cta{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink);padding:11px 19px;border-radius:10px;text-decoration:none;transition:.2s}
+  .nav-cta:hover{background:var(--ink);color:var(--paper)}
+
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:70px}
+  #scene{position:absolute;inset:0;z-index:0}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(ellipse 60% 50% at 78% 42%,rgba(180,83,9,0.10),transparent 70%)}
+  .hero-content{position:relative;z-index:3;width:100%}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-2);border-radius:999px;padding:7px 15px;background:var(--accent-soft);margin-bottom:30px}
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .badge span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.8rem,6.6vw,5.6rem);line-height:1.0;letter-spacing:-0.035em;max-width:13ch}
+  h1 .i{font-style:italic;color:var(--accent)}
+  .sub{margin-top:28px;max-width:44ch;color:var(--ink-soft);font-size:1.1rem;line-height:1.75}
+  .ctas{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 27px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;transition:.2s}
+  .btn-p{background:var(--ink);color:var(--paper)}
+  .btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(27,20,12,0.22)}
+  .btn-s{border:1px solid var(--line-2);color:var(--ink)}
+  .btn-s:hover{border-color:var(--accent);color:var(--accent)}
+  .stats{margin-top:58px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:600px;border-top:1px solid var(--line);padding-top:26px}
+  .stat .v{font-family:var(--serif);font-size:2rem;letter-spacing:-0.02em}
+  .stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:5px}
+
+  section.block{padding:130px 0;position:relative}
+  .rule{height:1px;background:var(--line);margin:0 0 56px}
+  .sec-num{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--accent)}
+  .head{display:flex;flex-direction:column;gap:16px;margin-bottom:54px;max-width:660px}
+  .head h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,4.4vw,3.2rem);line-height:1.04;letter-spacing:-0.03em}
+  .head h2 .i{font-style:italic;color:var(--accent)}
+  .head p{color:var(--ink-soft);font-size:1.05rem;line-height:1.75}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{position:relative;border:1px solid var(--line);border-radius:4px;padding:34px 30px;background:var(--paper);transition:.3s}
+  .card::before{content:"";position:absolute;top:0;left:0;width:34px;height:2px;background:var(--accent);transition:.3s}
+  .card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 26px 60px rgba(27,20,12,0.10)}
+  .card.featured{background:var(--ink);color:var(--paper)}
+  .card.featured .idx,.card.featured p,.card.featured li{color:rgba(251,246,238,0.72)}
+  .card.featured::before{background:var(--accent-2)}
+  .card .idx{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.14em}
+  .card .ico{margin:24px 0;width:50px;height:50px;color:var(--accent)}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:1.45rem;letter-spacing:-0.02em;margin-bottom:12px}
+  .card.featured h3{color:var(--paper)}
+  .card p{color:var(--ink-soft);font-size:.95rem;line-height:1.65;margin-bottom:22px}
+  .card ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
+  .card li{display:flex;gap:11px;font-size:.88rem;color:var(--ink-soft);align-items:flex-start}
+  .card li::before{content:"";width:6px;height:6px;background:var(--accent);margin-top:7px;flex:0 0 auto;transform:rotate(45deg)}
+  .card.featured li::before{background:var(--accent-2)}
+  .card .more{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none}
+
+  .final{background:var(--ink);color:var(--paper);border-radius:6px;padding:72px 56px;text-align:center;max-width:980px;margin:0 auto}
+  .final h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,4.6vw,3.4rem);letter-spacing:-0.03em;line-height:1.04}
+  .final h2 .i{font-style:italic;color:var(--accent-2)}
+  .final p{color:rgba(251,246,238,0.72);margin:18px auto 34px;max-width:48ch;line-height:1.75}
+  .final .btn-p{background:var(--accent);color:var(--paper)}
+  .final .btn-p:hover{box-shadow:0 14px 36px rgba(180,83,9,0.4)}
+
+  footer{border-top:1px solid var(--line);padding:42px 0;margin-top:130px}
+  .foot{display:flex;justify-content:space-between;align-items:center;color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+
+  @media(max-width:920px){.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 100 100" fill="none">
+        <polygon points="50,6 92,33 75,84 25,84 8,33" stroke="#B45309" stroke-width="4"/>
+        <polygon points="50,28 70,42 62,68 38,68 30,42" stroke="#C2410C" stroke-width="3" opacity="0.7"/>
+      </svg>
+      PentaCipher
+    </div>
+    <div class="nav-links"><a href="#">Services</a><a href="#">About</a><a href="#">Case Studies</a><a href="#">Contact</a></div>
+    <a href="#" class="nav-cta">Start a Project →</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <canvas id="scene"></canvas>
+  <div class="wrap hero-content">
+    <div class="hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span><span>Security-First Execution</span></div>
+        <h1>Your partners in <span class="i">enterprise software</span> solutions.</h1>
+        <p class="sub">We accelerate your digital transformation — delivering full-stack development, DevOps, and security-hardened systems without the overhead of an in-house technical team.</p>
+        <div class="ctas">
+          <a href="#" class="btn btn-p">Get Started →</a>
+          <a href="#" class="btn btn-s">View Our Services</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="v">50+</div><div class="l">Clients</div></div>
+          <div class="stat"><div class="v">100%</div><div class="l">Completion</div></div>
+          <div class="stat"><div class="v">5yrs</div><div class="l">Avg. Engagement</div></div>
+          <div class="stat"><div class="v">24/7</div><div class="l">Support</div></div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</header>
+
+<section class="block wrap">
+  <div class="rule"></div>
+  <div class="head">
+    <span class="mono">§ 01 — Core Services</span>
+    <h2>Everything you need to <span class="i">ship with confidence</span></h2>
+    <p>Three flagship engagements designed around how modern companies actually need to move — fast, secure, and without hiring overhead.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="idx">01</div>
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8V7z"/></svg>
+      <h3>Secure MVP Development</h3>
+      <p>Go from concept to production-ready product with security baked in at every layer — not bolted on after.</p>
+      <ul><li>Full-stack React + Node.js or Next.js</li><li>OWASP-compliant architecture</li><li>CI/CD with automated security scans</li><li>Staged rollout with feature flags</li></ul>
+      <a href="#" class="more">Learn more →</a>
+    </div>
+    <div class="card featured">
+      <div class="idx">02 · FLAGSHIP</div>
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 18a4 4 0 110-8 5 5 0 019.6-1.5A4.5 4.5 0 1117 18z"/></svg>
+      <h3>Cloud Deployment & Database Hardening</h3>
+      <p>Production-grade cloud infrastructure with hardened databases, automated failover, and zero-downtime deployments.</p>
+      <ul><li>AWS / GCP / Azure multi-region</li><li>Encryption at rest & transit</li><li>Auto-scaling Kubernetes + IaC</li><li>Continuous compliance monitoring</li></ul>
+      <a href="#" class="more">Learn more →</a>
+    </div>
+    <div class="card">
+      <div class="idx">03</div>
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+      <h3>End-to-End Product Development</h3>
+      <p>Your entire technical function — from first commit through launch, scaling, and ongoing operations.</p>
+      <ul><li>Discovery, architecture, build & deploy</li><li>Dedicated embedded team</li><li>Weekly demos, milestone billing</li><li>Post-launch SRE & support</li></ul>
+      <a href="#" class="more">Learn more →</a>
+    </div>
+  </div>
+</section>
+
+<section class="block wrap">
+  <div class="final">
+    <span class="mono">§ 02 — Ready when you are</span>
+    <h2 style="margin-top:14px">Ready to ship <span class="i">secure software</span>?</h2>
+    <p>Tell us about your product. We'll show you exactly how we'd harden it from the first commit.</p>
+    <a href="#" class="btn btn-p">Start a Project →</a>
+  </div>
+</section>
+
+<footer><div class="wrap foot"><span>© PentaCipher</span><span>Security-First Software & DevOps</span></div></footer>
+
+<script>
+// ── Faceted rotating gem (evolved jewel), warm key light ──
+(function(){
+  const cv=document.getElementById('scene');const ctx=cv.getContext('2d');
+  const t=(1+Math.sqrt(5))/2;
+  let V=[[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]];
+  V=V.map(v=>v.map(c=>c/Math.hypot(...v)));
+  const edges=[];
+  for(let i=0;i<V.length;i++)for(let j=i+1;j<V.length;j++){
+    const d=Math.hypot(V[i][0]-V[j][0],V[i][1]-V[j][1],V[i][2]-V[j][2]);
+    if(Math.abs(d-2/Math.hypot(1,t,0))<0.01) edges.push([i,j]);
+  }
+  // triangular faces
+  const faces=[
+    [0,1,5],[0,5,11],[0,11,10],[0,10,7],[0,7,1],
+    [1,7,8],[1,8,9],[1,9,5],[5,9,4],[5,4,11],
+    [11,4,2],[11,2,10],[10,2,6],[10,6,7],[7,6,8],
+    [8,6,3],[8,3,9],[9,3,4],[4,3,2],[2,3,6]
+  ];
+  let W,H,cx,cy,scale;
+  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;cx=W*0.78;cy=H*0.52;scale=Math.min(W,H)*0.30;}
+  resize();window.addEventListener('resize',resize);
+  let a=0.6,b=0.5,px=0,py=0;
+  cv.addEventListener('pointermove',e=>{px=(e.clientX/W-0.5);py=(e.clientY/H-0.5);});
+  function rot(v){let [x,y,z]=v;let y1=y*Math.cos(a)-z*Math.sin(a),z1=y*Math.sin(a)+z*Math.cos(a);let x2=x*Math.cos(b)-z1*Math.sin(b),z2=x*Math.sin(b)+z1*Math.cos(b);return [x2,y1,z2];}
+  function frame(){
+    a+=0.004;a+=px*0.008;b=0.5+py*0.3+Math.sin(performance.now()/2600)*0.08;
+    ctx.clearRect(0,0,W,H);
+    const pts=V.map(v=>{const r=rot(v);return [cx+r[0]*scale,cy-r[1]*scale,r[2]];});
+    // draw faces back-to-front
+    const order=faces.map((f,i)=>{const z=(pts[f[0]][2]+pts[f[1]][2]+pts[f[2]][2])/3;return {f,z,i};}).sort((p,q)=>p.z-q.z);
+    order.forEach(o=>{
+      const [p,q,r]=o.f.map(k=>pts[k]);
+      const zt=(o.z+1)/2;
+      const light=0.10+0.5*zt;
+      ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.lineTo(r[0],r[1]);ctx.closePath();
+      ctx.fillStyle='rgba('+Math.round(180+ (1-zt)*40)+','+Math.round(83+ (1-zt)*30)+',9,'+(0.06+0.16*zt).toFixed(3)+')';
+      ctx.fill();
+      ctx.strokeStyle='rgba(194,65,12,'+(0.18+0.25*zt).toFixed(3)+')';ctx.lineWidth=1;ctx.stroke();
+    });
+    // vertices
+    pts.forEach(p=>{ctx.beginPath();ctx.arc(p[0],p[1],1.8,0,7);ctx.fillStyle='rgba(180,83,9,0.7)';ctx.fill();});
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>

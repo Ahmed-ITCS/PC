@@ -12,7 +12,7 @@ const NODE_POSITIONS: [number, number, number][] = [
   [4.5, 0, 0],
 ];
 
-const NODE_COLORS = ["#00d4ff", "#7c3aed", "#34d399", "#00d4ff"];
+const NODE_COLORS = ["#5BC8FF", "#46E6C5", "#46E6C5", "#5BC8FF"];
 
 function Nodes({ animate }: { animate: boolean }) {
   const refs = useRef<(THREE.Mesh | null)[]>([]);
@@ -84,7 +84,7 @@ function ConnectingTubes() {
             <bufferGeometry>
               <bufferAttribute attach="attributes-position" args={[points, 3]} />
             </bufferGeometry>
-            <lineBasicMaterial color="#00d4ff" transparent opacity={0.2} />
+            <lineBasicMaterial color="#5BC8FF" transparent opacity={0.2} />
           </lineSegments>
         );
       })}
@@ -116,8 +116,8 @@ function PulseOrb({ sectionTop }: { sectionTop: number }) {
     <mesh ref={ref} position={[-4.5, 0, 0.3]}>
       <sphereGeometry args={[0.14, 16, 16]} />
       <meshStandardMaterial
-        color="#ffffff"
-        emissive="#00d4ff"
+        color="#46E6C5"
+        emissive="#5BC8FF"
         emissiveIntensity={1}
         metalness={0}
         roughness={0}
@@ -130,7 +130,7 @@ function Scene({ animate, sectionTop }: { animate: boolean; sectionTop: number }
   return (
     <>
       <ambientLight intensity={0.2} />
-      <pointLight position={[0, 3, 3]} intensity={1.5} color="#00d4ff" />
+      <pointLight position={[0, 3, 3]} intensity={1.5} color="#5BC8FF" />
       <ConnectingTubes />
       <Nodes animate={animate} />
       <PulseOrb sectionTop={sectionTop} />

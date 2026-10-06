@@ -42,7 +42,7 @@ function InputField({ id, label, error, required, children }: {
 }) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="block text-sm font-medium text-[#334155]">
+      <label htmlFor={id} className="block text-sm font-medium text-[#A9B7BD]">
         {label}
         {required && <span className="text-red-600 font-normal"> *</span>}
       </label>
@@ -58,7 +58,7 @@ function InputField({ id, label, error, required, children }: {
 }
 
 const inputCls =
-  "w-full rounded-xl border border-[#E2E8F0] bg-white px-4 py-3 text-[#0F172A] placeholder:text-[#94A3B8] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition";
+  "w-full rounded-xl border border-[#1B2530] bg-[#0E141E] px-4 py-3 text-[#E7EEF0] placeholder:text-[#6B7A81] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition";
 
 export function ContactSection() {
   const [status, setStatus] = useState<Status>("idle");
@@ -86,25 +86,25 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-24 md:py-32 overflow-hidden bg-[#F8FAFC]"
+      className="relative py-24 md:py-32 overflow-hidden bg-[#0A0E14]"
       aria-labelledby="contact-heading"
     >
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-25" aria-hidden="true" />
       <GlowOrb className="-top-40 left-1/4" size="lg" opacity={0.06} />
       <GlowOrb className="top-1/2 -right-40" size="md" opacity={0.05} />
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#CBD5E1] to-transparent" aria-hidden="true" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#2A3742] to-transparent" aria-hidden="true" />
 
       <div className="relative z-10 container-max section-padding">
         <FadeIn className="flex flex-col items-center text-center gap-5 mb-16">
           <SectionLabel>Get In Touch</SectionLabel>
           <h2
             id="contact-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-balance max-w-3xl text-[#0F172A]"
+            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-balance max-w-3xl text-[#E7EEF0]"
           >
             Ready to Start Your{" "}
             <span className="gradient-text">Next Project?</span>
           </h2>
-          <p className="text-[#475569] text-lg max-w-xl text-balance">
+          <p className="text-[#8A9AA0] text-lg max-w-xl text-balance">
             Tell us about your project and we&apos;ll respond within one
             business day with a scoping plan and honest timeline.
           </p>
@@ -122,12 +122,12 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h3
-                    className="text-2xl font-bold text-[#0F172A] mb-2"
+                    className="text-2xl font-bold text-[#E7EEF0] mb-2"
                     style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                   >
                     Message Received
                   </h3>
-                  <p className="text-[#475569]">
+                  <p className="text-[#8A9AA0]">
                     We&apos;ll be in touch within one business day with a scoping plan.
                   </p>
                 </div>
@@ -141,7 +141,7 @@ export function ContactSection() {
             ) : (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="space-y-5 rounded-2xl border border-[#E2E8F0] bg-white p-8 md:p-10 shadow-card"
+                className="space-y-5 rounded-2xl border border-[#1B2530] bg-[#0E141E] p-8 md:p-10 shadow-card"
                 aria-label="Contact form"
                 noValidate
               >
@@ -198,7 +198,7 @@ export function ContactSection() {
                 >
                   {status === "loading" ? (
                     <>
-                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" aria-hidden="true" />
+                      <span className="w-4 h-4 border-2 border-[#2A3742]/30 border-t-white rounded-full animate-spin" aria-hidden="true" />
                       Sending…
                     </>
                   ) : (
@@ -219,18 +219,18 @@ export function ContactSection() {
                 {contactDetails.map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-start gap-4">
                     <div
-                      className="flex items-center justify-center w-10 h-10 rounded-xl border border-[#E2E8F0] bg-[#F1F5F9] shrink-0"
+                      className="flex items-center justify-center w-10 h-10 rounded-xl border border-[#1B2530] bg-[#0E141E] shrink-0"
                     >
                       <Icon className="w-4 h-4 text-accent" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="text-accent text-xs font-bold uppercase tracking-widest">{label}</p>
                       {href ? (
-                        <a href={href} className="text-[#334155] text-sm hover:text-accent transition-colors">
+                        <a href={href} className="text-[#A9B7BD] text-sm hover:text-accent transition-colors">
                           {value}
                         </a>
                       ) : (
-                        <p className="text-[#334155] text-sm">{value}</p>
+                        <p className="text-[#A9B7BD] text-sm">{value}</p>
                       )}
                     </div>
                   </div>
@@ -240,17 +240,17 @@ export function ContactSection() {
 
             <FadeIn direction="left" delay={0.15}>
               <div
-                className="rounded-xl border border-[#E2E8F0] bg-white p-6 space-y-4"
+                className="rounded-xl border border-[#1B2530] bg-[#0E141E] p-6 space-y-4"
               >
                 <h3
-                  className="text-[#0F172A] text-sm font-bold"
+                  className="text-[#E7EEF0] text-sm font-bold"
                   style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                 >
                   What to expect
                 </h3>
                 <ul className="space-y-3" role="list">
                   {trustPoints.map((point) => (
-                    <li key={point} className="flex items-start gap-2.5 text-sm text-[#475569]">
+                    <li key={point} className="flex items-start gap-2.5 text-sm text-[#8A9AA0]">
                       <div
                         className="flex items-center justify-center w-4 h-4 rounded-full border border-accent/30 bg-accent/10 shrink-0 mt-0.5"
                         aria-hidden="true"

@@ -14,7 +14,7 @@ export function GridGeometry() {
     [-3, -2, -4], [1, -2, -5], [4, 1, -4], [-1, 1, -6],
   ];
 
-  const colors = ["#00d4ff", "#7c3aed", "#34d399", "#00d4ff", "#7c3aed", "#34d399", "#00d4ff", "#7c3aed"];
+  const colors = ["#5BC8FF", "#46E6C5", "#46E6C5", "#5BC8FF", "#46E6C5", "#46E6C5", "#5BC8FF", "#46E6C5"];
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return;

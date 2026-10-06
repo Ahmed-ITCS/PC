@@ -78,8 +78,8 @@ export function GlobalCanvas() {
           <PerformanceMonitor onDecline={() => {}} />
 
           <ambientLight intensity={0.15} />
-          <pointLight position={[4, 4, 4]} intensity={2} color="#00d4ff" />
-          <pointLight position={[-4, -3, -3]} intensity={0.8} color="#7c3aed" />
+          <pointLight position={[4, 4, 4]} intensity={2} color="#5BC8FF" />
+          <pointLight position={[-4, -3, -3]} intensity={0.8} color="#46E6C5" />
 
           {/* Always-on background particles */}
           <ParticleField tier={tier} />

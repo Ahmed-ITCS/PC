@@ -10,7 +10,7 @@ const services = [
   {
     icon: Shield,
     badge: "Most Popular",
-    badgeColor: "bg-[rgba(0,212,255,0.1)] text-[#00D4FF] border-[rgba(0,212,255,0.22)]",
+    badgeColor: "bg-[rgba(70,230,197,0.1)] text-[#5BC8FF] border-[rgba(70,230,197,0.22)]",
     title: "Secure MVP Development",
     description:
       "Go from concept to production-ready product with security baked in at every layer — not bolted on after.",
@@ -22,13 +22,13 @@ const services = [
     ],
     href: "/services",
     featured: false,
-    accentColor: "#00D4FF",
-    gemColor: "#00d4ff",
+    accentColor: "#5BC8FF",
+    gemColor: "#5BC8FF",
   },
   {
     icon: Cloud,
     badge: "Enterprise Grade",
-    badgeColor: "bg-[rgba(124,58,237,0.12)] text-[#A78BFA] border-[rgba(124,58,237,0.25)]",
+    badgeColor: "bg-[rgba(70,230,197,0.12)] text-[#46E6C5] border-[rgba(70,230,197,0.25)]",
     title: "Cloud Deployment & Database Hardening",
     description:
       "Production-grade cloud infrastructure with hardened databases, automated failover, and zero-downtime deployments.",
@@ -40,13 +40,13 @@ const services = [
     ],
     href: "/services",
     featured: true,
-    accentColor: "#7C3AED",
-    gemColor: "#7c3aed",
+    accentColor: "#46E6C5",
+    gemColor: "#46E6C5",
   },
   {
     icon: Layers,
     badge: "Complete Solution",
-    badgeColor: "bg-[rgba(16,185,129,0.1)] text-emerald-400 border-[rgba(16,185,129,0.22)]",
+    badgeColor: "bg-[rgba(70,230,197,0.1)] text-[#46E6C5] border-[rgba(70,230,197,0.22)]",
     title: "End-to-End Product Development",
     description:
       "Your entire technical function — from first commit through launch, scaling, and ongoing operations.",
@@ -58,8 +58,8 @@ const services = [
     ],
     href: "/services",
     featured: false,
-    accentColor: "#10B981",
-    gemColor: "#34d399",
+    accentColor: "#46E6C5",
+    gemColor: "#46E6C5",
   },
 ];
 
@@ -67,7 +67,7 @@ export function CoreServices() {
   return (
     <section
       id="core-services"
-      className="relative py-24 md:py-32 overflow-hidden bg-[#F8FAFC]"
+      className="relative py-24 md:py-32 overflow-hidden bg-[#0A0E14]"
       aria-labelledby="core-services-heading"
     >
       {/* Background */}
@@ -79,12 +79,12 @@ export function CoreServices() {
           <SectionLabel>Core Services</SectionLabel>
           <h2
             id="core-services-heading"
-            className="text-display-lg font-bold text-balance max-w-3xl text-[#0F172A] font-display tracking-[-0.03em]"
+            className="text-display-lg font-bold text-balance max-w-3xl text-[#E7EEF0] font-display tracking-[-0.03em]"
           >
             Everything You Need to{" "}
             <span className="gradient-text">Ship With Confidence</span>
           </h2>
-          <p className="text-[#475569] text-lg max-w-2xl text-balance">
+          <p className="text-[#8A9AA0] text-lg max-w-2xl text-balance">
             Three flagship engagements designed around how modern companies
             actually need to move — fast, secure, and without hiring overhead.
           </p>
@@ -99,14 +99,14 @@ export function CoreServices() {
                   <div
                     className={`group/card relative flex flex-col gap-5 rounded-2xl border p-7 h-full transition-all duration-300 ${
                       svc.featured
-                        ? "border-accent/40 ring-1 ring-accent/20 bg-white shadow-card hover:shadow-card-hover hover:-translate-y-1"
-                        : "border-[#E2E8F0] bg-white hover:border-[#CBD5E1] hover:shadow-card-hover hover:-translate-y-1"
+                        ? "border-accent/40 ring-1 ring-accent/20 bg-[#0E141E] shadow-card hover:shadow-card-hover hover:-translate-y-1"
+                        : "border-[#1B2530] bg-[#0E141E] hover:border-[#2A3742] hover:shadow-card-hover hover:-translate-y-1"
                     }`}
                   >
                     {/* Subtle accent glow on hover */}
                     <div
                       className="absolute inset-0 rounded-2xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(3,105,161,0.06) 0%, transparent 70%)" }}
+                      style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(70,230,197,0.06) 0%, transparent 70%)" }}
                       aria-hidden="true"
                     />
 
@@ -115,7 +115,7 @@ export function CoreServices() {
                       className={
                         svc.featured
                           ? "self-start px-3 py-1 rounded-full text-[10px] font-semibold bg-accent text-white"
-                          : "self-start px-3 py-1 rounded-full text-xs font-semibold border bg-[#F1F5F9] text-accent border-[#E2E8F0]"
+                          : "self-start px-3 py-1 rounded-full text-xs font-semibold border bg-[#0E141E] text-accent border-[#1B2530]"
                       }
                     >
                       {svc.badge}
@@ -124,7 +124,7 @@ export function CoreServices() {
                     {/* Icon */}
                     <div
                       className={`flex items-center justify-center w-14 h-14 rounded-xl border ${
-                        svc.featured ? "bg-accent text-white border-transparent" : "bg-[#F1F5F9] text-accent border-[#E2E8F0]"
+                        svc.featured ? "bg-accent text-white border-transparent" : "bg-[#0E141E] text-accent border-[#1B2530]"
                       }`}
                     >
                       <Icon className="w-7 h-7" aria-hidden="true" />
@@ -133,11 +133,11 @@ export function CoreServices() {
                     {/* Content */}
                     <div className="flex-1 space-y-3">
                       <h3
-                        className="text-[#0F172A] font-bold text-xl leading-snug font-display tracking-[-0.02em]"
+                        className="text-[#E7EEF0] font-bold text-xl leading-snug font-display tracking-[-0.02em]"
                       >
                         {svc.title}
                       </h3>
-                      <p className="text-[#475569] text-sm leading-relaxed">
+                      <p className="text-[#8A9AA0] text-sm leading-relaxed">
                         {svc.description}
                       </p>
                     </div>
@@ -145,7 +145,7 @@ export function CoreServices() {
                     {/* Feature bullets */}
                     <ul className="space-y-2.5" role="list">
                       {svc.features.map((f) => (
-                        <li key={f} className="flex items-start gap-2.5 text-sm text-[#475569]">
+                        <li key={f} className="flex items-start gap-2.5 text-sm text-[#8A9AA0]">
                           <Check
                             className="w-4 h-4 shrink-0 mt-0.5 text-accent"
                             aria-hidden="true"

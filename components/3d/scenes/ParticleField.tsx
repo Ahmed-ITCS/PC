@@ -75,7 +75,7 @@ export function ParticleField({ tier }: Props) {
       <points ref={pointsRef}>
         <bufferGeometry />
         <pointsMaterial
-          color="#00d4ff"
+          color="#5BC8FF"
           size={0.04}
           sizeAttenuation
           transparent

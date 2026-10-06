@@ -33,7 +33,7 @@ export function ProcessGeometry() {
       {positions.map((pos, i) => (
         <mesh key={i} ref={(el) => { meshRefs.current[i] = el; }} position={pos}>
           <octahedronGeometry args={[0.3 + i * 0.1, 0]} />
-          <meshBasicMaterial color="#00d4ff" wireframe transparent opacity={0.35} />
+          <meshBasicMaterial color="#5BC8FF" wireframe transparent opacity={0.35} />
         </mesh>
       ))}
     </group>

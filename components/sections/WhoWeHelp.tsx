@@ -9,7 +9,7 @@ const segments = [
   {
     icon: Building2,
     title: "Digital Agencies",
-    accentColor: "#00D4FF",
+    accentColor: "#5BC8FF",
     challenges: [
       "Clients demand technical deliverables you don't have in-house",
       "Tight margins make hiring full-time engineers impractical",
@@ -19,7 +19,7 @@ const segments = [
   {
     icon: Rocket,
     title: "Growing Startups",
-    accentColor: "#7C3AED",
+    accentColor: "#46E6C5",
     challenges: [
       "Moving fast creates security and technical debt you'll pay later",
       "Hiring senior engineers at early-stage budgets is nearly impossible",
@@ -29,7 +29,7 @@ const segments = [
   {
     icon: Briefcase,
     title: "Enterprise Businesses",
-    accentColor: "#10B981",
+    accentColor: "#46E6C5",
     challenges: [
       "Legacy systems blocking adoption of modern cloud-native architecture",
       "Compliance requirements (SOC 2, ISO 27001) slow development velocity",
@@ -39,7 +39,7 @@ const segments = [
   {
     icon: Users,
     title: "Consulting Firms",
-    accentColor: "#F59E0B",
+    accentColor: "#46E6C5",
     challenges: [
       "Advising on technical strategy without a trusted delivery partner",
       "Client engagements expand into execution you're not staffed for",
@@ -51,7 +51,7 @@ const segments = [
 export function WhoWeHelp() {
   return (
     <section
-      className="relative py-24 md:py-32 overflow-hidden bg-white"
+      className="relative py-24 md:py-32 overflow-hidden bg-[#0E141E]"
       aria-labelledby="who-we-help-heading"
     >
       <div className="absolute inset-0 bg-dot-pattern opacity-[0.5]" style={{ backgroundSize: "24px 24px" }} aria-hidden="true" />
@@ -61,12 +61,12 @@ export function WhoWeHelp() {
           <SectionLabel>Who We Help</SectionLabel>
           <h2
             id="who-we-help-heading"
-            className="text-display-lg font-bold text-balance max-w-3xl text-[#0F172A] font-display tracking-[-0.03em]"
+            className="text-display-lg font-bold text-balance max-w-3xl text-[#E7EEF0] font-display tracking-[-0.03em]"
           >
             Built for Teams That Need to{" "}
             <span className="gradient-text">Move Without Friction</span>
           </h2>
-          <p className="text-[#475569] text-lg max-w-2xl text-balance">
+          <p className="text-[#8A9AA0] text-lg max-w-2xl text-balance">
             We work with four types of organisations — each with distinct
             challenges we&apos;ve solved dozens of times over.
           </p>
@@ -79,29 +79,29 @@ export function WhoWeHelp() {
               <FadeIn key={seg.title} delay={i * 0.1} direction="up">
                 <TiltCard className="h-full rounded-2xl">
                   <div
-                    className="group relative flex flex-col gap-5 rounded-2xl border border-[#E2E8F0] bg-white p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-[#CBD5E1] hover:shadow-card-hover overflow-hidden"
+                    className="group relative flex flex-col gap-5 rounded-2xl border border-[#1B2530] bg-[#0E141E] p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-[#2A3742] hover:shadow-card-hover overflow-hidden"
                   >
                     {/* Hover top accent line */}
                     <div
                       className="absolute inset-x-0 top-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ background: "linear-gradient(90deg, transparent, rgba(3,105,161,0.5), transparent)" }}
+                      style={{ background: "linear-gradient(90deg, transparent, rgba(70,230,197,0.5), transparent)" }}
                       aria-hidden="true"
                     />
                     {/* Hover inner glow */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                      style={{ background: "radial-gradient(ellipse 60% 40% at 30% 0%, rgba(3,105,161,0.05) 0%, transparent 70%)" }}
+                      style={{ background: "radial-gradient(ellipse 60% 40% at 30% 0%, rgba(70,230,197,0.05) 0%, transparent 70%)" }}
                       aria-hidden="true"
                     />
 
                     <div className="relative flex items-center gap-4">
                       <div
-                        className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#F1F5F9] text-accent border border-[#E2E8F0] transition-all duration-200 group-hover:scale-110"
+                        className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#0E141E] text-accent border border-[#1B2530] transition-all duration-200 group-hover:scale-110"
                       >
                         <Icon className="w-6 h-6" aria-hidden="true" />
                       </div>
                       <h3
-                        className="text-[#0F172A] font-bold text-lg font-display tracking-[-0.02em]"
+                        className="text-[#E7EEF0] font-bold text-lg font-display tracking-[-0.02em]"
                       >
                         {seg.title}
                       </h3>
@@ -109,7 +109,7 @@ export function WhoWeHelp() {
 
                     <ul className="relative space-y-3" role="list">
                       {seg.challenges.map((c) => (
-                        <li key={c} className="flex items-start gap-3 text-sm text-[#475569] leading-relaxed">
+                        <li key={c} className="flex items-start gap-3 text-sm text-[#8A9AA0] leading-relaxed">
                           <span
                             className="w-1.5 h-1.5 rounded-full shrink-0 mt-2 bg-accent"
                             aria-hidden="true"

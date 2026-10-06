@@ -146,7 +146,7 @@ export default function ServicesPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-[#475569] text-lg max-w-2xl text-balance leading-relaxed">
+            <p className="text-[#8A9AA0] text-lg max-w-2xl text-balance leading-relaxed">
               Six practice areas that cover every layer of the stack — from
               architecture through deployment, security, and operations.
             </p>
@@ -165,8 +165,8 @@ export default function ServicesPage() {
                   id={service.id}
                   className={`relative rounded-2xl border p-8 md:p-10 scroll-mt-24 transition-all duration-300 hover:-translate-y-1 ${
                     service.featured
-                      ? "border-accent/40 ring-1 ring-accent/20 bg-white shadow-card"
-                      : "border-[#E2E8F0] bg-white hover:border-[#CBD5E1] hover:shadow-card-hover"
+                      ? "border-accent/40 ring-1 ring-accent/20 bg-[#0E141E] shadow-card"
+                      : "border-[#1B2530] bg-[#0E141E] hover:border-[#2A3742] hover:shadow-card-hover"
                   }`}
                 >
                   {service.featured && (
@@ -185,14 +185,14 @@ export default function ServicesPage() {
                           className={`flex items-center justify-center w-12 h-12 rounded-xl shrink-0 ${
                             service.featured
                               ? "bg-accent text-white"
-                              : "bg-[#F1F5F9] text-accent"
+                              : "bg-[#0E141E] text-accent"
                           }`}
                         >
                           <Icon className="w-6 h-6" aria-hidden="true" />
                         </div>
                         <div>
                           <h2
-                            className="text-xl md:text-2xl font-bold text-[#0F172A] leading-tight tracking-tight"
+                            className="text-xl md:text-2xl font-bold text-[#E7EEF0] leading-tight tracking-tight"
                             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                           >
                             {service.title}
@@ -201,7 +201,7 @@ export default function ServicesPage() {
                         </div>
                       </div>
 
-                      <p className="text-[#475569] text-base leading-relaxed">
+                      <p className="text-[#8A9AA0] text-base leading-relaxed">
                         {service.description}
                       </p>
 
@@ -209,7 +209,7 @@ export default function ServicesPage() {
                         {service.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 py-1 rounded-full text-xs font-medium bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0]"
+                            className="px-3 py-1 rounded-full text-xs font-medium bg-[#0E141E] text-[#8A9AA0] border border-[#1B2530]"
                           >
                             {tag}
                           </span>
@@ -230,13 +230,13 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Right column — feature bullets */}
-                    <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-6">
-                      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B] mb-4">
+                    <div className="rounded-xl border border-[#1B2530] bg-[#0A0E14] p-6">
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7C8C92] mb-4">
                         What&apos;s included
                       </p>
                       <ul className="space-y-3" role="list">
                         {service.features.map((feat) => (
-                          <li key={feat} className="flex items-start gap-3 text-sm text-[#475569] leading-relaxed">
+                          <li key={feat} className="flex items-start gap-3 text-sm text-[#8A9AA0] leading-relaxed">
                             <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" aria-hidden="true" />
                             {feat}
                           </li>
@@ -252,10 +252,10 @@ export default function ServicesPage() {
       </section>
 
       {/* Closing CTA band */}
-      <section className="py-16 md:py-20 border-t border-[#E2E8F0]" aria-label="Start your project">
+      <section className="py-16 md:py-20 border-t border-[#1B2530]" aria-label="Start your project">
         <div className="container-max section-padding">
           <FadeIn>
-            <div className="relative rounded-2xl border border-[#E2E8F0] bg-[#0F172A] overflow-hidden">
+            <div className="relative rounded-2xl border border-[#1B2530] bg-[#0E141E] overflow-hidden">
               <div
                 className="absolute inset-0 bg-glow-accent opacity-60"
                 aria-hidden="true"
@@ -286,7 +286,7 @@ export default function ServicesPage() {
                   </Link>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-white/15 text-white/80 hover:border-white/30 hover:text-white hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-[#2A3742]/15 text-white/80 hover:border-[#2A3742]/30 hover:text-white hover:bg-[#0E141E]/5 transition-all duration-200 whitespace-nowrap"
                   >
                     Schedule Consultation
                   </Link>

@@ -17,12 +17,12 @@ export function PentaCipherIcon({ size = 36, className = "" }: PentaCipherLogoPr
       {/* Pentagon background — deep navy */}
       <polygon
         points="20,3 35.2,13.2 29.5,32.5 10.5,32.5 4.8,13.2"
-        fill="#0F172A"
+        fill="#E7EEF0"
       />
       {/* Stylised C — accent blue, opens to the right */}
       <path
         d="M 29 14 A 10 10 0 1 0 29 26"
-        stroke="#0EA5E9"
+        stroke="#7DF9FF"
         strokeWidth="3.8"
         strokeLinecap="round"
         fill="none"
@@ -38,7 +38,7 @@ interface LogoTextProps {
 }
 
 export function PentaCipherLogoText({ className = "", variant = "dark" }: LogoTextProps) {
-  const pentaColor = variant === "dark" ? "#0F172A" : "#ffffff";
+  const pentaColor = variant === "dark" ? "#E7EEF0" : "#46E6C5";
   return (
     <div className={`flex flex-col leading-none ${className}`}>
       <span
@@ -56,7 +56,7 @@ export function PentaCipherLogoText({ className = "", variant = "dark" }: LogoTe
         style={{
           fontFamily: "var(--font-syne), Syne, sans-serif",
           fontWeight: 500,
-          color: "#0369A1",
+          color: "#46E6C5",
         }}
       >
         Cipher

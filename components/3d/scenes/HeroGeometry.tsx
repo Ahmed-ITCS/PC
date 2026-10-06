@@ -34,7 +34,7 @@ function TorusRings({ opacity }: { opacity: MutableRefObject<number> }) {
       {RINGS.map((ring, i) => (
         <mesh key={i} ref={(el) => { refs.current[i] = el; }}>
           <torusGeometry args={[ring.radius, ring.tube, 8, 120]} />
-          <meshBasicMaterial color="#00d4ff" transparent opacity={0.45} />
+          <meshBasicMaterial color="#5BC8FF" transparent opacity={0.45} />
         </mesh>
       ))}
     </>
@@ -82,7 +82,7 @@ function FloatingOctahedra({ opacity }: { opacity: MutableRefObject<number> }) {
       {data.map((d, i) => (
         <mesh key={i} ref={(el) => { meshRefs.current[i] = el; }} position={[d.x, d.y, d.z]}>
           <octahedronGeometry args={[d.size, 0]} />
-          <meshBasicMaterial color="#00d4ff" wireframe transparent opacity={0.5} />
+          <meshBasicMaterial color="#5BC8FF" wireframe transparent opacity={0.5} />
         </mesh>
       ))}
     </>
@@ -120,8 +120,8 @@ function CoreShape({ opacity }: { opacity: MutableRefObject<number> }) {
       <mesh ref={solidRef}>
         <icosahedronGeometry args={[1.6, 4]} />
         <meshStandardMaterial
-          color="#00d4ff"
-          emissive="#00d4ff"
+          color="#5BC8FF"
+          emissive="#5BC8FF"
           emissiveIntensity={0.55}
           metalness={0.85}
           roughness={0.08}
@@ -129,7 +129,7 @@ function CoreShape({ opacity }: { opacity: MutableRefObject<number> }) {
       </mesh>
       <mesh ref={wireRef}>
         <icosahedronGeometry args={[1.6, 4]} />
-        <meshBasicMaterial color="#00d4ff" wireframe transparent opacity={0.18} />
+        <meshBasicMaterial color="#5BC8FF" wireframe transparent opacity={0.18} />
       </mesh>
     </>
   );
@@ -161,7 +161,7 @@ function GridPlane({ opacity }: { opacity: MutableRefObject<number> }) {
   return (
     <mesh ref={ref} rotation={[-Math.PI / 2.2, 0, 0]} position={[0, -3.5, -2]}>
       <planeGeometry args={[22, 22, 28, 28]} />
-      <meshBasicMaterial color="#00d4ff" wireframe transparent opacity={0.07} />
+      <meshBasicMaterial color="#5BC8FF" wireframe transparent opacity={0.07} />
     </mesh>
   );
 }

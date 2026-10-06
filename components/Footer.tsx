@@ -30,7 +30,7 @@ const socials = [
 export function Footer() {
   return (
     <footer
-      className="relative border-t border-[#E2E8F0] bg-white"
+      className="relative border-t border-[#1B2530] bg-[#0E141E]"
       role="contentinfo"
       aria-label="Site footer"
     >
@@ -49,7 +49,7 @@ export function Footer() {
               <PentaCipherLogoText variant="dark" />
             </Link>
 
-            <p className="text-[#64748B] text-sm leading-relaxed max-w-xs">
+            <p className="text-[#7C8C92] text-sm leading-relaxed max-w-xs">
               Security-first software development and DevOps consultancy. We help
               agencies, startups, and enterprises ship with confidence.
             </p>
@@ -62,7 +62,7 @@ export function Footer() {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-[#E2E8F0] text-[#64748B] hover:text-accent hover:border-[rgba(3,105,161,0.35)] hover:bg-[#F0F9FF] transition-all duration-200"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-[#1B2530] text-[#7C8C92] hover:text-accent hover:border-[rgba(70,230,197,0.35)] hover:bg-[#0E1A1C] transition-all duration-200"
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </a>
@@ -73,7 +73,7 @@ export function Footer() {
           {/* Link cols */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category} className="space-y-4">
-              <h3 className="text-[#0F172A] text-xs font-bold tracking-widest uppercase font-[family-name:var(--font-mono)]">
+              <h3 className="text-[#E7EEF0] text-xs font-bold tracking-widest uppercase font-[family-name:var(--font-mono)]">
                 {category}
               </h3>
               <ul className="space-y-2.5" role="list">
@@ -81,7 +81,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-[#64748B] hover:text-accent text-sm transition-colors duration-150"
+                      className="text-[#7C8C92] hover:text-accent text-sm transition-colors duration-150"
                     >
                       {link.label}
                     </Link>
@@ -92,11 +92,11 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-[#E2E8F0] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[#94A3B8] text-xs">
+        <div className="mt-12 pt-8 border-t border-[#1B2530] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[#6B7A81] text-xs">
             © {new Date().getFullYear()} PentaCipher. All rights reserved.
           </p>
-          <p className="text-[#94A3B8] text-xs flex items-center gap-1.5 italic">
+          <p className="text-[#6B7A81] text-xs flex items-center gap-1.5 italic">
             <PentaCipherIcon size={12} />
             <span className="text-accent not-italic font-medium">Security-first.</span> Always.
           </p>

@@ -14,7 +14,7 @@ const testimonials = [
     role: "CTO",
     company: "Skybridge Digital",
     initial: "S",
-    color: "#00D4FF",
+    color: "#5BC8FF",
   },
   {
     quote:
@@ -23,7 +23,7 @@ const testimonials = [
     role: "Founder & CEO",
     company: "NovaTech Solutions",
     initial: "M",
-    color: "#7C3AED",
+    color: "#46E6C5",
   },
   {
     quote:
@@ -32,7 +32,7 @@ const testimonials = [
     role: "VP Engineering",
     company: "Meridian Financial",
     initial: "P",
-    color: "#10B981",
+    color: "#46E6C5",
   },
   {
     quote:
@@ -41,7 +41,7 @@ const testimonials = [
     role: "Director of Technology",
     company: "Cascadia Creative",
     initial: "J",
-    color: "#F59E0B",
+    color: "#46E6C5",
   },
 ];
 
@@ -56,7 +56,7 @@ export function Testimonials() {
 
   return (
     <section
-      className="relative py-24 md:py-32 overflow-hidden bg-[#F8FAFC]"
+      className="relative py-24 md:py-32 overflow-hidden bg-[#0A0E14]"
       aria-labelledby="testimonials-heading"
     >
       <div className="relative z-10 container-max section-padding">
@@ -64,7 +64,7 @@ export function Testimonials() {
           <SectionLabel>Client Voices</SectionLabel>
           <h2
             id="testimonials-heading"
-            className="text-3xl md:text-4xl font-bold text-balance text-[#0F172A]"
+            className="text-3xl md:text-4xl font-bold text-balance text-[#E7EEF0]"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             What Our Partners Say
@@ -73,7 +73,7 @@ export function Testimonials() {
 
         <div className="max-w-3xl mx-auto">
           <div
-            className="relative rounded-2xl border border-[#E2E8F0] bg-white p-8 md:p-12 overflow-hidden shadow-card"
+            className="relative rounded-2xl border border-[#1B2530] bg-[#0E141E] p-8 md:p-12 overflow-hidden shadow-card"
           >
             {/* Top accent line */}
             <motion.div
@@ -95,21 +95,21 @@ export function Testimonials() {
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
                 <blockquote>
-                  <p className="text-[#475569] text-lg md:text-xl leading-relaxed font-light italic mb-8">
+                  <p className="text-[#8A9AA0] text-lg md:text-xl leading-relaxed font-light italic mb-8">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <footer className="flex items-center gap-4">
                     <div
-                      className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-base shrink-0 bg-[#F1F5F9] border border-[#E2E8F0] text-accent"
+                      className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-base shrink-0 bg-[#0E141E] border border-[#1B2530] text-accent"
                       aria-hidden="true"
                     >
                       {t.initial}
                     </div>
                     <div>
-                      <cite className="text-[#0F172A] font-semibold text-sm not-italic">
+                      <cite className="text-[#E7EEF0] font-semibold text-sm not-italic">
                         {t.author}
                       </cite>
-                      <p className="text-[#64748B] text-xs mt-0.5">
+                      <p className="text-[#7C8C92] text-xs mt-0.5">
                         {t.role}, {t.company}
                       </p>
                     </div>
@@ -119,7 +119,7 @@ export function Testimonials() {
             </AnimatePresence>
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#E2E8F0]">
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#1B2530]">
               <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial navigation">
                 {testimonials.map((t2, i) => (
                   <button
@@ -131,7 +131,7 @@ export function Testimonials() {
                     className="h-1.5 rounded-full transition-all duration-300"
                     style={{
                       width: i === current ? "1.5rem" : "0.375rem",
-                      background: i === current ? "#0369A1" : "#CBD5E1",
+                      background: i === current ? "#46E6C5" : "#2A3742",
                     }}
                   />
                 ))}
@@ -142,7 +142,7 @@ export function Testimonials() {
                     key={label}
                     onClick={fn}
                     aria-label={label}
-                    className="p-2 rounded-lg border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] transition-all duration-150"
+                    className="p-2 rounded-lg border border-[#1B2530] text-[#7C8C92] hover:text-[#E7EEF0] hover:border-[#2A3742] hover:bg-[#0A0E14] transition-all duration-150"
                   >
                     <Icon className="w-4 h-4" aria-hidden="true" />
                   </button>

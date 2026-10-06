@@ -36,7 +36,7 @@ export function Navbar() {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-[#E2E8F0] shadow-[0_1px_20px_rgba(15,23,42,0.06)]"
+            ? "bg-[#0E141E]/80 backdrop-blur-xl border-b border-[#1B2530] shadow-[0_1px_20px_rgba(7,10,15,0.06)]"
             : "bg-transparent border-b border-transparent"
         }`}
       >
@@ -71,7 +71,7 @@ export function Navbar() {
                   className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg focus-visible:ring-2 focus-visible:ring-accent ${
                     active
                       ? "text-accent"
-                      : "text-[#475569] hover:text-[#0F172A] hover:bg-[#F1F5F9]"
+                      : "text-[#8A9AA0] hover:text-[#E7EEF0] hover:bg-[#0E141E]"
                   }`}
                 >
                   {link.label}
@@ -99,7 +99,7 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 rounded-lg text-[#475569] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+            className="md:hidden p-2 rounded-lg text-[#8A9AA0] hover:text-[#E7EEF0] hover:bg-[#0E141E] transition-colors focus-visible:ring-2 focus-visible:ring-accent"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -129,7 +129,7 @@ export function Navbar() {
             animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
             exit={{   opacity: 0, clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-white/98 backdrop-blur-2xl pt-16 flex flex-col md:hidden"
+            className="fixed inset-0 z-40 bg-[#0E141E]/98 backdrop-blur-2xl pt-16 flex flex-col md:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
@@ -146,8 +146,8 @@ export function Navbar() {
                     href={link.href}
                     className={`flex items-center px-4 py-4 rounded-xl text-lg font-medium transition-all ${
                       pathname === link.href
-                        ? "text-accent bg-[#E0F2FE] border border-[rgba(3,105,161,0.15)]"
-                        : "text-[#334155] hover:text-[#0F172A] hover:bg-[#F1F5F9]"
+                        ? "text-accent bg-[#0E1A1C] border border-[rgba(70,230,197,0.15)]"
+                        : "text-[#A9B7BD] hover:text-[#E7EEF0] hover:bg-[#0E141E]"
                     }`}
                   >
                     {link.label}

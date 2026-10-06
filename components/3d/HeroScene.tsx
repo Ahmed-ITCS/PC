@@ -17,8 +17,8 @@ class ErrorBoundary extends Component<
   }
 }
 
-const ACCENT = "#0369A1";
-const ACCENT_LIGHT = "#38BDF8";
+const ACCENT = "#46E6C5";
+const ACCENT_LIGHT = "#7DF9FF";
 
 // ── Rotating wireframe core ─────────────────────────────────────────
 function Core() {

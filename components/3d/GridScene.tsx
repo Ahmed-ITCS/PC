@@ -5,8 +5,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 const BOX_COLORS = [
-  "#00d4ff", "#7c3aed", "#34d399", "#f59e0b",
-  "#00d4ff", "#7c3aed", "#34d399", "#f59e0b",
+  "#5BC8FF", "#46E6C5", "#46E6C5", "#46E6C5",
+  "#5BC8FF", "#46E6C5", "#46E6C5", "#46E6C5",
 ];
 
 const AXES = [
@@ -95,8 +95,8 @@ function Scene({ animate }: { animate: boolean }) {
   return (
     <group ref={groupRef}>
       <ambientLight intensity={0.25} />
-      <pointLight position={[0, 4, 4]} intensity={2} color="#00d4ff" />
-      <pointLight position={[0, -3, 2]} intensity={1} color="#7c3aed" />
+      <pointLight position={[0, 4, 4]} intensity={2} color="#5BC8FF" />
+      <pointLight position={[0, -3, 2]} intensity={1} color="#46E6C5" />
       <Boxes animate={animate} />
     </group>
   );

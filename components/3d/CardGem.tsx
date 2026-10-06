@@ -56,7 +56,7 @@ function Scene({ color }: { color: string }) {
     <>
       <ambientLight intensity={0.3} />
       <pointLight position={[2, 2, 2]} intensity={2} color={color} />
-      <pointLight position={[-2, -1, 1]} intensity={0.6} color="#7c3aed" />
+      <pointLight position={[-2, -1, 1]} intensity={0.6} color="#46E6C5" />
       <Gem color={color} />
       <GemWire color={color} />
       <EffectComposer>
@@ -70,7 +70,7 @@ interface CardGemProps {
   color?: string;
 }
 
-export function CardGem({ color = "#00d4ff" }: CardGemProps) {
+export function CardGem({ color = "#5BC8FF" }: CardGemProps) {
   return (
     <div
       className="absolute top-3 right-3 w-16 h-16 pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"

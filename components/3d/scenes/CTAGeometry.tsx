@@ -30,8 +30,8 @@ export function CTAGeometry() {
       <mesh ref={torusRef}>
         <torusKnotGeometry args={[1.5, 0.35, 80, 12]} />
         <meshStandardMaterial
-          color="#00d4ff"
-          emissive="#00d4ff"
+          color="#5BC8FF"
+          emissive="#5BC8FF"
           emissiveIntensity={0.5}
           metalness={0.8}
           roughness={0.1}

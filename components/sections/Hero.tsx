@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { HeroScene } from "@/components/3d/HeroScene";
 
@@ -22,7 +22,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20"
       aria-label="Hero"
     >
       {/* 3D background */}
@@ -35,11 +35,24 @@ export function Hero() {
       </motion.div>
 
       {/* Subtle grid + glow */}
-      <div className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-70 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,black,transparent)]" aria-hidden="true" />
+      <div className="absolute inset-0 z-[1] bg-grid-pattern bg-grid-lg opacity-70 [mask-image:radial-gradient(ellipse_60%_50%_at_50_40%,black,transparent)]" aria-hidden="true" />
       <div className="absolute inset-0 z-[1] bg-hero-gradient" aria-hidden="true" />
+      {/* Cipher scanline overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] opacity-60 mix-blend-screen"
+        style={{ background: "repeating-linear-gradient(to bottom, rgba(70,230,197,0.025) 0px, rgba(70,230,197,0.025) 1px, transparent 1px, transparent 3px)" }}
+        aria-hidden="true"
+      />
+      {/* Coordinate HUD */}
+      <span className="pointer-events-none absolute top-[116px] left-6 md:left-12 z-[2] hidden md:block font-mono text-[10px] leading-relaxed tracking-[0.12em] text-[#7C8C92]" aria-hidden="true">
+        LAT 40.7128° N<br />LON 74.0060° W<br />SEC-01 / VAULT
+      </span>
+      <span className="pointer-events-none absolute bottom-[116px] right-6 md:right-12 z-[2] hidden md:block text-right font-mono text-[10px] leading-relaxed tracking-[0.12em] text-[#7C8C92]" aria-hidden="true">
+        STATUS: SECURE<br />UPTIME 99.99%<br />NODE 05 / 12
+      </span>
 
-      <div className="relative z-10 container-max section-padding py-20 lg:py-28">
-        <div className="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto">
+      <div className="relative z-10 container-max section-padding py-24 lg:py-32">
+        <div className="flex flex-col items-center text-center gap-9 max-w-4xl mx-auto">
 
           {/* Badge */}
           <motion.div
@@ -47,21 +60,19 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#E2E8F0] bg-white/70 backdrop-blur-md shadow-xs">
-              <ShieldCheck className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
-              <span className="text-[#334155] text-xs font-semibold tracking-[0.12em] uppercase font-[family-name:var(--font-mono)]">
-                Security-First Execution
-              </span>
-            </div>
+            <span className="eyebrow">
+              <span className="eyebrow-dot" aria-hidden="true" />
+              <span className="kicker">Security-First Execution</span>
+            </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline — editorial serif */}
           <h1
-            className="font-display font-extrabold text-[#0F172A]"
+            className="font-display font-semibold text-[#E7EEF0]"
             style={{
-              fontSize: "clamp(2.75rem, 7vw, 6.5rem)",
-              lineHeight: "0.98",
-              letterSpacing: "-0.045em",
+              fontSize: "clamp(2.75rem, 6.5vw, 6rem)",
+              lineHeight: "1.02",
+              letterSpacing: "-0.025em",
             }}
             aria-label={headlineLines.join(" ")}
           >
@@ -72,8 +83,8 @@ export function Hero() {
                   initial={shouldReduceMotion ? false : { y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{
-                    duration: shouldReduceMotion ? 0 : 0.8,
-                    delay: shouldReduceMotion ? 0 : 0.15 + i * 0.11,
+                    duration: shouldReduceMotion ? 0 : 0.85,
+                    delay: shouldReduceMotion ? 0 : 0.15 + i * 0.1,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                 >
@@ -87,8 +98,8 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[#475569] text-lg md:text-xl leading-relaxed max-w-2xl text-balance"
+            transition={{ duration: 0.65, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="lede max-w-2xl text-balance"
           >
             We accelerate your digital transformation — delivering full-stack
             development, DevOps, and security-hardened systems without the
@@ -99,7 +110,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.68, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.65, delay: 0.64, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col sm:flex-row items-center gap-4 pt-2"
           >
             <MagneticButton
@@ -113,7 +124,7 @@ export function Hero() {
             <MagneticButton
               href="/services"
               strength={0.25}
-              className="px-7 py-4 rounded-xl font-medium text-sm border border-[#CBD5E1] text-[#334155] bg-white/70 backdrop-blur-sm hover:border-[#94A3B8] hover:text-[#0F172A] hover:bg-white transition-all duration-200"
+              className="px-7 py-4 rounded-xl font-medium text-sm border border-[#2A3742] text-[#A9B7BD] bg-[#0E141E]/70 backdrop-blur-sm hover:border-[#6B7A81] hover:text-[#E7EEF0] hover:bg-[#0E141E] transition-all duration-200"
             >
               View Our Services
             </MagneticButton>
@@ -123,23 +134,26 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.82, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-[#E2E8F0] bg-[#E2E8F0] w-full max-w-2xl"
+            transition={{ duration: 0.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-10 w-full max-w-2xl"
             role="list"
             aria-label="Key metrics"
           >
-            {heroStats.map(({ value, label }) => (
-              <div
-                key={label}
-                role="listitem"
-                className="flex flex-col items-center justify-center gap-1 bg-white/80 backdrop-blur-sm py-5 px-3"
-              >
-                <span className="text-[#0F172A] font-display font-bold text-2xl tracking-tight">
-                  {value}
-                </span>
-                <span className="text-[#64748B] text-xs">{label}</span>
-              </div>
-            ))}
+            <div className="rule mb-7" aria-hidden="true" />
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-4">
+              {heroStats.map(({ value, label }) => (
+                <div
+                  key={label}
+                  role="listitem"
+                  className="flex flex-col items-center justify-center gap-1.5"
+                >
+                  <span className="font-display font-semibold text-[#E7EEF0] text-3xl tracking-tight">
+                    {value}
+                  </span>
+                  <span className="text-[#7C8C92] text-xs tracking-wide uppercase">{label}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
@@ -155,7 +169,7 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-[#CBD5E1] flex items-start justify-center p-1"
+          className="w-5 h-8 rounded-full border border-[#2A3742] flex items-start justify-center p-1"
         >
           <div className="w-1 h-1.5 rounded-full bg-accent" />
         </motion.div>

@@ -36,9 +36,9 @@ const caseStudies: CaseStudy[] = [
     ],
     stack: ["Next.js", "Node.js", "PostgreSQL", "Redis", "AWS ECS", "GitHub Actions"],
     timeline: "12 weeks",
-    gradientFrom: "#00d4ff",
-    gradientTo: "#0066cc",
-    accentColor: "#00D4FF",
+    gradientFrom: "#5BC8FF",
+    gradientTo: "#46E6C5",
+    accentColor: "#5BC8FF",
   },
   {
     client: "AirDrive",
@@ -54,9 +54,9 @@ const caseStudies: CaseStudy[] = [
     ],
     stack: ["React", "Next.js", "Go", "PostgreSQL", "GCP GKE", "Stripe", "Terraform"],
     timeline: "16 weeks",
-    gradientFrom: "#7c3aed",
-    gradientTo: "#4f46e5",
-    accentColor: "#A78BFA",
+    gradientFrom: "#46E6C5",
+    gradientTo: "#46E6C5",
+    accentColor: "#46E6C5",
   },
   {
     client: "UniFix",
@@ -72,16 +72,16 @@ const caseStudies: CaseStudy[] = [
     ],
     stack: ["Next.js", "Python", "PostgreSQL", "AWS", "Vault", "Datadog"],
     timeline: "20 weeks",
-    gradientFrom: "#059669",
-    gradientTo: "#0d9488",
-    accentColor: "#34D399",
+    gradientFrom: "#46E6C5",
+    gradientTo: "#46E6C5",
+    accentColor: "#46E6C5",
   },
 ];
 
 function MockupFrame({ client }: { client: string }) {
   return (
     <div
-      className="relative rounded-xl overflow-hidden border border-[#E2E8F0] aspect-video bg-[#F8FAFC] shadow-card"
+      className="relative rounded-xl overflow-hidden border border-[#1B2530] aspect-video bg-[#0A0E14] shadow-card"
       aria-label={`${client} product mockup`}
     >
       <div
@@ -89,33 +89,33 @@ function MockupFrame({ client }: { client: string }) {
         aria-hidden="true"
       />
       {/* Top bar */}
-      <div className="absolute top-0 inset-x-0 h-8 bg-white border-b border-[#E2E8F0] flex items-center px-4 gap-2">
+      <div className="absolute top-0 inset-x-0 h-8 bg-[#0E141E] border-b border-[#1B2530] flex items-center px-4 gap-2">
         <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#1B2530]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#1B2530]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#1B2530]" />
         </div>
-        <div className="flex-1 h-4 rounded bg-[#F1F5F9] mx-4 max-w-40" />
+        <div className="flex-1 h-4 rounded bg-[#0E141E] mx-4 max-w-40" />
       </div>
       {/* Content sketch */}
       <div className="absolute inset-0 top-8 flex items-center justify-center p-6">
         <div className="space-y-3 w-full max-w-xs">
-          <div className="h-5 rounded-md w-2/3 bg-[#CBD5E1]" />
-          <div className="h-3 rounded w-full bg-[#E2E8F0]" />
-          <div className="h-3 rounded w-5/6 bg-[#E2E8F0]" />
-          <div className="h-3 rounded w-4/6 bg-[#E2E8F0]" />
+          <div className="h-5 rounded-md w-2/3 bg-[#2A3742]" />
+          <div className="h-3 rounded w-full bg-[#1B2530]" />
+          <div className="h-3 rounded w-5/6 bg-[#1B2530]" />
+          <div className="h-3 rounded w-4/6 bg-[#1B2530]" />
           <div className="mt-4 grid grid-cols-3 gap-2">
             {[1,2,3].map((n) => (
               <div
                 key={n}
-                className="h-12 rounded-lg bg-white border border-[#E2E8F0]"
+                className="h-12 rounded-lg bg-[#0E141E] border border-[#1B2530]"
               />
             ))}
           </div>
         </div>
       </div>
       <div className="absolute bottom-3 right-3">
-        <span className="text-[10px] text-[#94A3B8] font-mono">mockup</span>
+        <span className="text-[10px] text-[#6B7A81] font-mono">mockup</span>
       </div>
     </div>
   );
@@ -127,24 +127,24 @@ export function CaseStudies() {
 
   return (
     <section
-      className="relative py-24 md:py-32 bg-[#F8FAFC] overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#0A0E14] overflow-hidden"
       aria-labelledby="case-studies-heading"
     >
       <SectionNumber number="03" className="top-8 right-4 md:right-12" />
       <div className="absolute inset-0 bg-glow-accent opacity-60" aria-hidden="true" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#CBD5E1] to-transparent" aria-hidden="true" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2A3742] to-transparent" aria-hidden="true" />
 
       <div className="relative z-10 container-max section-padding">
         <ClipReveal className="flex flex-col items-center text-center gap-5 mb-16">
           <SectionLabel>Case Studies</SectionLabel>
           <h2
             id="case-studies-heading"
-            className="text-display-lg font-display font-bold leading-tight text-balance max-w-3xl text-[#0F172A]"
+            className="text-display-lg font-display font-bold leading-tight text-balance max-w-3xl text-[#E7EEF0]"
           >
             Real Projects,{" "}
             <span className="gradient-text">Measurable Results</span>
           </h2>
-          <p className="text-[#475569] text-lg max-w-2xl text-balance">
+          <p className="text-[#8A9AA0] text-lg max-w-2xl text-balance">
             A selection of recent engagements — each representing a distinct
             challenge, approach, and outcome.
           </p>
@@ -156,7 +156,7 @@ export function CaseStudies() {
             return (
               <div
                 key={cs.client}
-                className="border-t border-[#E2E8F0] last:border-b"
+                className="border-t border-[#1B2530] last:border-b"
               >
                 <button
                   onClick={() => setActive(i)}
@@ -166,7 +166,7 @@ export function CaseStudies() {
                 >
                   <span
                     className="shrink-0 font-bold font-mono text-sm md:text-base transition-colors duration-200"
-                    style={{ color: isActive ? "var(--accent)" : "#94A3B8" }}
+                    style={{ color: isActive ? "var(--accent)" : "#6B7A81" }}
                     aria-hidden="true"
                   >
                     0{i + 1}
@@ -179,19 +179,19 @@ export function CaseStudies() {
                       lineHeight: "1.0",
                       letterSpacing: "-0.025em",
                       transition: "font-size 0.4s cubic-bezier(0.22,1,0.36,1), color 0.3s",
-                      color: isActive ? "#0F172A" : "#64748B",
+                      color: isActive ? "#E7EEF0" : "#7C8C92",
                     }}
                   >
                     {cs.client}
                   </h3>
-                  <span className="shrink-0 text-[#94A3B8] text-sm font-medium hidden md:block">
+                  <span className="shrink-0 text-[#6B7A81] text-sm font-medium hidden md:block">
                     {cs.tagline}
                   </span>
                   <motion.span
                     animate={{ rotate: isActive ? 45 : 0 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     className="shrink-0 text-2xl font-light leading-none transition-colors duration-200"
-                    style={{ color: isActive ? "var(--accent)" : "#94A3B8" }}
+                    style={{ color: isActive ? "var(--accent)" : "#6B7A81" }}
                     aria-hidden="true"
                   >
                     +
@@ -212,7 +212,7 @@ export function CaseStudies() {
                       <div className="pb-12 grid lg:grid-cols-2 gap-8 lg:gap-16">
                         {/* Left */}
                         <div className="space-y-8">
-                          <div className="flex items-center gap-3 text-sm text-[#64748B]">
+                          <div className="flex items-center gap-3 text-sm text-[#7C8C92]">
                             <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                             {cs.timeline}
                             <span className="mx-1">·</span>
@@ -225,10 +225,10 @@ export function CaseStudies() {
                               { label: "Solution",  text: cs.solution  },
                             ].map(({ label, text }) => (
                               <div key={label}>
-                                <p className="text-[10px] font-bold uppercase tracking-widest mb-2 text-[#94A3B8]">
+                                <p className="text-[10px] font-bold uppercase tracking-widest mb-2 text-[#6B7A81]">
                                   {label}
                                 </p>
-                                <p className="text-[#475569] text-sm leading-relaxed">{text}</p>
+                                <p className="text-[#8A9AA0] text-sm leading-relaxed">{text}</p>
                               </div>
                             ))}
                           </div>
@@ -238,10 +238,10 @@ export function CaseStudies() {
                             {cs.stats.map((stat) => (
                               <div
                                 key={stat.label}
-                                className="rounded-xl border border-[#E2E8F0] bg-white p-4 text-center"
+                                className="rounded-xl border border-[#1B2530] bg-[#0E141E] p-4 text-center"
                               >
                                 <div
-                                  className="text-2xl font-bold text-[#0F172A]"
+                                  className="text-2xl font-bold text-[#E7EEF0]"
                                   style={{
                                     fontFamily: "var(--font-syne), Syne, sans-serif",
                                   }}
@@ -251,21 +251,21 @@ export function CaseStudies() {
                                     <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                                   )}
                                 </div>
-                                <p className="text-[#64748B] text-[10px] mt-1 leading-tight">{stat.label}</p>
+                                <p className="text-[#7C8C92] text-[10px] mt-1 leading-tight">{stat.label}</p>
                               </div>
                             ))}
                           </div>
 
                           {/* Stack */}
                           <div>
-                            <p className="text-[10px] font-bold uppercase tracking-widest mb-2.5 text-[#94A3B8]">
+                            <p className="text-[10px] font-bold uppercase tracking-widest mb-2.5 text-[#6B7A81]">
                               Tech Stack
                             </p>
                             <div className="flex flex-wrap gap-2">
                               {cs.stack.map((t) => (
                                 <span
                                   key={t}
-                                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0]"
+                                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#0E141E] text-[#8A9AA0] border border-[#1B2530]"
                                 >
                                   {t}
                                 </span>

@@ -69,7 +69,7 @@ export function Services() {
   return (
     <section
       id="services"
-      className="relative py-24 md:py-32 overflow-hidden bg-[#F8FAFC]"
+      className="relative py-24 md:py-32 overflow-hidden bg-[#0A0E14]"
       aria-labelledby="services-heading"
     >
       <div className="container-max section-padding">
@@ -78,13 +78,13 @@ export function Services() {
           <SectionLabel>What We Do</SectionLabel>
           <h2
             id="services-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl text-[#0F172A]"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance max-w-3xl text-[#E7EEF0]"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             Everything Your Project Needs —{" "}
             <span className="gradient-text">None of the Overhead</span>
           </h2>
-          <p className="text-[#475569] text-lg max-w-2xl text-balance">
+          <p className="text-[#8A9AA0] text-lg max-w-2xl text-balance">
             From first commit to production, we handle the full technical stack
             so you can focus on your business.
           </p>
@@ -100,8 +100,8 @@ export function Services() {
                   href={service.href}
                   className={`group relative flex flex-col gap-4 p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-accent outline-none h-full ${
                     service.featured
-                      ? "border-accent/40 ring-1 ring-accent/20 bg-white shadow-card-hover"
-                      : "border-[#E2E8F0] bg-white hover:border-[#CBD5E1] hover:shadow-card-hover"
+                      ? "border-accent/40 ring-1 ring-accent/20 bg-[#0E141E] shadow-card-hover"
+                      : "border-[#1B2530] bg-[#0E141E] hover:border-[#2A3742] hover:shadow-card-hover"
                   }`}
                   aria-label={`${service.title} — Learn more`}
                 >
@@ -114,7 +114,7 @@ export function Services() {
                     className={`flex items-center justify-center w-11 h-11 rounded-xl border transition-colors duration-200 ${
                       service.featured
                         ? "bg-accent text-white border-accent"
-                        : "bg-[#F1F5F9] border-[#E2E8F0] text-accent"
+                        : "bg-[#0E141E] border-[#1B2530] text-accent"
                     }`}
                   >
                     <Icon
@@ -124,12 +124,12 @@ export function Services() {
                   </div>
                   <div className="flex-1 space-y-2">
                     <h3
-                      className="text-[#0F172A] font-semibold text-base transition-colors"
+                      className="text-[#E7EEF0] font-semibold text-base transition-colors"
                       style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
                     >
                       {service.title}
                     </h3>
-                    <p className="text-[#475569] text-sm leading-relaxed">
+                    <p className="text-[#8A9AA0] text-sm leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -137,7 +137,7 @@ export function Services() {
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 rounded-md bg-[#F1F5F9] border border-[#E2E8F0] text-[#475569] text-xs font-medium"
+                        className="px-2.5 py-1 rounded-md bg-[#0E141E] border border-[#1B2530] text-[#8A9AA0] text-xs font-medium"
                       >
                         {tag}
                       </span>

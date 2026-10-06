@@ -50,9 +50,9 @@ export function StatsGeometry() {
 
   return (
     <group ref={groupRef} position={[4, -1, -3]}>
-      <Bar x={-1.2} color="#00d4ff" phase={0} />
-      <Bar x={0} color="#7c3aed" phase={1.2} />
-      <Bar x={1.2} color="#34d399" phase={2.4} />
+      <Bar x={-1.2} color="#5BC8FF" phase={0} />
+      <Bar x={0} color="#46E6C5" phase={1.2} />
+      <Bar x={1.2} color="#46E6C5" phase={2.4} />
     </group>
   );
 }

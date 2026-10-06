@@ -19,7 +19,7 @@ const sizeMap = {
 export function GlowOrb({
   className = "",
   size = "lg",
-  color = "#0369A1",
+  color = "#46E6C5",
   opacity = 0.05,
 }: GlowOrbProps) {
   return (

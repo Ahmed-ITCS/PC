@@ -5,9 +5,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 const BAR_DATA = [
-  { color: "#00d4ff", targetH: 2.8, x: -3 },
-  { color: "#7c3aed", targetH: 2.2, x: 0 },
-  { color: "#34d399", targetH: 2.5, x: 3 },
+  { color: "#5BC8FF", targetH: 2.8, x: -3 },
+  { color: "#46E6C5", targetH: 2.2, x: 0 },
+  { color: "#46E6C5", targetH: 2.5, x: 3 },
 ];
 
 function Bars({ animate }: { animate: boolean }) {
@@ -62,7 +62,7 @@ function Bars({ animate }: { animate: boolean }) {
             <bufferGeometry>
               <bufferAttribute attach="attributes-position" args={[pts, 3]} />
             </bufferGeometry>
-            <lineBasicMaterial color="#00d4ff" transparent opacity={0.25} />
+            <lineBasicMaterial color="#5BC8FF" transparent opacity={0.25} />
           </lineSegments>
         );
       })}
@@ -88,8 +88,8 @@ function Scene({ animate }: { animate: boolean }) {
   return (
     <group ref={groupRef}>
       <ambientLight intensity={0.3} />
-      <pointLight position={[3, 4, 3]} intensity={2} color="#00d4ff" />
-      <pointLight position={[-3, 2, 2]} intensity={1} color="#7c3aed" />
+      <pointLight position={[3, 4, 3]} intensity={2} color="#5BC8FF" />
+      <pointLight position={[-3, 2, 2]} intensity={1} color="#46E6C5" />
       <Bars animate={animate} />
     </group>
   );

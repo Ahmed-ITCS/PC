@@ -34,8 +34,8 @@ const CONNECTIONS: [number, number][] = [
   [7, 2], [8, 5], [9, 1], [10, 4], [11, 0],
 ];
 
-const ELECTRIC = new THREE.Color("#00d4ff");
-const ELECTRIC_DIM = new THREE.Color("#00d4ff").multiplyScalar(0.35);
+const ELECTRIC = new THREE.Color("#5BC8FF");
+const ELECTRIC_DIM = new THREE.Color("#5BC8FF").multiplyScalar(0.35);
 
 function NodeMesh({ position, isCenter }: { position: [number, number, number]; isCenter: boolean }) {
   const mesh = useRef<THREE.Mesh>(null);
@@ -142,8 +142,8 @@ export function NetworkScene3D() {
           style={{ background: "transparent", width: "100%", height: "100%" }}
         >
           <ambientLight intensity={0.3} />
-          <pointLight position={[3, 3, 3]} intensity={1.2} color="#00d4ff" />
-          <pointLight position={[-3, -2, -3]} intensity={0.5} color="#7c3aed" />
+          <pointLight position={[3, 3, 3]} intensity={1.2} color="#5BC8FF" />
+          <pointLight position={[-3, -2, -3]} intensity={0.5} color="#46E6C5" />
           <NetworkGroup />
         </Canvas>
       </div>

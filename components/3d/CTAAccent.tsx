@@ -24,8 +24,8 @@ function TorusKnot() {
     <mesh ref={ref}>
       <torusKnotGeometry args={[1, 0.32, 160, 12, 2, 3]} />
       <meshStandardMaterial
-        color="#00d4ff"
-        emissive="#00d4ff"
+        color="#5BC8FF"
+        emissive="#5BC8FF"
         emissiveIntensity={0.3}
         metalness={0.9}
         roughness={0.06}
@@ -50,7 +50,7 @@ function TorusKnotWire() {
   return (
     <mesh ref={ref}>
       <torusKnotGeometry args={[1, 0.33, 80, 8, 2, 3]} />
-      <meshBasicMaterial color="#00d4ff" wireframe transparent opacity={0.1} />
+      <meshBasicMaterial color="#5BC8FF" wireframe transparent opacity={0.1} />
     </mesh>
   );
 }
@@ -59,8 +59,8 @@ function Scene() {
   return (
     <>
       <ambientLight intensity={0.2} />
-      <pointLight position={[3, 3, 3]} intensity={2} color="#00d4ff" />
-      <pointLight position={[-3, -2, 2]} intensity={0.8} color="#7c3aed" />
+      <pointLight position={[3, 3, 3]} intensity={2} color="#5BC8FF" />
+      <pointLight position={[-3, -2, 2]} intensity={0.8} color="#46E6C5" />
       <TorusKnot />
       <TorusKnotWire />
       <EffectComposer>

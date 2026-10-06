@@ -20,7 +20,7 @@ type FormValues = z.infer<typeof schema>;
 type Status = "idle" | "loading" | "success" | "error";
 
 const inputCls =
-  "w-full rounded-xl border border-[#E2E8F0] bg-white px-4 py-3 text-[#0F172A] placeholder:text-[#94A3B8] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition";
+  "w-full rounded-xl border border-[#1B2530] bg-[#0E141E] px-4 py-3 text-[#E7EEF0] placeholder:text-[#6B7A81] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition";
 
 const inputErrorCls = `${inputCls} border-red-400/60 focus:border-red-400`;
 
@@ -39,9 +39,9 @@ function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="text-sm font-medium text-[#334155]">
+      <label htmlFor={id} className="text-sm font-medium text-[#A9B7BD]">
         {label}
-        {required && <span className="text-[#94A3B8] font-normal ml-1">*</span>}
+        {required && <span className="text-[#6B7A81] font-normal ml-1">*</span>}
       </label>
       {children}
       {error && (
@@ -82,18 +82,18 @@ export function ContactFormFull() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-accent/30 bg-white px-8">
+      <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-accent/30 bg-[#0E141E] px-8">
         <div className="flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border border-accent/25">
           <CheckCircle2 className="w-8 h-8 text-accent" aria-hidden="true" />
         </div>
         <div>
           <h2
-            className="text-2xl font-bold text-[#0F172A] mb-2"
+            className="text-2xl font-bold text-[#E7EEF0] mb-2"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             Message Received
           </h2>
-          <p className="text-[#475569] text-base">
+          <p className="text-[#8A9AA0] text-base">
             We&apos;ll be in touch within one business day with a scoping plan.
           </p>
         </div>
@@ -110,12 +110,12 @@ export function ContactFormFull() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-5 rounded-2xl border border-[#E2E8F0] bg-white p-8 md:p-10 shadow-card"
+      className="space-y-5 rounded-2xl border border-[#1B2530] bg-[#0E141E] p-8 md:p-10 shadow-card"
       aria-label="Contact form"
       noValidate
     >
       <h2
-        className="text-xl font-bold text-[#0F172A] mb-2"
+        className="text-xl font-bold text-[#E7EEF0] mb-2"
         style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
       >
         Tell Us About Your Project
@@ -222,7 +222,7 @@ export function ContactFormFull() {
         {status === "loading" ? (
           <>
             <span
-              className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"
+              className="w-4 h-4 border-2 border-[#2A3742]/40 border-t-white rounded-full animate-spin"
               aria-hidden="true"
             />
             Sending…
@@ -238,7 +238,7 @@ export function ContactFormFull() {
         )}
       </button>
 
-      <p className="text-[#94A3B8] text-xs text-center">
+      <p className="text-[#6B7A81] text-xs text-center">
         By submitting this form you agree to our{" "}
         <a
           href="/privacy"

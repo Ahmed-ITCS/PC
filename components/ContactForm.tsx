@@ -52,16 +52,16 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-accent/30 bg-white px-8">
+      <div className="flex flex-col items-center justify-center gap-5 py-20 text-center rounded-2xl border border-accent/30 bg-[#0E141E] px-8">
         <CheckCircle2 className="w-12 h-12 text-accent" aria-hidden="true" />
         <div>
           <h2
-            className="text-2xl font-bold text-[#0F172A] mb-2"
+            className="text-2xl font-bold text-[#E7EEF0] mb-2"
             style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
           >
             Message Received
           </h2>
-          <p className="text-[#475569] text-base">
+          <p className="text-[#8A9AA0] text-base">
             We&apos;ll be in touch within one business day with a scoping plan.
           </p>
         </div>
@@ -72,12 +72,12 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 rounded-2xl border border-[#E2E8F0] bg-white p-8 md:p-10 shadow-card"
+      className="space-y-5 rounded-2xl border border-[#1B2530] bg-[#0E141E] p-8 md:p-10 shadow-card"
       aria-label="Contact form"
       noValidate
     >
       <h2
-        className="text-xl font-bold text-[#0F172A] mb-6"
+        className="text-xl font-bold text-[#E7EEF0] mb-6"
         style={{ fontFamily: "var(--font-syne), Syne, sans-serif" }}
       >
         Tell Us About Your Project
@@ -135,10 +135,10 @@ export function ContactForm() {
       <div className="space-y-1.5">
         <label
           htmlFor="message"
-          className="text-sm font-medium text-[#334155]"
+          className="text-sm font-medium text-[#A9B7BD]"
         >
           Project details{" "}
-          <span className="text-[#94A3B8] font-normal">(required)</span>
+          <span className="text-[#6B7A81] font-normal">(required)</span>
         </label>
         <textarea
           id="message"
@@ -148,7 +148,7 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           placeholder="Describe your project, current pain points, timeline, and anything else relevant..."
-          className="w-full rounded-xl border border-[#E2E8F0] bg-white px-4 py-3 text-[#0F172A] placeholder:text-[#94A3B8] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition resize-none"
+          className="w-full rounded-xl border border-[#1B2530] bg-[#0E141E] px-4 py-3 text-[#E7EEF0] placeholder:text-[#6B7A81] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition resize-none"
           aria-required="true"
         />
       </div>
@@ -169,7 +169,7 @@ export function ContactForm() {
         {status === "loading" ? (
           <>
             <span
-              className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"
+              className="w-4 h-4 border-2 border-[#2A3742]/40 border-t-white rounded-full animate-spin"
               aria-hidden="true"
             />
             Sending...
@@ -185,7 +185,7 @@ export function ContactForm() {
         )}
       </button>
 
-      <p className="text-[#94A3B8] text-xs text-center">
+      <p className="text-[#6B7A81] text-xs text-center">
         By submitting this form you agree to our{" "}
         <a href="/privacy" className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors">
           Privacy Policy
@@ -209,9 +209,9 @@ interface FieldProps {
 function Field({ label, name, type, placeholder, value, onChange, required }: FieldProps) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={name} className="text-sm font-medium text-[#334155]">
+      <label htmlFor={name} className="text-sm font-medium text-[#A9B7BD]">
         {label}
-        {required && <span className="text-[#94A3B8] font-normal"> (required)</span>}
+        {required && <span className="text-[#6B7A81] font-normal"> (required)</span>}
       </label>
       <input
         id={name}
@@ -221,7 +221,7 @@ function Field({ label, name, type, placeholder, value, onChange, required }: Fi
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-[#E2E8F0] bg-white px-4 py-3 text-[#0F172A] placeholder:text-[#94A3B8] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition"
+        className="w-full rounded-xl border border-[#1B2530] bg-[#0E141E] px-4 py-3 text-[#E7EEF0] placeholder:text-[#6B7A81] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition"
         aria-required={required}
       />
     </div>
@@ -240,7 +240,7 @@ interface SelectFieldProps {
 function SelectField({ label, name, options, value, onChange, placeholder }: SelectFieldProps) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={name} className="text-sm font-medium text-[#334155]">
+      <label htmlFor={name} className="text-sm font-medium text-[#A9B7BD]">
         {label}
       </label>
       <select
@@ -248,7 +248,7 @@ function SelectField({ label, name, options, value, onChange, placeholder }: Sel
         name={name}
         value={value}
         onChange={onChange}
-        className="w-full rounded-xl border border-[#E2E8F0] bg-white px-4 py-3 text-[#0F172A] placeholder:text-[#94A3B8] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition appearance-none cursor-pointer"
+        className="w-full rounded-xl border border-[#1B2530] bg-[#0E141E] px-4 py-3 text-[#E7EEF0] placeholder:text-[#6B7A81] focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition appearance-none cursor-pointer"
       >
         <option value="" disabled>
           {placeholder}

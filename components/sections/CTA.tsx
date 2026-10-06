@@ -8,7 +8,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 export function CTA() {
   return (
     <section
-      className="relative py-32 md:py-44 overflow-hidden bg-white"
+      className="relative py-32 md:py-44 overflow-hidden bg-[#0E141E]"
       aria-labelledby="cta-heading"
     >
       {/* Background layers */}
@@ -21,15 +21,15 @@ export function CTA() {
       <GlowOrb className="-top-20 left-1/2 -translate-x-1/2" size="xl" opacity={0.10} />
 
       {/* Horizontal accent lines */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#CBD5E1] to-transparent" aria-hidden="true" />
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#CBD5E1] to-transparent" aria-hidden="true" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#2A3742] to-transparent" aria-hidden="true" />
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#2A3742] to-transparent" aria-hidden="true" />
 
       <div className="relative z-10 container-max section-padding flex flex-col items-center text-center gap-10">
 
         <ClipReveal delay={0.05}>
           <h2
             id="cta-heading"
-            className="font-display font-bold text-balance max-w-4xl text-[#0F172A]"
+            className="font-display font-bold text-balance max-w-4xl text-[#E7EEF0]"
             style={{
               fontSize: "clamp(3rem, 7vw, 6.5rem)",
               lineHeight: "1.0",
@@ -42,7 +42,7 @@ export function CTA() {
         </ClipReveal>
 
         <ClipReveal delay={0.2}>
-          <p className="text-[#475569] text-xl max-w-lg text-balance leading-relaxed">
+          <p className="text-[#8A9AA0] text-xl max-w-lg text-balance leading-relaxed">
             Tell us about your project and we&apos;ll respond within one
             business day with a scoping plan.
           </p>
@@ -61,14 +61,14 @@ export function CTA() {
             <MagneticButton
               href="/services"
               strength={0.25}
-              className="px-10 py-4 rounded-xl font-semibold text-sm border border-[#CBD5E1] text-[#334155] bg-white hover:border-[#94A3B8] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-all duration-200"
+              className="px-10 py-4 rounded-xl font-semibold text-sm border border-[#2A3742] text-[#A9B7BD] bg-[#0E141E] hover:border-[#6B7A81] hover:text-[#E7EEF0] hover:bg-[#0A0E14] transition-all duration-200"
             >
               Explore Services
             </MagneticButton>
           </div>
         </ClipReveal>
 
-        <p className="text-[#94A3B8] text-xs tracking-wide">
+        <p className="text-[#6B7A81] text-xs tracking-wide">
           No commitment required · Free 30-minute scoping call
         </p>
       </div>
